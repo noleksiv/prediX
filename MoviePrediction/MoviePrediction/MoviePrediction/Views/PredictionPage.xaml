@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
+             x:Class="MoviePrediction.Views.PredictionPage"
+             BackgroundImage="stickBackground.png">    
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid >
+                <StackLayout VerticalOptions="StartAndExpand" 
+                             HorizontalOptions="Center" 
+                             WidthRequest="350">
+                    
+                    <Label FontSize="48"
+                           TextColor="#F8FAFB"
+                           FontAttributes="Bold" 
+                           FormattedText="Center"
+                           Margin="0, 35" >                        
+                        WRITE A MOVIE TO PREDICTION
+                    </Label>
+                    
+                    <CustomEditor:DarkEditor 
+                        Placeholder="Enter a title" 
+                        AccentColor="#F8FAFB" 
+                        Keyboard="Text" />
+
+                    <Button x:Name="predictBtn" 
+                        Style="{StaticResource defaultBtnStyle}" 
+                        Text="TRY TO PREDICT"
+                        Margin="0, 35" />
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

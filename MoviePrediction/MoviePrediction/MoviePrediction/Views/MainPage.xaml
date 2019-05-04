@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MoviePrediction.Views.MainPage"
+            xmlns:local="clr-namespace:MoviePrediction.Views;assembly:MoviePrediction">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Icon="search.png" />
+        <ToolbarItem Order="Primary" Icon="user.png" />
+    </TabbedPage.ToolbarItems>
+    <TabbedPage.Children>
+        <local:HomePage Title="HOME"/>
+        <local:MoviesPage Title="MOVIES"/>
+        <local:TVPage Title="TV"/>
+        <local:CastPage Title="CAST"/>
+        <local:PredictionPage Title="PREDICTION"/>
+    </TabbedPage.Children>
+    <TabbedPage.BarBackgroundColor>#000000</TabbedPage.BarBackgroundColor>
+</TabbedPage>
