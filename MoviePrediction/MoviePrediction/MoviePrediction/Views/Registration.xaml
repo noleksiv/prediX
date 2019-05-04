@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
+             x:Class="MoviePrediction.Views.Registration"
+             >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="SIGN IN" />
+        <ToolbarItem Order="Primary" Text="HELP" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" WidthRequest="350" Margin="0, 50">
+            <Label Font="Bold,22">Sign up to start your unforgettable experience</Label>
+            <Label FontSize="20">Just one step and you're done!</Label>
+            <Label FontSize="20">We hate paperwork, too.</Label>
+            <Label Font="Bold,22">Create your account.</Label>
+            <CustomEditor:LightEditor Placeholder="Email" AccentColor="#141414" Keyboard="Email" WidthRequest="300"/>
+            <CustomEditor:LightEditor Placeholder="Password" AccentColor="#141414" IsPassword="True" WidthRequest="300"/>
+            <Button x:Name="SignUp" Style="{StaticResource defaultBtnStyle}" Text="SIGN UP">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

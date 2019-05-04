@@ -3,6 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviePrediction.App">
     <Application.Resources>
+        <ResourceDictionary>
+            
+            <!--Black color -->
+            <Color x:Key="deepBlackColor">#000000</Color>
+            <!--Dark theme color -->
+            <Color x:Key="darkColor">#141414</Color>
+            <!--Light theme color -->
+            <Color x:Key="whiteColor">#F8FAFB</Color>
+            <!--Grey color -->
+            <Color x:Key="greyColor">#F8FAFB</Color>
+            
+            <Style x:Key="darkBackground" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{StaticResource darkColor}"/>
+            </Style>
 
+            <!--Buttons-->
+
+            <Style x:Key="defaultBtnStyle" TargetType="Button">
+                <Setter Property="WidthRequest" Value="250"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="CornerRadius" Value="3"/>
+                <Setter Property="TextColor" Value="{StaticResource whiteColor}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="BackgroundColor" Value="#B50D0D"/>
+            </Style>
+
+            <Style x:Name="navBar" TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource deepBlackColor}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource greyColor}"/>
+            </Style>
+
+            <Style x:Name="tabbedBarColor" TargetType="TabbedPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource deepBlackColor}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource greyColor}"/>
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
+             x:Class="MoviePrediction.Views.LoginPage"             
+             >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="HELP" Clicked="ClickedOnTheLink"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Style="{StaticResource darkBackground}">
+            <StackLayout Margin="30">
+                <CustomEditor:DarkEditor Placeholder="Email" AccentColor="White" Grid.Row="1" Grid.Column="0" Keyboard="Email" />
+                <CustomEditor:DarkEditor Placeholder="Password" IsPassword="True" AccentColor="White" Grid.Row="2" Grid.Column="0"/>
+                <Button x:Name="predixLoginBtn" 
+                        Style="{StaticResource defaultBtnStyle}" 
+                        Text="SIGN IN"
+                        Margin="25"
+                        Clicked="PredixLoginBtn_Clicked"
+                        >
+                </Button>
+                <Label  x:Name="HelpLabel"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand">
+                        <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Need help?"
+                            TextColor="#A2A0A0">
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>      
+                </Label>
+                <Label  x:Name="SignUpLabel"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="New to PrediX? Sign up now"
+                            TextColor="#A2A0A0">
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
