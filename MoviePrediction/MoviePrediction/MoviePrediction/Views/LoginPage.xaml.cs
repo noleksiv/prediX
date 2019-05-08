@@ -17,15 +17,15 @@ namespace MoviePrediction.Views
 			InitializeComponent ();
 
             // actions for the label clicks
-            HelpLabel.GestureRecognizers.Add(new TapGestureRecognizer(async (s,e) => 
-            {
-                await Navigation.PushAsync(new HelpView());               
-            }));
+            //HelpLabel.GestureRecognizers.Add(new TapGestureRecognizer(async (s,e) => 
+            //{
+            //    await Navigation.PushAsync(new HelpView());               
+            //}));
 
-            SignUpLabel.GestureRecognizers.Add(new TapGestureRecognizer(async (s, e) => 
-            {
-                await Navigation.PushAsync(new Registration());
-            }));
+            //SignUpLabel.GestureRecognizers.Add(new TapGestureRecognizer(async (s, e) => 
+            //{
+            //    await Navigation.PushAsync(new Registration());
+            //}));
         }
 
         private void PredixLoginBtn_Clicked(object sender, EventArgs e)
