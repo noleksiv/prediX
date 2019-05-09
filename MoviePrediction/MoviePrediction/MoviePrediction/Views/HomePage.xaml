@@ -2,13 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="MoviePrediction.Views.HomePage"
-             xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews">
+             xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews"
+             xmlns:Cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:Controls="clr-namespace:PanCardView.Controls;assembly=PanCardView">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand">
-            <StackLayout>
-                <ListView ItemsSource="{Binding Movies}" 
-                          HasUnevenRows="True" 
-                          Style="{StaticResource customListView}">
+            <StackLayout BackgroundColor="{StaticResource darkColor}">
+
+                <Cards:CarouselView x:Name="trendingCarousel"
+                                    ItemsSource="{Binding Movies}"
+                                    SlideShowDuration="3000"
+                                    BackgroundColor="{StaticResource darkColor}">
+                    <Cards:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Frame 
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    HeightRequest="200"
+                                    WidthRequest="154"
+                                    Padding="15"
+                                    Margin="0, 15, 0, 35"
+                                    HasShadow="false"
+                                    IsClippedToBounds="true"                                    
+                                    BackgroundColor="{StaticResource darkColor}">
+                                    <Image>
+                                        <Image.Source>
+                                            <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </Cards:CarouselView.ItemTemplate>
+                    <Controls:IndicatorsControl ToFadeDuration="1500"
+                                                SelectedIndicatorStyle="{StaticResource ActiveIndicator}"
+                                                UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" />           
+                </Cards:CarouselView>
+                
+                <ListView   x:Name="trendingListView"
+                            ItemsSource="{Binding Movies}" 
+                            HasUnevenRows="True" 
+                            Style="{StaticResource customListView}"
+                            ItemTapped="TrendingListView_ItemSelected"
+                          >
                     <ListView.ItemTemplate>                        
                         <DataTemplate>
                             <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">
@@ -27,7 +64,7 @@
                                         
                                         <StackLayout Orientation="Vertical" 
                                                      HorizontalOptions="StartAndExpand">
-                                            
+
                                             <Label Text="{Binding Title}"
                                                    TextColor="{StaticResource whiteColor}"
                                                     />
@@ -36,10 +73,10 @@
                                                    LineBreakMode="TailTruncation"
                                                    Style="{StaticResource helperText}"/>
                                         </StackLayout>
-                                        <StackLayout HorizontalOptions="End" 
-                                                     WidthRequest="70">
-                                            <Label Text="{Binding VoteAverage}" 
-                                                   TextColor="{StaticResource whiteColor}" />
+                                        
+                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                            <Label Text="{Binding VoteAverage}" WidthRequest="150" HorizontalOptions="EndAndExpand"
+                                                   TextColor="{StaticResource whiteColor}" LineBreakMode="NoWrap"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell.View>
@@ -47,7 +84,10 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+
+<!--https://github.com/AndreiMisiukevich/CardView-->

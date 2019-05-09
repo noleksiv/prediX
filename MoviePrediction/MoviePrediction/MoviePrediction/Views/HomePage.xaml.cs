@@ -13,10 +13,12 @@ using MoviePrediction.Services.Photo;
 
 namespace MoviePrediction.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class HomePage : ContentPage
+    {
         private ImageUrl imageUrl = new ImageUrl();
+
+        public IMovieIntro SelectedMovie { get; set; }
         public ObservableCollection<IMovieIntro> Movies { get; set; }
 
         public HomePage ()
@@ -50,5 +52,14 @@ namespace MoviePrediction.Views
             var movies = getMovies.GetMovies();
             return movies;               
         }
-	}
+
+        private async void TrendingListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null) return;
+
+            var selectedItem = ((ListView)sender).SelectedItem;
+
+            await Navigation.PushAsync(new MovieInfo(selectedItem as IMovieIntro));
+        }
+    }
 }

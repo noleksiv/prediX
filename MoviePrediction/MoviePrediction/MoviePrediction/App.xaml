@@ -16,6 +16,10 @@
             <!--Grey color -->
             <Color x:Key="greyColor">#F8FAFB</Color>
 
+            <Color x:Key="redColor">#B50D0D</Color>
+
+            <Color x:Key="cherryColor">#820A0A</Color>
+
             <Color x:Key="darkHighlightSelected">#606060</Color>
 
             <Color x:Key="helperWhiteColor">#FFFFFF</Color>
@@ -79,6 +83,18 @@
             </Style>
             <!--#endregion-->
 
+
+            <!--#region Carousel view -->
+            <Style x:Key="ActiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource redColor}" />
+            </Style>
+            <Style x:Key="InactiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="OutlineColor" Value="{StaticResource cherryColor}" />
+            </Style>
+            <!--#endregion-->           
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
