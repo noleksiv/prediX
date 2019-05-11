@@ -2,9 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviePrediction.Views.MovieInfo"
-             xmlns:Cards="clr-namespace:PanCardView;assembly=PanCardView"
              xmlns:CircleImg="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:Controls="clr-namespace:PanCardView.Controls;assembly=PanCardView">
+             xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="{StaticResource darkColor}">
@@ -56,77 +55,56 @@
                         <Label Text="Overview" FontSize="18" TextColor="{StaticResource whiteColor}"/>
                         <Label Text="{Binding FilmInfo.Overview}" MaxLines="15" LineBreakMode="CharacterWrap" TextColor="{StaticResource helperWhiteColor}"/>
                         <Label Text="Cast" FontSize="18" TextColor="{StaticResource whiteColor}"/>
-                        <Cards:CoverFlowView
-                BackViewsDepth="1"
-                VerticalOptions="Center"
-                IsCyclical="false"
-                IsAutoInteractionRunning="True"
-                ItemsSource="{Binding Cast}">
-                            <Cards:CoverFlowView.ItemTemplate>
+                        <renderedViews:HorizontalListView
+                                  Margin="-16,8"
+                                  CollectionPadding="8,8"
+                                  ItemSpacing="8"
+                                  ItemHeight="144"
+                                  ItemWidth="144"
+                                  ItemsSource="{Binding Cast}"
+                                  SnapStyle="Center">
+                            <renderedViews:HorizontalListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ContentView Padding="20">
-                                        <Frame 
-                            VerticalOptions="Center"
-                            WidthRequest="75"
-                            Padding="0" 
-                            HasShadow="false"
-                            IsClippedToBounds="true"
-                            CornerRadius="10"
-                            BackgroundColor="Transparent">
-                                            <StackLayout Orientation="Vertical" VerticalOptions="Center">
-                                                <CircleImg:CircleImage Source="{Binding ProfileUrl}"  WidthRequest="100" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                    <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
-                                                    <Label Text="{Binding Character}" LineBreakMode="TailTruncation" TextColor="{StaticResource helperWhiteColor}"/>
-                                                </StackLayout>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                            <CircleImg:CircleImage Source="{Binding ProfileUrl}"  WidthRequest="100" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
+                                                <Label Text="{Binding Character}" LineBreakMode="TailTruncation" TextColor="{StaticResource helperWhiteColor}"/>
                                             </StackLayout>
-                                            <!--<Image Aspect="AspectFill" 
-                                               HorizontalOptions="FillAndExpand">
-                                    <Image.Source>
-                                        <UriImageSource Uri = "{Binding ProfileUrl}"/>
-                                    </Image.Source>
-                                </Image>-->
-                                        </Frame>
-                                    </ContentView>
+                                        </StackLayout>
+                                    </ViewCell>
                                 </DataTemplate>
-                            </Cards:CoverFlowView.ItemTemplate>
-                        </Cards:CoverFlowView>
+                            </renderedViews:HorizontalListView.ItemTemplate>
+                        </renderedViews:HorizontalListView>
                     </StackLayout>
 
                     <StackLayout>
                         <Label Text="Crew"/>
-                        <Cards:CoverFlowView
-                BackViewsDepth="1"
-                VerticalOptions="Center"
-                IsCyclical="false"
-                IsAutoInteractionRunning="True"
-                ItemsSource="{Binding Crew}">
-                            <Cards:CoverFlowView.ItemTemplate>
+                        <renderedViews:HorizontalListView
+                                  Margin="-16,8"
+                                  CollectionPadding="8,8"
+                                  ItemSpacing="8"
+                                  ItemHeight="144"
+                                  ItemWidth="144"
+                                  ItemsSource="{Binding Crew}"
+                                  SnapStyle="Center">
+                            <renderedViews:HorizontalListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ContentView Padding="20">
-                                        <Frame 
-                            VerticalOptions="Center"
-                            WidthRequest="75"
-                            Padding="0" 
-                            HasShadow="false"
-                            IsClippedToBounds="true"
-                            CornerRadius="10"
-                            BackgroundColor="Transparent">
-                                            <StackLayout Orientation="Vertical" VerticalOptions="Center">
-                                                <CircleImg:CircleImage Source="{Binding ProfileUrl}"  WidthRequest="100" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                    <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
-                                                    <Label Text="{Binding Character}" LineBreakMode="TailTruncation" TextColor="{StaticResource helperWhiteColor}"/>
-                                                </StackLayout>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                            <CircleImg:CircleImage Source="{Binding ProfileUrl}"  WidthRequest="100" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
+                                                <Label Text="{Binding Character}" LineBreakMode="TailTruncation" TextColor="{StaticResource helperWhiteColor}"/>
                                             </StackLayout>
-                                        </Frame>
-                                    </ContentView>
+                                        </StackLayout>
+                                    </ViewCell>
                                 </DataTemplate>
-                            </Cards:CoverFlowView.ItemTemplate>
-                        </Cards:CoverFlowView>
+                            </renderedViews:HorizontalListView.ItemTemplate>
+                        </renderedViews:HorizontalListView>
                     </StackLayout>
                 </StackLayout>
-
             </StackLayout>
         </ScrollView>       
     </ContentPage.Content>

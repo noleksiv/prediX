@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,10 +37,10 @@ namespace MoviePrediction.Views
             ContentForTopRaterdTV();
         }
 
-        public async void ContentForPopularTV()
+        public void ContentForPopularTV()
         {
             var popularTV = new GetPopularTV();
-            var tvList = await popularTV.GetTVAsync();
+            var tvList = popularTV.GetTV();
             PopularTV =  new ObservableCollection<IMovieIntro>(tvList);
 
             foreach (var tv in PopularTV)
@@ -49,10 +49,10 @@ namespace MoviePrediction.Views
             }
         }
 
-        public async void ContentForTopRaterdTV()
+        public void ContentForTopRaterdTV()
         {
             var topRatedTV = new GetTopRatedTV();
-            var tvList = await topRatedTV.GetTopTVAsync();
+            var tvList = topRatedTV.GetTopTV();
 
             TopRatedTV = new ObservableCollection<IMovieIntro>(tvList);
 
@@ -60,6 +60,11 @@ namespace MoviePrediction.Views
             {
                 tv.PosterUrl = new Uri(_imageUrl.CreatePosterLink(tv.PosterPath));
             }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

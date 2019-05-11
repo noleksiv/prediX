@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
+using Sharpnado.Presentation.Forms.Droid;
 
 namespace MoviePrediction.Droid
 {
@@ -20,6 +21,8 @@ namespace MoviePrediction.Droid
 
             base.OnCreate(savedInstanceState);
             ImageCircleRenderer.Init();
+            XamEffects.Droid.Effects.Init();
+            SharpnadoInitializer.Initialize();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
