@@ -2,7 +2,7 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="MoviePrediction.Views.MainPage"
-            xmlns:local="clr-namespace:MoviePrediction.Views;assembly:MoviePrediction">
+            xmlns:local="clr-namespace:MoviePrediction.Views">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
             <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent"/>

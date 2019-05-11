@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace MoviePrediction.Droid
 {
@@ -18,6 +19,7 @@ namespace MoviePrediction.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            ImageCircleRenderer.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

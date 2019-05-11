@@ -4,7 +4,9 @@
              x:Class="MoviePrediction.App">
     <Application.Resources>
         <ResourceDictionary>
-            
+
+            <!--#region Colors definition -->
+
             <!--Black color -->
             <Color x:Key="deepBlackColor">#000000</Color>
             <!--Dark theme color -->
@@ -13,13 +15,37 @@
             <Color x:Key="whiteColor">#F8FAFB</Color>
             <!--Grey color -->
             <Color x:Key="greyColor">#F8FAFB</Color>
+
+            <Color x:Key="redColor">#B50D0D</Color>
+
+            <Color x:Key="cherryColor">#820A0A</Color>
+
+            <Color x:Key="darkHighlightSelected">#606060</Color>
+
+            <Color x:Key="helperWhiteColor">#FFFFFF</Color>
+
+            <!--#endregion-->
             
+            
+
+            <!--#region Grids -->
             <Style x:Key="darkBackground" TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="{StaticResource darkColor}"/>
             </Style>
+            <!--#endregion-->
 
-            <!--Buttons-->
+            
+            
+            <!--#region Labels -->
+            <Style x:Key="helperText" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource helperWhiteColor}"/>
+                <Setter Property="Opacity" Value="0.6"/>
+            </Style>            
+            <!--#endregion-->
+            
+            
 
+            <!--#region Buttons -->
             <Style x:Key="defaultBtnStyle" TargetType="Button">
                 <Setter Property="WidthRequest" Value="250"/>
                 <Setter Property="HeightRequest" Value="60"/>
@@ -29,17 +55,47 @@
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="BackgroundColor" Value="#B50D0D"/>
             </Style>
+            <!--#endregion-->
+            
+            
 
+            <!--#region Navigation bar -->            
             <Style x:Name="navBar" TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource deepBlackColor}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource greyColor}"/>
             </Style>
-
-            <Style x:Name="tabbedBarColor" TargetType="TabbedPage">
+            <!--#endregion-->
+            
+            
+            
+            <!--#region Tabbed bar -->
+            <Style x:Key="tabbedBarColor" TargetType="TabbedPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource deepBlackColor}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource greyColor}"/>
             </Style>
+            <!--#endregion-->
+            
+            
 
+            <!--#region Lists -->
+            <Style x:Key="customListView" TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="{StaticResource darkColor}"/>
+            </Style>
+            <!--#endregion-->
+
+
+            
+            <!--#region Carousel view -->
+            <Style x:Key="ActiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource redColor}" />
+            </Style>
+            <Style x:Key="InactiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="OutlineColor" Value="{StaticResource cherryColor}" />
+            </Style>
+            <!--#endregion-->           
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

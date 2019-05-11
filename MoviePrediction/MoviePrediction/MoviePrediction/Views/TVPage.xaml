@@ -1,12 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MoviePrediction.Views.TVPage">
+             x:Class="MoviePrediction.Views.TVPage"
+             xmlns:Cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:Controls="clr-namespace:PanCardView.Controls;assembly=PanCardView">>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BackgroundColor="{StaticResource darkColor}">
+            <Label Text="GDGDFGDFGD df gdfg"/>
+            <Label Text="Popular TV" TextColor="Black"/>
+            <Cards:CubeView x:Name="popularCube"
+                                    ItemsSource="{Binding PopularTV}"
+                                    BackgroundColor="{StaticResource darkColor}">
+                        <Cards:CubeView.ItemTemplate>
+                            <DataTemplate>
+                                <ContentView>
+                                    <Frame  VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            HeightRequest="300"
+                            WidthRequest="300"
+                            Padding="0" 
+                            HasShadow="false"
+                            BackgroundColor="Transparent"
+                            IsClippedToBounds="true"
+                            CornerRadius="10">
+                                        <StackLayout>
+                                            <Image>
+                                                <Image.Source>
+                                                    <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="{Binding Title}"/>
+                                        </StackLayout>
+
+                                    </Frame>
+                                </ContentView>
+                            </DataTemplate>
+                        </Cards:CubeView.ItemTemplate>
+                    </Cards:CubeView>
+            <Cards:CoverFlowView x:Name="topRatedCube"
+                                    PositionShiftValue="60"
+                                    IsCyclical="false"
+                                    IsAutoInteractionRunning="True"
+                                    IsUserInteractionRunning="True"
+                                    ItemsSource="{Binding TopRatedTV}"                                   
+                                    BackgroundColor="{StaticResource darkColor}">
+                <Cards:CoverFlowView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame      VerticalOptions="Center"
+                                                    HorizontalOptions="Fill"
+                                                    HeightRequest="290"
+                                                    Padding="0" 
+                                                    HasShadow="false"
+                                                    IsClippedToBounds="true"
+                                                    CornerRadius="10">
+                                <Image>
+                                    <Image.Source>
+                                        <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </Cards:CoverFlowView.ItemTemplate>
+            </Cards:CoverFlowView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
