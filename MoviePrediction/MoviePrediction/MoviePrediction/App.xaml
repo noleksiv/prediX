@@ -84,6 +84,7 @@
             <!--#endregion-->
 
 
+            
             <!--#region Carousel view -->
             <Style x:Key="ActiveIndicator" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="{StaticResource redColor}" />
