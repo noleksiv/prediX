@@ -45,6 +45,7 @@ namespace MoviePrediction.Views
 
                     if (token != null)
                     {
+                        await Application.Current.SavePropertiesAsync();
                         await Navigation.PushAsync(new MainPage());
                     }
                 }

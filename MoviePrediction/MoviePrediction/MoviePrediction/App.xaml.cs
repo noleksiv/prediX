@@ -12,18 +12,31 @@ namespace MoviePrediction
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new Registration());
+            //Application.Current.Properties["SessionId"] =null;
+            //Application.Current.Properties["Uid"] =null;
+            //MainPage = new NavigationPage(new Registration());
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            System.Diagnostics.Debug.WriteLine(new string('*', 50));
+            foreach (var item in Application.Current.Properties)
+            {
+                System.Diagnostics.Debug.WriteLine(item.Key + "\t" + item.Value);
+            }
+            if (Application.Current.Properties.ContainsKey("SessionId"))
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new Registration());
+            }
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            Application.Current.SavePropertiesAsync();
         }
 
         protected override void OnResume()

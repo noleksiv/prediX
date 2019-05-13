@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Firebase.Auth;
+using MoviePrediction.Models;
 using MoviePrediction.Services.Database;
 using Xamarin.Forms;
 
@@ -14,7 +15,16 @@ namespace MoviePrediction.Droid
             var user = await FirebaseAuth.Instance.
                         SignInWithEmailAndPasswordAsync(email, password);
             var token = await user.User.GetIdTokenAsync(false);
-            return token.Token;           
+            var uid = user.User.Uid;
+
+            Application.Current.Properties["SessionId"] = token.Token;
+            Application.Current.Properties["Uid"] = uid;
+
+            //var userInfo = new User { Token = token.Token, UserId = uid };
+
+            await Application.Current.SavePropertiesAsync();
+
+            return token.Token;
         }
 
         public async Task<string> RegsiterWithEmailPassword(string email, string password)

@@ -31,7 +31,7 @@ namespace MoviePrediction.Views
 
                     if (token != null)
                     {
-                        await Navigation.PushAsync(new MainPage());
+                        await Navigation.PushAsync(new LoginPage());
                     }
                 }
                 catch (Exception ex)

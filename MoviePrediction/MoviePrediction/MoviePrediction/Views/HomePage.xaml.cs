@@ -10,6 +10,7 @@ using MoviePrediction.Models;
 using MoviePrediction.Services.Trending;
 using System.Collections.ObjectModel;
 using MoviePrediction.Services.Photo;
+using MoviePrediction.Services.Database;
 
 namespace MoviePrediction.Views
 {
@@ -58,8 +59,13 @@ namespace MoviePrediction.Views
             if (e.SelectedItem == null) return;
 
             var selectedItem = ((ListView)sender).SelectedItem;
+            var movie = selectedItem as IMovieIntro;
 
-            await Navigation.PushAsync(new MovieInfo(selectedItem as IMovieIntro));
+            // connection to Firebase
+            //var db = new DbFirebase();
+            //await db.AddToHistory(movie);
+
+            await Navigation.PushAsync(new MovieInfo(movie));
         }
     }
 }
