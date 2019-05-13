@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "67850015125",
+    "firebase_url": "https://pred1x.firebaseio.com",
+    "project_id": "pred1x",
+    "storage_bucket": "pred1x.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67850015125:android:46afbd6b7ce3fb75",
+        "android_client_info": {
+          "package_name": "com.companyname"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67850015125-49neakgmcaoh7buji33q4dr7m7s1h42k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnsstml-kvxIlCq3Mien85jUhAASAnD9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67850015125-49neakgmcaoh7buji33q4dr7m7s1h42k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

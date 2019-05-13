@@ -13,7 +13,7 @@ namespace MoviePrediction
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new Registration());
         }
 
         protected override void OnStart()
