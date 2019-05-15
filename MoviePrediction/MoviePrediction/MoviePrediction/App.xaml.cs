@@ -3,12 +3,28 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using MoviePrediction.Views;
+using MoviePrediction.Services.Database;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MoviePrediction
 {
     public partial class App : Application
     {
+        public const string DATABASE_NAME = "history.db";
+
+        public static HistoryRepository database;
+        public static HistoryRepository Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new HistoryRepository(DATABASE_NAME);
+                }
+                return database;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
@@ -19,18 +35,13 @@ namespace MoviePrediction
 
         protected override void OnStart()
         {
-            System.Diagnostics.Debug.WriteLine(new string('*', 50));
-            foreach (var item in Application.Current.Properties)
-            {
-                System.Diagnostics.Debug.WriteLine(item.Key + "\t" + item.Value);
-            }
             if (Application.Current.Properties.ContainsKey("SessionId"))
             {
                 MainPage = new NavigationPage(new MainPage());
             }
             else
             {
-                MainPage = new NavigationPage(new Registration());
+                MainPage = new NavigationPage(new LoginPage());
             }
         }
 

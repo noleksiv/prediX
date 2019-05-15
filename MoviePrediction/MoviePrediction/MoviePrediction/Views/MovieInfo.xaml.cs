@@ -1,4 +1,5 @@
-﻿using MoviePrediction.Models;
+﻿using AutoMapper;
+using MoviePrediction.Models;
 using MoviePrediction.Services.CastAndCrew;
 using MoviePrediction.Services.Photo;
 using System;
@@ -32,6 +33,10 @@ namespace MoviePrediction.Views
         {
             FilmInfo = movieIntro;
             FilmInfo.BackdropUrl = new Uri(_imageUrl.CreateBackdropLink(FilmInfo.BackdropPath));
+
+            var movie = Mapper.Map<HistoryPreview>(movieIntro);
+            App.Database.SaveItem(movie);
+
             GetMovieCredits(FilmInfo.Id);
             this.BindingContext = this;
         }

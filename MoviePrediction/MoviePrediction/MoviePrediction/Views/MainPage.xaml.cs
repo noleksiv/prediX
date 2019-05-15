@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoviePrediction.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,17 @@ namespace MoviePrediction.Views
         public MainPage ()
         {
             InitializeComponent();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<IMovieIntro, HistoryPreview>().ForMember(preview => preview.TheMovieDbId, movie => movie.MapFrom(intro => intro.Id))
+                                                            .ForMember(preview=>preview.Id, movie=>movie.Ignore());
+            });
+        }
+
+        private async void UsersIconClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UsersPage());
         }
     }
 }

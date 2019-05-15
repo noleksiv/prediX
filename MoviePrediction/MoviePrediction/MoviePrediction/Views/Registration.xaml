@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
              x:Class="MoviePrediction.Views.Registration"
+             NavigationPage.HasNavigationBar="false"
              >
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
