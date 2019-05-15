@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
              x:Class="MoviePrediction.Views.Registration"
+             NavigationPage.HasNavigationBar="false"
              >
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
@@ -10,8 +11,8 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Order="Primary" Text="SIGN IN" />
-        <ToolbarItem Order="Primary" Text="HELP" />
+        <ToolbarItem Order="Primary" Text="SIGN IN" Clicked="SignInClicked"/>
+        <ToolbarItem Order="Primary" Text="HELP" Clicked="HelpClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" WidthRequest="350" Margin="0, 50">
@@ -19,9 +20,9 @@
             <Label FontSize="20">Just one step and you're done!</Label>
             <Label FontSize="20">We hate paperwork, too.</Label>
             <Label Font="Bold,22">Create your account.</Label>
-            <CustomEditor:LightEditor Placeholder="Email" AccentColor="#141414" Keyboard="Email" WidthRequest="300"/>
-            <CustomEditor:LightEditor Placeholder="Password" AccentColor="#141414" IsPassword="True" WidthRequest="300"/>
-            <Button x:Name="SignUp" Style="{StaticResource defaultBtnStyle}" Text="SIGN UP">
+            <CustomEditor:LightEditor x:Name="emailInput" Placeholder="Email" AccentColor="#141414" Keyboard="Email" WidthRequest="300"/>
+            <CustomEditor:LightEditor x:Name="pwdInput" Placeholder="Password" AccentColor="#141414" IsPassword="True" WidthRequest="300"/>
+            <Button x:Name="SignUp" Style="{StaticResource defaultBtnStyle}" Text="SIGN UP" Clicked="SignUp_Clicked">
             </Button>
         </StackLayout>
     </ContentPage.Content>

@@ -10,7 +10,7 @@
     </NavigationPage.TitleView>
     <TabbedPage.ToolbarItems>
         <ToolbarItem Order="Primary" Icon="search.png" />
-        <ToolbarItem Order="Primary" Icon="user.png" />
+        <ToolbarItem Order="Primary" Icon="user.png" Clicked="UsersIconClicked" />
     </TabbedPage.ToolbarItems>
     <TabbedPage.Children>
         <local:HomePage Title="HOME"/>

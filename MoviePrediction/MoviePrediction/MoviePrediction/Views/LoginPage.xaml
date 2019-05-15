@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
-             x:Class="MoviePrediction.Views.LoginPage"             
+             x:Class="MoviePrediction.Views.LoginPage"
+             NavigationPage.HasBackButton="False"
              >
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
@@ -15,8 +16,8 @@
     <ContentPage.Content>
         <Grid Style="{StaticResource darkBackground}">
             <StackLayout Margin="30">
-                <CustomEditor:DarkEditor Placeholder="Email" AccentColor="White" Grid.Row="1" Grid.Column="0" Keyboard="Email" />
-                <CustomEditor:DarkEditor Placeholder="Password" IsPassword="True" AccentColor="White" Grid.Row="2" Grid.Column="0"/>
+                <CustomEditor:DarkEditor x:Name="emailInput" Placeholder="Email" AccentColor="White" Grid.Row="1" Grid.Column="0" Keyboard="Email" />
+                <CustomEditor:DarkEditor x:Name="pwdInput" Placeholder="Password" IsPassword="True" AccentColor="White" Grid.Row="2" Grid.Column="0"/>
                 <Button x:Name="predixLoginBtn" 
                         Style="{StaticResource defaultBtnStyle}" 
                         Text="SIGN IN"
