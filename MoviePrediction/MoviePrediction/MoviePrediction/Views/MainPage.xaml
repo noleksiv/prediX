@@ -5,7 +5,7 @@
             xmlns:local="clr-namespace:MoviePrediction.Views">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent"/>
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage"/>
         </StackLayout>
     </NavigationPage.TitleView>
     <TabbedPage.ToolbarItems>
@@ -14,7 +14,7 @@
     </TabbedPage.ToolbarItems>
     <TabbedPage.Children>
         <local:HomePage Title="HOME"/>
-        <local:MoviesPage Title="MOVIES"/>
+        <local:MoviesTabbedPage Title="MOVIES"/>
         <local:TVPage Title="TV"/>
         <local:CastPage Title="CAST"/>
         <local:PredictionPage Title="PREDICTION"/>

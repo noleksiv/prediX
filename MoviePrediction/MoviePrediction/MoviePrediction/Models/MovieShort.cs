@@ -7,11 +7,26 @@ namespace MoviePrediction.Models
 {
     public class MovieShort : IMovieIntro
     {
+        private string _title;
+        private string _name;
+        private string _originalName;
+
         [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return _name != null ? _name : OriginalName;
+            }
+            set
+            {
+                if (_name != value)
+                    _name = value;
+            }
+        }
 
         [JsonProperty("video")]
         public bool Video { get; set; }
@@ -22,8 +37,29 @@ namespace MoviePrediction.Models
         [JsonProperty("vote_average")]
         public double VoteAverage { get; set; }
 
+        public double IMDb
+        {
+            get => VoteAverage;
+        }
+
+        public int Metacritic
+        {
+            get => (int)(IMDb * 10-10);
+        }
+
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string Title
+        {
+            get
+            {
+                return _title != null ? _title : Name;
+            }
+            set
+            {
+                if (_title != value)
+                    _title = value;
+            }
+        }
 
         [JsonProperty("release_date")]
         public string ReleaseDate { get; set; }

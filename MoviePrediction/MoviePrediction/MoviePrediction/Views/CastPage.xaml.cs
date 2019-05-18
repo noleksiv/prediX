@@ -83,5 +83,21 @@ namespace MoviePrediction.Views
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private async void CustItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null) return;
+
+            var selectedItem = ((ListView)sender).SelectedItem;
+            var movie = selectedItem as People;
+
+            // connection to Firebase
+            //var db = new DbFirebase();
+            //await db.AddToHistory(movie);
+
+            await Navigation.PushAsync(new CastDetails(movie));
+
+            populatCastListView.SelectedItem = null;
+        }
     }
 }

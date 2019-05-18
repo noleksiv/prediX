@@ -7,6 +7,6 @@ namespace MoviePrediction.Services.Popular
     public class PopularMovies : ApiResponse
     {
         [JsonProperty("results")]
-        public ICollection<MovieShort> Results { get; set; }
+        public IList<MovieShort> Results { get; set; }
     }
 }

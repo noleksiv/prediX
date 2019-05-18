@@ -3,6 +3,7 @@ using MoviePrediction.Services.NowPlaying;
 using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Popular;
 using MoviePrediction.Services.TopRated;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
@@ -10,31 +11,41 @@ using Xamarin.Forms.Xaml;
 
 namespace MoviePrediction.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    public delegate IList<MovieShort> LoadMore(int pageNumber, string language = "en-US");
+
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MoviesPage : ContentPage
 	{
         private ImageUrl _imageUrl;
+        private MovieTap _tap;
+        private LoadMore _loadMore;
 
+        public bool IsBusy { get; set; }
+
+        public string Title { get; set; }
         public string LatestStartDate { get; set; }
         public string LatestEndsDate { get; set; }
-        public string PlayingDate { get => $"From {LatestStartDate} to {LatestEndsDate}"; }
+        public string PlayingDate {
+            get
+            {
+                if (LatestEndsDate != null)
+                    return $"From {LatestStartDate} to {LatestEndsDate}";
+                else
+                    return "";
+            }
+        }
 
-        public ObservableCollection<IMovieIntro> LatestShort { get; set; }
-        public ObservableCollection<IMovieIntro> Latest{ get; set; }
+        public ObservableCollection<IMovieIntro> ShortDescription { get; set; }
+        public ObservableCollection<MovieShort> FullDescription { get; set; }
 
-        public ObservableCollection<IMovieIntro> PopularShort { get; set; }
-        public ObservableCollection<IMovieIntro> Popular { get; set; }
+        public MoviesPage()
+        {
+            InitializeComponent();
+        }
 
-
-        public ObservableCollection<IMovieIntro> TopRatedShort { get; set; }
-        public ObservableCollection<IMovieIntro> TopRated{ get; set; }
-
-        public ObservableCollection<IMovieIntro> UpcomingShort { get; set; }
-        public ObservableCollection<IMovieIntro> Upcoming { get; set; }
-
-        public MoviesPage ()
+        public MoviesPage (MovieTap tap) : this()
 		{
-			InitializeComponent ();
+            _tap = tap;
             ReceiveContent();
             this.BindingContext = this;
         }
@@ -42,66 +53,109 @@ namespace MoviePrediction.Views
         private void ReceiveContent()
         {
             _imageUrl = new ImageUrl();
-            GetLatestMovies();
-            GetTopRatedMovies();
-            GetPopularMovies();
+            GetMovies();
+        }
+        
+        private void GetMovies()
+        {
+            switch (_tap)
+            {
+                case MovieTap.Latest:
+                    Title = "Now playing";
+                    GetLatest();
+                    break;
+                case MovieTap.Upcoming:
+                    Title = "Soon will be";
+                    GetUpcoming();
+                    break;
+                case MovieTap.Popular:
+                    Title = "Popular";
+                    GetPopularMovies();
+                    break;
+                case MovieTap.Toprated:
+                    Title = "Top rated";
+                    GetTopRatedMovies();
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void GetLatestMovies()
+        public void GetLatest(int pageNumber=1)
         {
             var latest = new GetLatest();
-            var latestMovies = latest.GetLatestMovies();
+            _loadMore = new LoadMore(latest.GetLatestMovies);
+            var latestMovies = latest.GetLatestMovies();           
 
-            var upcomingMovies = latest.GetUpcomingMovies();
-
-            Latest = new ObservableCollection<IMovieIntro>(latestMovies.Movies);
-            Upcoming = new ObservableCollection<IMovieIntro>(upcomingMovies.Movies);
+            FullDescription = new ObservableCollection<MovieShort>(latestMovies.Movies);            
 
             LatestStartDate = latestMovies.Dates.From;
             LatestEndsDate = latestMovies.Dates.UntilTo;
 
-            foreach (var movie in Latest)
-            {
-                movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
-            }
-            foreach (var movie in Upcoming)
+            foreach (var movie in FullDescription)
             {
                 movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
             }
 
-            LatestShort = new ObservableCollection<IMovieIntro>(Latest.Take(5));
-            UpcomingShort = new ObservableCollection<IMovieIntro>(Upcoming.Take(5));
+            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
         }
 
-        private void GetTopRatedMovies()
+        public void GetUpcoming()
+        {
+            var upcoming = new GetLatest();
+
+            _loadMore = new LoadMore(upcoming.GetUpcomingMovies);
+
+            var upcomingMovies = upcoming.GetUpcomingMovies();
+
+            FullDescription = new ObservableCollection<MovieShort>(upcomingMovies.Movies);
+
+            LatestStartDate = upcomingMovies.Dates.From;
+            LatestEndsDate = upcomingMovies.Dates.UntilTo;
+
+            foreach (var movie in FullDescription)
+            {
+                movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
+            }
+
+            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
+        }
+
+        public void GetTopRatedMovies()
         {
             var topRated = new GetTopRatedMovies();
             var topMovies = topRated.GetTopMovies();
+            _loadMore = new LoadMore(topRated.GetTopMovies);
 
-            TopRated = new ObservableCollection<IMovieIntro>(topMovies);
+            FullDescription = new ObservableCollection<MovieShort>(topMovies);
 
-            foreach (var movie in TopRated)
+            foreach (var movie in FullDescription)
             {
                 movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
             }
 
-            TopRatedShort = new ObservableCollection<IMovieIntro>(TopRated.Take(5));
+            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
         }
 
-        private void GetPopularMovies()
+        public void GetPopularMovies()
         {
             var popularMovie = new GetPopularMovies();
             var popularMovies = popularMovie.GetMovies();
+            _loadMore = new LoadMore(popularMovie.GetMovies);
 
-            Popular = new ObservableCollection<IMovieIntro>(popularMovies);
+            FullDescription = new ObservableCollection<MovieShort>(popularMovies);
 
-            foreach (var movie in Popular)
+            foreach (var movie in FullDescription)
             {
                 movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
             }
 
-            PopularShort = new ObservableCollection<IMovieIntro>(Popular.Take(5));
+            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
         }
 
+        private async void ShowMoreClicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new MovieScrollList(FullDescription, _loadMore));
+        }
     }
 }

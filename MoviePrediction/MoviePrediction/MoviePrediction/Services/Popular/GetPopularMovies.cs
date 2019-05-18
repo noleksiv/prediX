@@ -17,9 +17,9 @@ namespace MoviePrediction.Services.Popular
             _dataReceiver = new DataReceiver(_movieDb);
         }
 
-        public IEnumerable<IMovieIntro> GetMovies(int pageNumb = 1)
+        public IList<MovieShort> GetMovies(int pageNumb = 1, string region = "en-US")
         {
-            var parameters = $"3/movie/popular?api_key={_movieDb.ApiKey}&language=en-US&page={pageNumb}";
+            var parameters = $"3/movie/popular?api_key={_movieDb.ApiKey}&language={region}&page={pageNumb}";
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var movies = JsonConvert.DeserializeObject<PopularMovies>(jsonStr);

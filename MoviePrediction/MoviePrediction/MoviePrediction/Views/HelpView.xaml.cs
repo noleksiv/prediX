@@ -12,9 +12,25 @@ namespace MoviePrediction.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HelpView : ContentPage
 	{
-		public HelpView ()
+        public string RedirectUrl { get; set; }
+
+        public HelpView ()
 		{
 			InitializeComponent ();
+            RedirectUrl = "https://help.netflix.com/en/";
+            this.BindingContext = this;
         }
-	}
+
+        public HelpView(string url)
+        {
+            InitializeComponent();
+            RedirectUrl = url;
+            this.BindingContext = this;
+        }
+
+        private async void GoToMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+    }
 }

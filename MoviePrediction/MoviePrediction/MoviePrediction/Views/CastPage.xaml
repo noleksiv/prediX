@@ -11,7 +11,7 @@
                             ItemsSource="{Binding Cast}" 
                             HasUnevenRows="True" 
                             Style="{StaticResource customListView}"                   
-                        
+                            ItemTapped="CustItemSelected"
                           >
                 <ListView.Behaviors>
                     <Extended:InfiniteScrollBehavior  IsLoadingMore="{Binding IsBusy}" />

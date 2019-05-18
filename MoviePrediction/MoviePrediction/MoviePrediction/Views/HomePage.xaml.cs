@@ -19,7 +19,6 @@ namespace MoviePrediction.Views
     {
         private ImageUrl imageUrl = new ImageUrl();
 
-        public IMovieIntro SelectedMovie { get; set; }
         public ObservableCollection<IMovieIntro> Movies { get; set; }
 
         public HomePage ()
@@ -51,6 +50,7 @@ namespace MoviePrediction.Views
             var trendyMovies = new TrendyMovies();
             var getMovies = new GetTrendyMovies(trendyMovies);
             var movies = getMovies.GetMovies();
+
             return movies;               
         }
 
@@ -59,13 +59,15 @@ namespace MoviePrediction.Views
             if (e.SelectedItem == null) return;
 
             var selectedItem = ((ListView)sender).SelectedItem;
-            var movie = selectedItem as IMovieIntro;
+            var movie = selectedItem as MovieShort;
 
             // connection to Firebase
             //var db = new DbFirebase();
             //await db.AddToHistory(movie);
 
             await Navigation.PushAsync(new MovieInfo(movie));
+
+            trendingListView.SelectedItem = null;
         }
     }
 }
