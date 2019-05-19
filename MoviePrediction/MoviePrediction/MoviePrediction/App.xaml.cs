@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 
 using MoviePrediction.Views;
 using MoviePrediction.Services.Database;
+using MoviePrediction.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MoviePrediction
@@ -35,6 +36,8 @@ namespace MoviePrediction
 
         protected override void OnStart()
         {
+            AutoMapperConfig.Initialize();
+
             if (Application.Current.Properties.ContainsKey("SessionId"))
             {
                 MainPage = new NavigationPage(new MainPage());

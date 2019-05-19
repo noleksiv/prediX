@@ -11,6 +11,8 @@ using MoviePrediction.Services.Trending;
 using System.Collections.ObjectModel;
 using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Database;
+using Rg.Plugins.Popup.Services;
+using MoviePrediction.CustomViews;
 
 namespace MoviePrediction.Views
 {
@@ -28,7 +30,7 @@ namespace MoviePrediction.Views
             this.BindingContext = this;
         }
 
-        public void FillInPage()
+        public async void FillInPage()
         {
             var trendyMovies =  GetTrendingMovies();
             Movies = new ObservableCollection<IMovieIntro>(trendyMovies);
@@ -58,16 +60,29 @@ namespace MoviePrediction.Views
         {
             if (e.SelectedItem == null) return;
 
-            var selectedItem = ((ListView)sender).SelectedItem;
-            var movie = selectedItem as MovieShort;
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new PopupLoading());
 
-            // connection to Firebase
-            //var db = new DbFirebase();
-            //await db.AddToHistory(movie);
+                var selectedItem = ((ListView)sender).SelectedItem;
+                var movie = selectedItem as MovieShort;
 
-            await Navigation.PushAsync(new MovieInfo(movie));
+                // connection to Firebase
+                //var db = new DbFirebase();
+                //await db.AddToHistory(movie);
 
-            trendingListView.SelectedItem = null;
+                await Navigation.PushAsync(new MovieInfo(movie));
+
+                trendingListView.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }            
         }
     }
 }

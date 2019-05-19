@@ -15,13 +15,7 @@ namespace MoviePrediction.Views
     {
         public MainPage ()
         {
-            InitializeComponent();
-
-            AutoMapper.Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<IMovieIntro, HistoryPreview>().ForMember(preview => preview.TheMovieDbId, movie => movie.MapFrom(intro => intro.Id))
-                                                            .ForMember(preview=>preview.Id, movie=>movie.Ignore());
-            });
+            InitializeComponent();            
         }
 
         private async void UsersIconClicked(object sender, EventArgs e)

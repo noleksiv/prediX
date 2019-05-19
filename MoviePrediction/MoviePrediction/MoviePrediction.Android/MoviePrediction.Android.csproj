@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.1.4.168</Version>
+    </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.6.258-beta</Version>
     </PackageReference>

@@ -23,10 +23,10 @@ namespace MoviePrediction.Views
     {
         public MoviesTabbedPage ()
         {
-            Children.Add(new MoviesPage(MovieTap.Latest) { Title = "1", Icon = "exit.png" });
-            Children.Add(new MoviesPage(MovieTap.Upcoming) { Title = "2", Icon = "exit.png" });
-            Children.Add(new MoviesPage(MovieTap.Popular) { Title = "3", Icon = "exit.png" });
-            Children.Add(new MoviesPage(MovieTap.Toprated) { Icon = "exit.png", Title = "1" });
+            //Children.Add(new MoviesPage(MovieTap.Latest) { Title = "1", Icon = "exit.png" });
+            //Children.Add(new MoviesPage(MovieTap.Upcoming) { Title = "2", Icon = "exit.png" });
+            //Children.Add(new MoviesPage(MovieTap.Popular) { Title = "3", Icon = "exit.png" });
+            //Children.Add(new MoviesPage(MovieTap.Toprated) { Icon = "exit.png", Title = "1" });
 
             InitializeComponent();           
         }

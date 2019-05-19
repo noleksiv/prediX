@@ -1,4 +1,6 @@
-﻿using MoviePrediction.Services.Database;
+﻿using MoviePrediction.CustomViews;
+using MoviePrediction.Services.Database;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,8 @@ namespace MoviePrediction.Views
                 var registerCommand = new DbFirebase();
                 try
                 {
+                    await PopupNavigation.Instance.PushAsync(new PopupLoading());
+
                     var token = await registerCommand.SignUp(email, pwd);
 
                     if (token != null)
@@ -37,6 +41,10 @@ namespace MoviePrediction.Views
                 catch (Exception ex)
                 {
                     await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                }
+                finally
+                {
+                    await PopupNavigation.Instance.PopAsync();
                 }
             }
         }
