@@ -3,26 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviePrediction.Views.UsersPage"
              xmlns:CircleImg="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews">
+             xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews"
+             BackgroundColor="{StaticResource darkColor}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Icon="exit.png" Clicked="LogOutClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="{StaticResource darkColor}" Margin="5, 0">
             <StackLayout>
-                <CircleImg:CircleImage Source="{Binding UserIcon}"  WidthRequest="115" HeightRequest="115" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="{StaticResource deepBlackColor}" HeightRequest="24">
-                    <Label Text="Username" TextColor="{StaticResource whiteColor}" VerticalOptions="Center"/>
-                </StackLayout>
+                <CircleImg:CircleImage Source="anon.jpg"  WidthRequest="115" HeightRequest="115" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />                
             </StackLayout>
             <ListView       x:Name="historyListView"
                             ItemsSource="{Binding History}" 
                             HasUnevenRows="True" 
                             Margin="0, 5"                            
-                            Style="{StaticResource customListView}" >
+                            Style="{StaticResource customListView}" 
+                            BackgroundColor="{StaticResource darkColor}">
                 <ListView.Header>
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="{StaticResource deepBlackColor}" HeightRequest="20">
-                        <Label Text="History" TextColor="{StaticResource whiteColor}"/>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="{StaticResource deepBlackColor}" HeightRequest="35">
+                        <Label Text="History" TextColor="{StaticResource whiteColor}" FontSize="20" VerticalOptions="Center"/>
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>

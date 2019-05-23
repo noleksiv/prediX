@@ -4,8 +4,13 @@
              x:Class="MoviePrediction.Views.MovieInfo"
              xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms"
              xmlns:CircleImg="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView BackgroundColor="{StaticResource darkColor}">
             <StackLayout BackgroundColor="{StaticResource darkColor}" Margin="5, 0">
                 <StackLayout>
                     <Image  Aspect="AspectFill" HeightRequest="300">
@@ -23,8 +28,8 @@
                     <StackLayout HorizontalOptions="FillAndExpand" Margin="5, 0, 0, 0">
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Title:" TextColor="{StaticResource whiteColor}"/>
-                                <Label Text="{Binding FilmInfo.Title}" TextColor="{StaticResource whiteColor}"/>
+                                <Label Text="Title:" TextColor="{StaticResource whiteColor}" LineBreakMode="NoWrap"/>
+                                <Label Text="{Binding FilmInfo.Title}" TextColor="{StaticResource whiteColor}" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Release date:" TextColor="{StaticResource whiteColor}"/>

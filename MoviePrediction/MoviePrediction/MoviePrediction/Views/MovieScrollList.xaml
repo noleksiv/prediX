@@ -4,6 +4,11 @@
              x:Class="MoviePrediction.Views.MovieScrollList"
              xmlns:Extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout VerticalOptions="Start">
             <ListView   x:Name="shotrListView"

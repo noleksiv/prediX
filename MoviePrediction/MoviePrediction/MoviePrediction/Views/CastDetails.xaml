@@ -12,7 +12,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="5, 0">
-                <Label Text="{Binding Info.Name}"/>
+                <Label Text="{Binding Info.Name}" FontSize="20" FontAttributes="Bold"/>
                 <Label Text="{Binding Info.Pseudonyms}" HorizontalOptions="Start"/>
                 <Image HorizontalOptions="Start" 
                        HeightRequest="35" WidthRequest="150"
@@ -43,7 +43,11 @@
                             </StackLayout>
 
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="IMDb profile "/>
+                                <Label Text="IMDb profile ">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToImdbProfile"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
                             </StackLayout>
                         </StackLayout>                        
                     </Grid>

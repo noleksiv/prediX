@@ -30,24 +30,23 @@ namespace MoviePrediction.Views
             this.BindingContext = this;
         }
 
-        public async void FillInPage()
+        public  void FillInPage()
         {
-            var trendyMovies =  GetTrendingMovies();
+             FillInPageAsync();
+        }
+        public  void FillInPageAsync()
+        {
+            var trendyMovies = GetTrendingMovies();
+
             Movies = new ObservableCollection<IMovieIntro>(trendyMovies);
 
             foreach (var movie in Movies)
             {
                 movie.PosterUrl = new Uri(imageUrl.CreatePosterLink(movie));
-            }                
+            }
         }
 
         public IEnumerable<IMovieIntro> GetTrendingMovies()
-        {
-            var movies = FillMoviesData();
-            return movies;
-        }
-
-        public IEnumerable<IMovieIntro> FillMoviesData()
         {
             var trendyMovies = new TrendyMovies();
             var getMovies = new GetTrendyMovies(trendyMovies);
@@ -81,6 +80,7 @@ namespace MoviePrediction.Views
             }
             finally
             {
+                trendingListView.SelectedItem = null;
                 await PopupNavigation.Instance.PopAsync();
             }            
         }

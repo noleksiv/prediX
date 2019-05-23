@@ -38,42 +38,57 @@
             </Cards:CarouselView>
 
             <ListView   x:Name="trendingListView"
-                            ItemsSource="{Binding Movies}" 
-                            HasUnevenRows="True" 
-                            Style="{StaticResource customListView}"
-                            ItemTapped="TrendingListView_ItemSelected"  
-                        Margin="5, 0"
-                          >
+                        ItemsSource="{Binding Movies}" 
+                        HasUnevenRows="True" 
+                        Style="{StaticResource customListView}"
+                        ItemTapped="TrendingListView_ItemSelected"  
+                        Margin="5, 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">
                             <ViewCell.View>
-                                <StackLayout Orientation="Horizontal" 
-                                                 VerticalOptions="FillAndExpand" Margin="0, 0, 0, 3">
-                                    <Image Aspect="AspectFill" 
-                                               HorizontalOptions="FillAndExpand" 
-                                               WidthRequest="75">
+                                <StackLayout    Orientation="Horizontal" 
+                                                VerticalOptions="FillAndExpand">
+                                    <Image  Aspect="AspectFill" 
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            WidthRequest="75">
                                         <Image.Source>
                                             <UriImageSource Uri = "{Binding PosterUrl}"/>
                                         </Image.Source>
                                     </Image>
 
-                                    <StackLayout Orientation="Vertical" 
-                                                     HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding Title}"
-                                                   TextColor="{StaticResource whiteColor}"/>
-                                        <Label Text="{Binding Overview}" 
-                                                   LineBreakMode="TailTruncation"
-                                                   Style="{StaticResource helperText}"/>
+                                    <StackLayout    Orientation="Vertical" 
+                                                    HorizontalOptions="StartAndExpand">
+                                        <Label  Text="{Binding Title}"
+                                                TextColor="{StaticResource whiteColor}"/>
+                                        <Label  Text="{Binding Overview}" 
+                                                LineBreakMode="TailTruncation"
+                                                Style="{StaticResource helperText}"/>
+                                        
                                         <StackLayout Orientation="Horizontal">
-                                            <Image Source="IMDb.png" HeightRequest="15" HorizontalOptions="Start" />
-                                            <Label Text="{Binding IMDb}" HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}" LineBreakMode="NoWrap" VerticalOptions="Center"/>
+                                            
+                                            <Image Source="IMDb.png" 
+                                                   HeightRequest="15" 
+                                                   HorizontalOptions="Start" />
+                                            
+                                            <Label Text="{Binding IMDb}" 
+                                                   HorizontalOptions="FillAndExpand"
+                                                   TextColor="{StaticResource whiteColor}" 
+                                                   LineBreakMode="NoWrap" 
+                                                   VerticalOptions="Center"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Image Source="metacritic.png" HeightRequest="15" HorizontalOptions="Start" />
-                                            <Label Text="{Binding Metacritic}" HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}" LineBreakMode="NoWrap" VerticalOptions="Center"/>
+                                            
+                                            <Image Source="metacritic.png" 
+                                                   HeightRequest="15" 
+                                                   HorizontalOptions="Start" />
+                                            
+                                            <Label Text="{Binding Metacritic}" 
+                                                   HorizontalOptions="FillAndExpand"
+                                                   TextColor="{StaticResource whiteColor}" 
+                                                   LineBreakMode="NoWrap" 
+                                                   VerticalOptions="Center"/>
                                         </StackLayout>                                        
                                     </StackLayout>
                                 </StackLayout>

@@ -23,12 +23,31 @@ namespace MoviePrediction.Views
     {
         public MoviesTabbedPage ()
         {
-            //Children.Add(new MoviesPage(MovieTap.Latest) { Title = "1", Icon = "exit.png" });
-            //Children.Add(new MoviesPage(MovieTap.Upcoming) { Title = "2", Icon = "exit.png" });
-            //Children.Add(new MoviesPage(MovieTap.Popular) { Title = "3", Icon = "exit.png" });
-            //Children.Add(new MoviesPage(MovieTap.Toprated) { Icon = "exit.png", Title = "1" });
+            InitializeComponent();
 
-            InitializeComponent();           
+            this.FixedMode = true;
+            this.BarTheme = BarThemeTypes.DarkWithAlpha;
+            this.BarTextColor = Color.FromRgb(181, 13, 13);
+
+            Children.Add(new MoviesPage(MovieTap.Latest)
+            {
+                Icon = "LATEST.png"
+            });
+
+            Children.Add(new MoviesPage(MovieTap.Upcoming)
+            {
+                Icon = "upcoming.png"
+            });
+
+            Children.Add(new MoviesPage(MovieTap.Popular)
+            {
+                Icon = "popular.png"
+            });
+
+            Children.Add(new MoviesPage(MovieTap.Toprated)
+            {
+                Icon = "topRated.png"
+            });            
         }
     }
 }

@@ -51,12 +51,38 @@ namespace MoviePrediction.Views
 
         private async void SignInClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
+
+                await Navigation.PushAsync(new LoginPage());
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+            }
+            finally
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }            
         }
 
         private async void HelpClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HelpView());
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
+
+                await Navigation.PushAsync(new HelpView());
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+            }
+            finally
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
         }
     }
 }

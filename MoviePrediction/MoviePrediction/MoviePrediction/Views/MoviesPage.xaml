@@ -24,7 +24,8 @@
                     <ListView   x:Name="shotrListView"
                             ItemsSource="{Binding ShortDescription}" 
                             HasUnevenRows="True" 
-                            Style="{StaticResource customListView}" >                      
+                            Style="{StaticResource customListView}"
+                            ItemTapped="MovieItemSelected">                      
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">

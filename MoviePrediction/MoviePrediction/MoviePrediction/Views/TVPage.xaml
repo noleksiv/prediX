@@ -8,7 +8,7 @@
         <ScrollView>
              
             <StackLayout BackgroundColor="{StaticResource darkColor}">
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="Popular TV" />
+                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="Popular TV" Margin="16, 5" VerticalOptions="Center"/>
                 <renderedViews:HorizontalListView CollectionPadding="16"
                                    ItemSpacing="8"
                                    EnableDragAndDrop="True"
@@ -45,7 +45,7 @@
                         </DataTemplate>                         
                     </renderedViews:HorizontalListView.ItemTemplate>                     
                 </renderedViews:HorizontalListView>
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="Popular TV" />
+                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="Top rated TV" Margin="16, 5" VerticalOptions="Center"/>
                 <renderedViews:HorizontalListView CollectionPadding="16"
                                    ItemSpacing="8"
                                    EnableDragAndDrop="True"

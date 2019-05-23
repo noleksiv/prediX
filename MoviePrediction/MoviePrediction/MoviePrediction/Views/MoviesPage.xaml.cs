@@ -1,8 +1,11 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.CustomViews;
+using MoviePrediction.Models;
 using MoviePrediction.Services.NowPlaying;
 using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Popular;
 using MoviePrediction.Services.TopRated;
+using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -35,7 +38,7 @@ namespace MoviePrediction.Views
             }
         }
 
-        public ObservableCollection<IMovieIntro> ShortDescription { get; set; }
+        public ObservableCollection<MovieShort> ShortDescription { get; set; }
         public ObservableCollection<MovieShort> FullDescription { get; set; }
 
         public MoviesPage()
@@ -97,7 +100,7 @@ namespace MoviePrediction.Views
                 movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
             }
 
-            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
+            ShortDescription = new ObservableCollection<MovieShort>(FullDescription.Take(5));
         }
 
         public void GetUpcoming()
@@ -118,7 +121,7 @@ namespace MoviePrediction.Views
                 movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
             }
 
-            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
+            ShortDescription = new ObservableCollection<MovieShort>(FullDescription.Take(5));
         }
 
         public void GetTopRatedMovies()
@@ -134,7 +137,7 @@ namespace MoviePrediction.Views
                 movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
             }
 
-            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
+            ShortDescription = new ObservableCollection<MovieShort>(FullDescription.Take(5));
         }
 
         public void GetPopularMovies()
@@ -150,12 +153,49 @@ namespace MoviePrediction.Views
                 movie.PosterUrl = new System.Uri(_imageUrl.CreatePosterLink(movie.PosterPath));
             }
 
-            ShortDescription = new ObservableCollection<IMovieIntro>(FullDescription.Take(5));
+            ShortDescription = new ObservableCollection<MovieShort>(FullDescription.Take(5));
         }
+
 
         private async void ShowMoreClicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new MovieScrollList(FullDescription, _loadMore));
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
+                await Navigation.PushAsync(new MovieScrollList(FullDescription, _loadMore));
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
+            
+        }
+
+        private async void MovieItemSelected(object sender, ItemTappedEventArgs e)
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new PopupLoading());
+
+                var selectedItem = ((ListView)sender).SelectedItem;
+                var movie = selectedItem as MovieShort;
+
+                await Navigation.PushAsync(new MovieInfo(movie));
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+            }
+            finally
+            {
+                shotrListView.SelectedItem = null;
+                await PopupNavigation.Instance.PopAsync();
+            }
         }
     }
 }

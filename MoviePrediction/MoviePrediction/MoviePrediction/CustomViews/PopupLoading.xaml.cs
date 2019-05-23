@@ -13,9 +13,12 @@ namespace MoviePrediction.CustomViews
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PopupLoading : PopupPage
 	{
-		public PopupLoading ()
+        public string Caption { get; set; }
+
+        public PopupLoading (string caption = "Loading...")
 		{
 			InitializeComponent ();
+            Caption = caption;
             //Animation = new Rg.Plugins.Popup.Animations.ScaleAnimation();
         }
 

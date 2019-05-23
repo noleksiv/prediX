@@ -26,7 +26,7 @@ namespace MoviePrediction.Views
 		{
 			InitializeComponent();
             _imageUrl = new ImageUrl();
-            //FillInPage();
+            FillInPage();
             
             this.BindingContext = this;
         }

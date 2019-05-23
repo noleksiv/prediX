@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname" android:installLocation="preferExternal">
 	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="27" />
-	<application android:label="MoviePrediction.Android"></application>
+	<application android:label="MoviePrediction.Android" android:icon="@drawable/predix"></application>
 </manifest>

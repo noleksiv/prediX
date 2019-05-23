@@ -1,6 +1,8 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.CustomViews;
+using MoviePrediction.Models;
 using MoviePrediction.Services.NowPlaying;
 using MoviePrediction.Services.Photo;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,14 +83,24 @@ namespace MoviePrediction.Views
         {
             if (e.SelectedItem == null) return;
 
-            var selectedItem = ((ListView)sender).SelectedItem;
-            var movie = selectedItem as MovieShort;
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new PopupLoading("Wait for prediction..."));
 
-            // connection to Firebase
-            //var db = new DbFirebase();
-            //await db.AddToHistory(movie);
+                var selectedItem = ((ListView)sender).SelectedItem;
+                var movie = selectedItem as MovieShort;
 
-            await Navigation.PushAsync(new PredictionResult(movie));
+                await Navigation.PushAsync(new PredictionResult(movie));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+            }
+            finally
+            {
+                shotrListView.SelectedItem = null;
+                await PopupNavigation.Instance.PopAsync();
+            }
         }       
 	}
 }

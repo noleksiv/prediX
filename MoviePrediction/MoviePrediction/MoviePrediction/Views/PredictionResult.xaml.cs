@@ -51,5 +51,10 @@ namespace MoviePrediction.Views
 
             return Math.Round(rateAvg,2);
         }
-	}
+
+        private async void GoToMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
+        }
+    }
 }

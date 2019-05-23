@@ -1,5 +1,7 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.CustomViews;
+using MoviePrediction.Models;
 using MoviePrediction.Services.Photo;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,13 +52,12 @@ namespace MoviePrediction.Views
             Movie.OnLoadMore = async () =>
            {
                IsBusy = true;
-
+               await PopupNavigation.Instance.PushAsync(new PopupLoading());
                var movies = LoadMoreMovies();
-
+               await PopupNavigation.Instance.PopAsync();
                return movies;
-           };
+           }; 
 
-            //FillInPage();
             this.BindingContext = this;
         }
 
@@ -85,14 +86,30 @@ namespace MoviePrediction.Views
         {
             if (e.SelectedItem == null) return;
 
-            var selectedItem = ((ListView)sender).SelectedItem;
-            var movie = selectedItem as MovieShort;
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new PopupLoading());
 
-            // connection to Firebase
-            //var db = new DbFirebase();
-            //await db.AddToHistory(movie);
+                var selectedItem = ((ListView)sender).SelectedItem;
+                var movie = selectedItem as MovieShort;
 
-            await Navigation.PushAsync(new MovieInfo(movie));
+                await Navigation.PushAsync(new MovieInfo(movie));
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+            }
+            finally
+            {
+                shotrListView.SelectedItem = null;
+                await PopupNavigation.Instance.PopAsync();
+            }
+        }
+
+        private async void GoToMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
         }
     }
 }

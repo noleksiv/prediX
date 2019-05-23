@@ -13,7 +13,7 @@
                     BackgroundColor="Transparent">
         <StackLayout>
             <ActivityIndicator IsRunning="True" IsVisible="True" Color="Red"/>
-            <Label Text="Loading..." TextColor="{StaticResource helperWhiteColor}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="14"/>
+            <Label Text="{Binding Caption}" TextColor="{StaticResource helperWhiteColor}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="14"/>
         </StackLayout>
     </Frame>
 </pages:PopupPage>

@@ -70,8 +70,16 @@ namespace MoviePrediction.Views
             }
             foreach (var person in Crew)
             {
-                person.ProfileUrl = new Uri(_imageUrl.CreatePosterLink(person.ProfilePath));
+                if (person.ProfilePath != null)
+                    person.ProfileUrl = new Uri(_imageUrl.CreatePosterLink(person.ProfilePath));
+                else
+                    person.ProfileUrl = new Uri("https://www.google.com.ua/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj5-NC736niAhVBtIsKHYmSDxkQjRx6BAgBEAU&url=https%3A%2F%2Fwww.timacad.ru%2Feducation%2Finstituty%2Finstitut-ekonomiki-i-upravleniia-apk%2Fkafedra-innovatsionno-investitsionnogo-agrobiznesa&psig=AOvVaw0voWj42ArCgPbJTV1_rAa0&ust=1558429211390434");
             }
+        }
+
+        private async void GoToMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
         }
     }
 }

@@ -15,6 +15,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Entry = Microcharts.Entry;
 using System.Collections.ObjectModel;
+using Rg.Plugins.Popup.Services;
 
 namespace MoviePrediction.Views
 {
@@ -141,6 +142,23 @@ namespace MoviePrediction.Views
         private async void GoToMainPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
+        }
+
+        private async void GoToImdbProfile(object sender, EventArgs e)
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
+                await Navigation.PushAsync(new HelpView($"https://www.imdb.com/name/{Info.ImdbId}/"));
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
         }
     }
 }
