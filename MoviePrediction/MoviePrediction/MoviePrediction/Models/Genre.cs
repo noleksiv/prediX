@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public string NameOfGenre(int genreId)
+        static public string NameOfGenre(int genreId)
         {
             switch (genreId)
             {

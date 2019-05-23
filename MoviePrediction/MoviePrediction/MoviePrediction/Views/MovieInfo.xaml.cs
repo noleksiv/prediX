@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MoviePrediction.Convertors;
 
 namespace MoviePrediction.Views
 {
@@ -18,10 +19,23 @@ namespace MoviePrediction.Views
 	public partial class MovieInfo : ContentPage
 	{       
         private ImageUrl _imageUrl;
+        public string Genres
+        {
+            get
+            {
+                var genreStr = new StringBuilder();
+                foreach (var genre in FilmInfo.GenreIds)
+                {
+                    genreStr.Append(Genre.NameOfGenre(genre) + ", ");
+                }
 
+                var result = genreStr.ToString();
+                return result.Remove(result.Length-2);
+            }
+        }
         public ObservableCollection<Cast> Cast { get; set; }
         public ObservableCollection<Crew> Crew { get; set; }
-        public IMovieIntro FilmInfo { get; set; }
+        public MovieShort FilmInfo { get; set; }
 
         public MovieInfo ()
 		{
@@ -29,7 +43,7 @@ namespace MoviePrediction.Views
             _imageUrl = new ImageUrl();
 		}
 
-        public MovieInfo(IMovieIntro movieIntro) : this()
+        public MovieInfo(MovieShort movieIntro) : this()
         {
             FilmInfo = movieIntro;
             FilmInfo.BackdropUrl = new Uri(_imageUrl.CreateBackdropLink(FilmInfo.BackdropPath));
@@ -47,8 +61,8 @@ namespace MoviePrediction.Views
             var castInfo = castAndCrew.GetCredits();
 
             // IEnumerable to ObservableCollection
-            Cast = new ObservableCollection<Cast>(castInfo.Cast);
-            Crew = new ObservableCollection<Crew>(castInfo.Crew);
+            Cast = new ObservableCollection<Cast>(castInfo.Cast.DistinctBy(i=>i.Name));
+            Crew = new ObservableCollection<Crew>(castInfo.Crew.DistinctBy(i => i.Name));
 
             foreach (var person in Cast)
             {
@@ -56,8 +70,16 @@ namespace MoviePrediction.Views
             }
             foreach (var person in Crew)
             {
-                person.ProfileUrl = new Uri(_imageUrl.CreatePosterLink(person.ProfilePath));
+                if (person.ProfilePath != null)
+                    person.ProfileUrl = new Uri(_imageUrl.CreatePosterLink(person.ProfilePath));
+                else
+                    person.ProfileUrl = new Uri("https://www.google.com.ua/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj5-NC736niAhVBtIsKHYmSDxkQjRx6BAgBEAU&url=https%3A%2F%2Fwww.timacad.ru%2Feducation%2Finstituty%2Finstitut-ekonomiki-i-upravleniia-apk%2Fkafedra-innovatsionno-investitsionnogo-agrobiznesa&psig=AOvVaw0voWj42ArCgPbJTV1_rAa0&ust=1558429211390434");
             }
+        }
+
+        private async void GoToMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
         }
     }
 }

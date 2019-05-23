@@ -25,34 +25,39 @@ namespace MoviePrediction.Views
         public TVPage ()
 		{
 			InitializeComponent();
+            _imageUrl = new ImageUrl();
             FillInPage();
+            
             this.BindingContext = this;
         }
 
         public void FillInPage()
         {
-            _imageUrl = new ImageUrl();
-
             ContentForPopularTV();
             ContentForTopRaterdTV();
         }
 
-        public async void ContentForPopularTV()
+        public void ContentForPopularTV()
         {
-            var popularTV = new GetPopularTV();
-            var tvList = await popularTV.GetTVAsync();
-            PopularTV =  new ObservableCollection<IMovieIntro>(tvList);
+            var popularTV = new GetPopularTV();           
 
-            foreach (var tv in PopularTV)
-            {
-                tv.PosterUrl = new Uri(_imageUrl.CreatePosterLink(tv.PosterPath));
-            }
+          
+                var tvList = popularTV.GetTV();
+                PopularTV = new ObservableCollection<IMovieIntro>(tvList);
+
+                PopularTV = new ObservableCollection<IMovieIntro>(tvList);
+
+                foreach (var tv in PopularTV)
+                {
+                    tv.PosterUrl = new Uri(_imageUrl.CreatePosterLink(tv.PosterPath));
+                }
+            
         }
 
-        public async void ContentForTopRaterdTV()
+        public void ContentForTopRaterdTV()
         {
             var topRatedTV = new GetTopRatedTV();
-            var tvList = await topRatedTV.GetTopTVAsync();
+            var tvList = topRatedTV.GetTopTV();
 
             TopRatedTV = new ObservableCollection<IMovieIntro>(tvList);
 

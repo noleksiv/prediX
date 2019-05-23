@@ -1,4 +1,6 @@
-﻿using MoviePrediction.Services.Database;
+﻿using MoviePrediction.CustomViews;
+using MoviePrediction.Services.Database;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace MoviePrediction.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-		public LoginPage ()
+        public LoginPage ()
 		{
 			InitializeComponent ();
 
@@ -21,7 +23,20 @@ namespace MoviePrediction.Views
 
             HelpLabel.GestureRecognizers.Add(new TapGestureRecognizer(async (s, e) =>
             {
-                await Navigation.PushAsync(new HelpView());
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
+
+                    await Navigation.PushAsync(new HelpView());
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                }
+                finally
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                }                
             }));
 
             SignUpLabel.GestureRecognizers.Add(new TapGestureRecognizer(async (s, e) =>
@@ -41,24 +56,44 @@ namespace MoviePrediction.Views
 
                 try
                 {
+                    await PopupNavigation.Instance.PushAsync(new PopupLoading());
+
                     var token = await registerCommand.SignIn(email, pwd);
 
                     if (token != null)
                     {
                         await Application.Current.SavePropertiesAsync();
-                        await Navigation.PushAsync(new MainPage());
+                        await Navigation.PushAsync(new MainPage());                        
                     }
                 }
                 catch (Exception ex)
                 {
                     await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
                 }
+                finally
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                }
             }
         }
 
         private async void ClickedOnTheLink(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HelpView());
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
+
+                await Navigation.PushAsync(new HelpView());
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+            }
+            finally
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
+
         }
     }
 }

@@ -42,14 +42,17 @@ namespace MoviePrediction.Services
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
-            using (var response = (HttpWebResponse)request.GetResponse())
-            using (var stream = response.GetResponseStream())
-            using (var reader = new StreamReader(stream))
+            return await Task.Run(async() => 
             {
-                json = await reader.ReadToEndAsync();
-            }
+                using (var response = (HttpWebResponse)request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                using (var reader = new StreamReader(stream))
+                {
+                    json = await reader.ReadToEndAsync();
+                }
 
-            return json;
+                return json;
+            });           
         }
     }
 }

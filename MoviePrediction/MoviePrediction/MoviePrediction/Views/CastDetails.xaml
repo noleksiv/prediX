@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MoviePrediction.Views.CastDetails"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="5, 0">
+                <Label Text="{Binding Info.Name}" FontSize="20" FontAttributes="Bold"/>
+                <Label Text="{Binding Info.Pseudonyms}" HorizontalOptions="Start"/>
+                <Image HorizontalOptions="Start" 
+                       HeightRequest="35" WidthRequest="150"
+                       Source = "{Binding Info.Rate}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image>
+                        <Image.Source>
+                            <UriImageSource Uri = "{Binding ImageLink}"/>
+                        </Image.Source>
+                    </Image>
+                    <Grid Grid.Column="1">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label VerticalOptions="Start" Text="Birthday: " />
+                                <Label VerticalOptions="End"  Text="{Binding Info.Birthday}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label VerticalOptions="Start" Text="Deathday: " />
+                                <Label VerticalOptions="End"  Text="{Binding Info.Deathday}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label VerticalOptions="Start" Text="Place of birth: " />
+                                <Label VerticalOptions="End"  Text="{Binding Info.PlaceOfBirth}" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="IMDb profile ">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToImdbProfile"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>                        
+                    </Grid>
+                </Grid>
+                <Label Text="{Binding Info.Biography}" Margin="0, 5"/>
+                <renderedViews:HorizontalListView
+                                    CollectionPadding="8,8"
+                                    ItemSpacing="8"
+                                    ItemHeight="335"
+                                    ItemWidth="155"
+                                    ItemsSource="{Binding Movies.Cast}"                    
+                                    SnapStyle="Center">
+                    <renderedViews:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                    <Frame CornerRadius="5" Margin="0" Padding="3" IsClippedToBounds="True">
+                                        <StackLayout>
+                                            <Image Aspect="AspectFill" HeightRequest="225">
+                                                <Image.Source>
+                                                    <UriImageSource Uri="{Binding PosterUrl}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                                <Label Text="{Binding Title}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" />
+                                                <Label Text="{Binding ReleaseDate}" HorizontalTextAlignment="Center" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </renderedViews:HorizontalListView.ItemTemplate>
+                </renderedViews:HorizontalListView>
+                <StackLayout>
+                    <forms:ChartView x:Name="BarChartDiagram"  Chart="{Binding BarChart}"
+                             HeightRequest="250"/>
+                    <forms:ChartView x:Name="CircleDiagram"  Chart="{Binding CircleChart}"
+                             HeightRequest="250"/>                     
+                </StackLayout>
+            </StackLayout>            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,6 +1,8 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.CustomViews;
+using MoviePrediction.Models;
 using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Popular;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -37,10 +39,11 @@ namespace MoviePrediction.Views
             InitializeComponent();
             Cast = new InfiniteScrollCollection<People> { OnLoadMore = async () => 
             {
+                await PopupNavigation.Instance.PushAsync(new PopupLoading());
                 IsBusy = true;
 
                 await LoadMorePeople();
-
+                await PopupNavigation.Instance.PopAsync();
                 // Itens que serão adicionados
                 return Cast;
             } };
@@ -67,7 +70,7 @@ namespace MoviePrediction.Views
         {
             var cast = new GetPopularPeople();
             var page = Cast.Count / _peopleOnPage;
-            var people = await cast.GetPeopleAsync(page+1);
+            var people = await cast.GetPeopleAsync(page+2);
 
             foreach (var human in people)
             {
@@ -82,6 +85,36 @@ namespace MoviePrediction.Views
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private async void CustItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null) return;
+
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new PopupLoading());
+                var selectedItem = ((ListView)sender).SelectedItem;
+                var movie = selectedItem as People;
+
+                // connection to Firebase
+                //var db = new DbFirebase();
+                //await db.AddToHistory(movie);
+
+                await Navigation.PushAsync(new CastDetails(movie));
+
+                populatCastListView.SelectedItem = null;
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+            }
+            finally
+            {
+                populatCastListView.SelectedItem = null;
+                await PopupNavigation.Instance.PopAsync();
+            }
         }
     }
 }
