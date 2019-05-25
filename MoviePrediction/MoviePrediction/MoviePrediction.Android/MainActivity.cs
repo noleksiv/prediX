@@ -27,7 +27,7 @@ namespace MoviePrediction.Droid
             ImageCircleRenderer.Init();
             XamEffects.Droid.Effects.Init();
             SharpnadoInitializer.Initialize();
-            
+
             FirebaseOptions options = new FirebaseOptions.Builder()
                                        .SetApplicationId("1:67850015125:android:46afbd6b7ce3fb75") // Required for Analytics.
                                        .SetApiKey("AIzaSyDnsstml-kvxIlCq3Mien85jUhAASAnD9g") // Required for Auth.
