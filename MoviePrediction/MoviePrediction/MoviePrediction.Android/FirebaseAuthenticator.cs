@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Firebase.Auth;
 using MoviePrediction.Models;
@@ -14,6 +15,12 @@ namespace MoviePrediction.Droid
         {
             var user = await FirebaseAuth.Instance.
                         SignInWithEmailAndPasswordAsync(email, password);
+
+            if (!user.User.IsEmailVerified)
+            {
+                throw new Exception($"Email was sent to {user.User.Email} for varification");
+            }
+
             var token = await user.User.GetIdTokenAsync(false);
             var uid = user.User.Uid;
 
@@ -21,7 +28,7 @@ namespace MoviePrediction.Droid
             Application.Current.Properties["Uid"] = uid;
 
             //var userInfo = new User { Token = token.Token, UserId = uid };
-
+            
             await Application.Current.SavePropertiesAsync();
 
             return token.Token;

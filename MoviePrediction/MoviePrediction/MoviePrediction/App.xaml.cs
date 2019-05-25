@@ -6,48 +6,52 @@ using MoviePrediction.Views;
 using MoviePrediction.Services.Database;
 using MoviePrediction.Models;
 using MoviePrediction.CustomViews;
+using MonkeyCache.SQLite;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MoviePrediction
 {
     public partial class App : Application
     {
-        public const string DATABASE_NAME = "history.db";
+        private static HistoryRepository historyDb;
+        private static CacheRepository cacheDb;
 
-        public static HistoryRepository database;
+        public const string HISTORY_DATABASE_NAME = "history.db";
+        public const string CaCHE_DATABASE_NAME = "predix_cache.db";
+        
         public static HistoryRepository Database
         {
             get
             {
-                if (database == null)
+                if (historyDb == null)
                 {
-                    database = new HistoryRepository(DATABASE_NAME);
+                    historyDb = new HistoryRepository(HISTORY_DATABASE_NAME);
                 }
-                return database;
+                return historyDb;
+            }
+        }
+
+        public static CacheRepository CacheDatabase
+        {
+            get
+            {
+                if (cacheDb == null)
+                {
+                    cacheDb = new CacheRepository(CaCHE_DATABASE_NAME);
+                }
+                return cacheDb;
             }
         }
 
         public App()
         {
-            InitializeComponent();
+            InitializeComponent();   
             MainPage = new NavigationPage(new LoadingPage());
-            //Application.Current.Properties["SessionId"] =null;
-            //Application.Current.Properties["Uid"] =null;
-            //MainPage = new NavigationPage(new Registration());
         }
 
         protected override void OnStart()
         {
             AutoMapperConfig.Initialize();
-
-            //if (Application.Current.Properties.ContainsKey("SessionId"))
-            //{
-            //    MainPage = new NavigationPage(new MainPage());
-            //}
-            //else
-            //{
-            //    MainPage = new NavigationPage(new LoginPage());
-            //}
         }
 
         protected override void OnSleep()

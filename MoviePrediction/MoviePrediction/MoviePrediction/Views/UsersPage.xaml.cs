@@ -1,4 +1,5 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.Convertors;
+using MoviePrediction.Models;
 using MoviePrediction.Services.Photo;
 using System;
 using System.Collections.Generic;
@@ -51,9 +52,12 @@ namespace MoviePrediction.Views
             Application.Current.Properties.Remove("Uid");
 
             await Application.Current.SavePropertiesAsync();
-
-            Navigation.NavigationStack.ToList().Clear();
+            
             await Navigation.PushAsync(new LoginPage());
+
+            //Navigation.NavigationStack.ToList().Clear();
+
+            StackNavigation.Clear(Navigation);
         }
     }
 }

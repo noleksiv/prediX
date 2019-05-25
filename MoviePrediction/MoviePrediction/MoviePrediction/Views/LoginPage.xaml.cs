@@ -68,7 +68,7 @@ namespace MoviePrediction.Views
                 }
                 catch (Exception ex)
                 {
-                    await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                    await DisplayAlert("Warning", ex.Message, "Confirm");
                 }
                 finally
                 {

@@ -1,4 +1,5 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.Convertors;
+using MoviePrediction.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace MoviePrediction.Views
     {
         public MainPage ()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            StackNavigation.Clear(Navigation);
         }
 
         private async void UsersIconClicked(object sender, EventArgs e)
