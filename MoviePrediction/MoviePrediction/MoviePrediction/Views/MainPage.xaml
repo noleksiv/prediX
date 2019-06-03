@@ -3,7 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="MoviePrediction.Views.MainPage"
             xmlns:local="clr-namespace:MoviePrediction.Views"
-            xmlns:translator="clr-namespace:MoviePrediction.Helpers" >
+            xmlns:translator="clr-namespace:MoviePrediction.Helpers" 
+            NavigationPage.HasBackButton="False">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
             <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage" />

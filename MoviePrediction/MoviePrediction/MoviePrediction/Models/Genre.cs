@@ -1,4 +1,6 @@
-﻿namespace MoviePrediction.Models
+﻿using MoviePrediction.Resources;
+
+namespace MoviePrediction.Models
 {
     public class Genre : IEntity
     {
@@ -10,45 +12,45 @@
             switch (genreId)
             {
                 case 28:
-                    return "Action";
+                    return AppResources.ActionGenre;
                 case 12:
-                    return "Adventure";
+                    return AppResources.AdventureGenre;
                 case 16:
-                    return "Animation";
+                    return AppResources.AnimationGenre;
                 case 35:
-                    return "Comedy";
+                    return AppResources.ComedyGenre;
                 case 80:
-                    return "Crime";
+                    return AppResources.CrimeGenre;
                 case 99:
-                    return "Documentary";
+                    return AppResources.DocumentaryGenre;
                 case 18:
-                    return "Drama";
+                    return AppResources.DramaGenre;
                 case 10751:
-                    return "Family";
+                    return AppResources.FamilyGenre;
                 case 14:
-                    return "Fantasy";
+                    return AppResources.FantasyGenre;
                 case 36:
-                    return "History";
+                    return AppResources.HistoryGenre;
                 case 27:
-                    return "Horror";
+                    return AppResources.HorrorGenre;
                 case 10402:
-                    return "Music";
+                    return AppResources.MusicGenre;
                 case 9648:
-                    return "Mystery";
+                    return AppResources.MysteryGenre;
                 case 10749:
-                    return "Romance";
+                    return AppResources.RomanceGenre;
                 case 878:
-                    return "Science Fiction";
+                    return AppResources.ScienceFictionGenre;
                 case 10770:
-                    return "TV Movie";
+                    return AppResources.TVMovieGenre;
                 case 53:
-                    return "Thriller";
+                    return AppResources.ThrillerGenre;
                 case 10752:
-                    return "War";
+                    return AppResources.WarGenre;
                 case 37:
-                    return "Western";
+                    return AppResources.WesternGenre;
                 default:
-                    return "Other";
+                    return AppResources.OtherGenre;
             }
         }
     }

@@ -61,6 +61,33 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        internal static string ActionGenre {
+            get {
+                return ResourceManager.GetString("ActionGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adventure.
+        /// </summary>
+        internal static string AdventureGenre {
+            get {
+                return ResourceManager.GetString("AdventureGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Animation.
+        /// </summary>
+        internal static string AnimationGenre {
+            get {
+                return ResourceManager.GetString("AnimationGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birthday: .
         /// </summary>
         internal static string BirthdayLabel {
@@ -97,6 +124,15 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comedy.
+        /// </summary>
+        internal static string ComedyGenre {
+            get {
+                return ResourceManager.GetString("ComedyGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string ConfirmText {
@@ -124,6 +160,15 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crime.
+        /// </summary>
+        internal static string CrimeGenre {
+            get {
+                return ResourceManager.GetString("CrimeGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deathday:.
         /// </summary>
         internal static string DeathdayLabel {
@@ -133,11 +178,47 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Documentary.
+        /// </summary>
+        internal static string DocumentaryGenre {
+            get {
+                return ResourceManager.GetString("DocumentaryGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drama.
+        /// </summary>
+        internal static string DramaGenre {
+            get {
+                return ResourceManager.GetString("DramaGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string EmailLabel {
             get {
                 return ResourceManager.GetString("EmailLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Family.
+        /// </summary>
+        internal static string FamilyGenre {
+            get {
+                return ResourceManager.GetString("FamilyGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fantasy.
+        /// </summary>
+        internal static string FantasyGenre {
+            get {
+                return ResourceManager.GetString("FantasyGenre", resourceCulture);
             }
         }
         
@@ -171,6 +252,15 @@ namespace MoviePrediction.Resources {
         /// <summary>
         ///   Looks up a localized string similar to History.
         /// </summary>
+        internal static string HistoryGenre {
+            get {
+                return ResourceManager.GetString("HistoryGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
         internal static string HistoryLabel {
             get {
                 return ResourceManager.GetString("HistoryLabel", resourceCulture);
@@ -183,6 +273,15 @@ namespace MoviePrediction.Resources {
         internal static string HomePageTitle {
             get {
                 return ResourceManager.GetString("HomePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horror.
+        /// </summary>
+        internal static string HorrorGenre {
+            get {
+                return ResourceManager.GetString("HorrorGenre", resourceCulture);
             }
         }
         
@@ -223,6 +322,24 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Music.
+        /// </summary>
+        internal static string MusicGenre {
+            get {
+                return ResourceManager.GetString("MusicGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mystery.
+        /// </summary>
+        internal static string MysteryGenre {
+            get {
+                return ResourceManager.GetString("MysteryGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Need help?.
         /// </summary>
         internal static string NeedHelpLabel {
@@ -255,6 +372,15 @@ namespace MoviePrediction.Resources {
         internal static string OneStepLabel {
             get {
                 return ResourceManager.GetString("OneStepLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        internal static string OtherGenre {
+            get {
+                return ResourceManager.GetString("OtherGenre", resourceCulture);
             }
         }
         
@@ -322,6 +448,24 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Romance.
+        /// </summary>
+        internal static string RomanceGenre {
+            get {
+                return ResourceManager.GetString("RomanceGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Science Fiction.
+        /// </summary>
+        internal static string ScienceFictionGenre {
+            get {
+                return ResourceManager.GetString("ScienceFictionGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show more.
         /// </summary>
         internal static string ShowMoreLabel {
@@ -367,6 +511,15 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thriller.
+        /// </summary>
+        internal static string ThrillerGenre {
+            get {
+                return ResourceManager.GetString("ThrillerGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title:.
         /// </summary>
         internal static string TitleLabel {
@@ -403,6 +556,15 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TV Movie.
+        /// </summary>
+        internal static string TVMovieGenre {
+            get {
+                return ResourceManager.GetString("TVMovieGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TV.
         /// </summary>
         internal static string TVPageTitle {
@@ -421,11 +583,29 @@ namespace MoviePrediction.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to War.
+        /// </summary>
+        internal static string WarGenre {
+            get {
+                return ResourceManager.GetString("WarGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
         internal static string WarningTitle {
             get {
                 return ResourceManager.GetString("WarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Western.
+        /// </summary>
+        internal static string WesternGenre {
+            get {
+                return ResourceManager.GetString("WesternGenre", resourceCulture);
             }
         }
     }

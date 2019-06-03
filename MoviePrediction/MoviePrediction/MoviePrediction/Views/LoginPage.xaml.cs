@@ -75,7 +75,6 @@ namespace MoviePrediction.Views
                 finally
                 {
                     await PopupNavigation.Instance.PopAsync();
-                    StackNavigation.Clear(Navigation);
                 }
             }
         }

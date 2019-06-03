@@ -1,5 +1,6 @@
 ﻿using MoviePrediction.Models;
 using Newtonsoft.Json;
+using Plugin.Multilingual;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,7 +20,7 @@ namespace MoviePrediction.Services.NowPlaying
 
         public NowPlaying GetLatestMovies()
         {
-            var parameters = $"3/movie/now_playing?api_key={_movieDb.ApiKey}&language=en-US&page=1";
+            var parameters = $"3/movie/now_playing?api_key={_movieDb.ApiKey}&page=1";
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);
@@ -27,9 +28,9 @@ namespace MoviePrediction.Services.NowPlaying
             return latestMovies;
         }
 
-        public IList<MovieShort> GetLatestMovies(int page = 1, string language = "en - US")
+        public IList<MovieShort> GetLatestMovies(int page = 1)
         {
-            var parameters = $"3/movie/now_playing?api_key={_movieDb.ApiKey}&language={language}&page={page}";
+            var parameters = $"3/movie/now_playing?api_key={_movieDb.ApiKey}&page={page}";
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);
@@ -39,7 +40,10 @@ namespace MoviePrediction.Services.NowPlaying
 
         public NowPlaying GetUpcomingMovies()
         {
-            var parameters = $"3/movie/upcoming?api_key={_movieDb.ApiKey}&language=en-US&page=1";
+            var region = System.Globalization.RegionInfo.CurrentRegion.Name;
+            var parameters = $"3/movie/upcoming?api_key={_movieDb.ApiKey}&page=1&region={region}";
+
+
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);
@@ -47,19 +51,13 @@ namespace MoviePrediction.Services.NowPlaying
             return latestMovies;
         }
 
-        public IList<MovieShort> GetUpcomingMovies(int page = 1, string region = "ua")
+        public IList<MovieShort> GetUpcomingMovies(int page = 1)
         {
             var parameters = String.Empty;
+            var region = System.Globalization.RegionInfo.CurrentRegion.Name;
 
-            if (region!=null)
-            {
-                parameters = $"3/movie/upcoming?api_key={_movieDb.ApiKey}&language=en-US&page={page}&region={region}";
-            }
-            else
-            {
-                parameters = $"3/movie/upcoming?api_key={_movieDb.ApiKey}&language=en-US&page={page}";
-            }
-            
+            parameters = $"3/movie/upcoming?api_key={_movieDb.ApiKey}&page={page}&region={region}";
+
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);

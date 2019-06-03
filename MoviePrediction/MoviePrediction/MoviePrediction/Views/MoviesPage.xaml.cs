@@ -15,7 +15,7 @@ using Xamarin.Forms.Xaml;
 
 namespace MoviePrediction.Views
 {
-    public delegate IList<MovieShort> LoadMore(int pageNumber, string language = "en-US");
+    public delegate IList<MovieShort> LoadMore(int pageNumber);
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MoviesPage : ContentPage

@@ -55,15 +55,15 @@ namespace MoviePrediction.Views
                 });                
             };
 
-            Movie.AddRange(LoadMoreMovies("ua"));
+            Movie.AddRange(LoadMoreMovies());
             this.BindingContext = this;
         }
 
-        private IList<MovieShort> LoadMoreMovies(string region = null)
+        private IList<MovieShort> LoadMoreMovies()
         {
             var latest = new GetLatest();
             var page = Movie.Count / _moviesOnPage;
-            var movies = latest.GetUpcomingMovies(page+1, region);
+            var movies = latest.GetUpcomingMovies(page+1);
 
             foreach (var human in movies)
             {

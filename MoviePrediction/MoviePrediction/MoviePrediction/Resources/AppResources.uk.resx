@@ -240,4 +240,64 @@
   <data name="WarningTitle" xml:space="preserve">
     <value>Попередження</value>
   </data>
+  <data name="ActionGenre" xml:space="preserve">
+    <value>Екшн</value>
+  </data>
+  <data name="AdventureGenre" xml:space="preserve">
+    <value>Пригодницький</value>
+  </data>
+  <data name="AnimationGenre" xml:space="preserve">
+    <value>Мультик</value>
+  </data>
+  <data name="ComedyGenre" xml:space="preserve">
+    <value>Комедія</value>
+  </data>
+  <data name="CrimeGenre" xml:space="preserve">
+    <value>Кримінал</value>
+  </data>
+  <data name="DocumentaryGenre" xml:space="preserve">
+    <value>Документальний</value>
+  </data>
+  <data name="DramaGenre" xml:space="preserve">
+    <value>Драма</value>
+  </data>
+  <data name="FamilyGenre" xml:space="preserve">
+    <value>Сімейний</value>
+  </data>
+  <data name="FantasyGenre" xml:space="preserve">
+    <value>Фантастика</value>
+  </data>
+  <data name="HistoryGenre" xml:space="preserve">
+    <value>Історичний</value>
+  </data>
+  <data name="HorrorGenre" xml:space="preserve">
+    <value>Жахи</value>
+  </data>
+  <data name="MusicGenre" xml:space="preserve">
+    <value>М'юзикл</value>
+  </data>
+  <data name="MysteryGenre" xml:space="preserve">
+    <value>Містерія</value>
+  </data>
+  <data name="OtherGenre" xml:space="preserve">
+    <value>Інше</value>
+  </data>
+  <data name="RomanceGenre" xml:space="preserve">
+    <value>Романс</value>
+  </data>
+  <data name="ScienceFictionGenre" xml:space="preserve">
+    <value>Научпоп</value>
+  </data>
+  <data name="ThrillerGenre" xml:space="preserve">
+    <value>Триллер</value>
+  </data>
+  <data name="TVMovieGenre" xml:space="preserve">
+    <value>Серіал</value>
+  </data>
+  <data name="WarGenre" xml:space="preserve">
+    <value>Воєнний</value>
+  </data>
+  <data name="WesternGenre" xml:space="preserve">
+    <value>Вестерн</value>
+  </data>
 </root>
