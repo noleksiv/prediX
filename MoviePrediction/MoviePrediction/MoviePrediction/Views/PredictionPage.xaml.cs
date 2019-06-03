@@ -1,5 +1,6 @@
 ﻿using MoviePrediction.CustomViews;
 using MoviePrediction.Models;
+using MoviePrediction.Resources;
 using MoviePrediction.Services.NowPlaying;
 using MoviePrediction.Services.Photo;
 using Rg.Plugins.Popup.Services;
@@ -85,7 +86,7 @@ namespace MoviePrediction.Views
 
             try
             {
-                await PopupNavigation.Instance.PushAsync(new PopupLoading("Wait for prediction..."));
+                await PopupNavigation.Instance.PushAsync(new PopupLoading(AppResources.WaitForPredictionText));
 
                 var selectedItem = ((ListView)sender).SelectedItem;
                 var movie = selectedItem as MovieShort;
@@ -94,7 +95,7 @@ namespace MoviePrediction.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
             }
             finally
             {

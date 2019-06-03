@@ -4,6 +4,7 @@
              x:Class="MoviePrediction.Views.UsersPage"
              xmlns:CircleImg="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews"
+             xmlns:translator="clr-namespace:MoviePrediction.Helpers"
              BackgroundColor="{StaticResource darkColor}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Icon="exit.png" Clicked="LogOutClicked"/>
@@ -21,7 +22,7 @@
                             BackgroundColor="{StaticResource darkColor}">
                 <ListView.Header>
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="{StaticResource deepBlackColor}" HeightRequest="35">
-                        <Label Text="History" TextColor="{StaticResource whiteColor}" FontSize="20" VerticalOptions="Center"/>
+                        <Label Text="{translator:Translate HistoryLabel}" TextColor="{StaticResource whiteColor}" FontSize="20" VerticalOptions="Center"/>
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>

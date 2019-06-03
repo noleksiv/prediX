@@ -1,5 +1,6 @@
 ﻿using MoviePrediction.CustomViews;
 using MoviePrediction.Models;
+using MoviePrediction.Resources;
 using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Popular;
 using Rg.Plugins.Popup.Services;
@@ -108,7 +109,7 @@ namespace MoviePrediction.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
             }
             finally
             {

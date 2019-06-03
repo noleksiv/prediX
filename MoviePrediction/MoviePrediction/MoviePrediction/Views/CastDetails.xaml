@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviePrediction.Views.CastDetails"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms">
+             xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms"
+             xmlns:translator="clr-namespace:MoviePrediction.Helpers">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
             <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage"/>
@@ -30,20 +31,20 @@
                     <Grid Grid.Column="1">
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label VerticalOptions="Start" Text="Birthday: " />
+                                <Label VerticalOptions="Start" Text="{translator:Translate BirthdayLabel}" />
                                 <Label VerticalOptions="End"  Text="{Binding Info.Birthday}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label VerticalOptions="Start" Text="Deathday: " />
+                                <Label VerticalOptions="Start" Text="{translator:Translate DeathdayLabel}" />
                                 <Label VerticalOptions="End"  Text="{Binding Info.Deathday}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label VerticalOptions="Start" Text="Place of birth: " />
+                                <Label VerticalOptions="Start" Text="{translator:Translate PlaceOfBirthLabel}" />
                                 <Label VerticalOptions="End"  Text="{Binding Info.PlaceOfBirth}" />
                             </StackLayout>
 
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="IMDb profile ">
+                                <Label Text="{translator:Translate IMDbProfileLabel}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="GoToImdbProfile"/>
                                     </Label.GestureRecognizers>

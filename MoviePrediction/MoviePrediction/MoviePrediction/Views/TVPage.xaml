@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviePrediction.Views.TVPage"
              xmlns:clickedColor="clr-namespace:XamEffects;assembly=XamEffects"
-             xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms">
+             xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms"
+             xmlns:translator="clr-namespace:MoviePrediction.Helpers">
     <ContentPage.Content>
         <ScrollView>
              
             <StackLayout BackgroundColor="{StaticResource darkColor}">
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="Popular TV" Margin="16, 5" VerticalOptions="Center"/>
+                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="{translator:Translate PopularTVLabel}" Margin="16, 5" VerticalOptions="Center"/>
                 <renderedViews:HorizontalListView CollectionPadding="16"
                                    ItemSpacing="8"
                                    EnableDragAndDrop="True"
@@ -45,7 +46,7 @@
                         </DataTemplate>                         
                     </renderedViews:HorizontalListView.ItemTemplate>                     
                 </renderedViews:HorizontalListView>
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="Top rated TV" Margin="16, 5" VerticalOptions="Center"/>
+                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="{translator:Translate TopRatedTV}" Margin="16, 5" VerticalOptions="Center"/>
                 <renderedViews:HorizontalListView CollectionPadding="16"
                                    ItemSpacing="8"
                                    EnableDragAndDrop="True"

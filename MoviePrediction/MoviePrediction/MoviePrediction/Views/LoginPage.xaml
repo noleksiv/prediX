@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
+             xmlns:translator="clr-namespace:MoviePrediction.Helpers"
              x:Class="MoviePrediction.Views.LoginPage"
              NavigationPage.HasBackButton="False"
              >
@@ -11,16 +12,16 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="HELP" Clicked="ClickedOnTheLink"/>
+        <ToolbarItem Text="{translator:Translate HelpLabel}" Clicked="ClickedOnTheLink"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid Style="{StaticResource darkBackground}">
             <StackLayout Margin="30">
-                <CustomEditor:DarkEditor x:Name="emailInput" Placeholder="Email" AccentColor="White" Grid.Row="1" Grid.Column="0" Keyboard="Email" />
-                <CustomEditor:DarkEditor x:Name="pwdInput" Placeholder="Password" IsPassword="True" AccentColor="White" Grid.Row="2" Grid.Column="0"/>
+                <CustomEditor:DarkEditor x:Name="emailInput" Placeholder="{translator:Translate EmailLabel}" AccentColor="White" Grid.Row="1" Grid.Column="0" Keyboard="Email" />
+                <CustomEditor:DarkEditor x:Name="pwdInput" Placeholder="{translator:Translate PasswordLabel}" IsPassword="True" AccentColor="White" Grid.Row="2" Grid.Column="0"/>
                 <Button x:Name="predixLoginBtn" 
                         Style="{StaticResource defaultBtnStyle}" 
-                        Text="SIGN IN"
+                        Text="{translator:Translate SignInButton}"
                         Margin="25"
                         Clicked="PredixLoginBtn_Clicked"
                         >
@@ -30,7 +31,7 @@
                         VerticalOptions="CenterAndExpand">
                         <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Need help?"
+                            <Span Text="{translator:Translate NeedHelpLabel}"
                             TextColor="#A2A0A0">
                             </Span>
                         </FormattedString>
@@ -41,7 +42,7 @@
                         VerticalOptions="CenterAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="New to PrediX? Sign up now"
+                            <Span Text="{translator:Translate NewToPredixLabel}"
                             TextColor="#A2A0A0">
                             </Span>
                         </FormattedString>

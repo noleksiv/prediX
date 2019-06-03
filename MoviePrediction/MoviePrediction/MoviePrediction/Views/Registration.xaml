@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
+             xmlns:translator="clr-namespace:MoviePrediction.Helpers"
              x:Class="MoviePrediction.Views.Registration"
              NavigationPage.HasBackButton="False">
     <NavigationPage.TitleView>
@@ -10,18 +11,18 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Order="Primary" Text="SIGN IN" Clicked="SignInClicked"/>
-        <ToolbarItem Order="Primary" Text="HELP" Clicked="HelpClicked" />
+        <ToolbarItem Order="Primary" Text="{translator:Translate SignInButton}" Clicked="SignInClicked"/>
+        <ToolbarItem Order="Primary" Text="{translator:Translate HelpLabel}" Clicked="HelpClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" WidthRequest="350" Margin="0, 50">
-            <Label Font="Bold,22">Sign up to start your unforgettable experience</Label>
-            <Label FontSize="20">Just one step and you're done!</Label>
-            <Label FontSize="20">We hate paperwork, too.</Label>
-            <Label Font="Bold,22">Create your account.</Label>
-            <CustomEditor:LightEditor x:Name="emailInput" Placeholder="Email" AccentColor="#141414" Keyboard="Email" WidthRequest="300"/>
-            <CustomEditor:LightEditor x:Name="pwdInput" Placeholder="Password" AccentColor="#141414" IsPassword="True" WidthRequest="300"/>
-            <Button x:Name="SignUp" Style="{StaticResource defaultBtnStyle}" Text="SIGN UP" Clicked="SignUp_Clicked">
+            <Label Font="Bold,22" Text="{translator:Translate StartExperienceLabel}" />
+            <Label FontSize="20" Text="{translator:Translate OneStepLabel}" />
+            <Label FontSize="20" Text="{translator:Translate HatePaperworkLabel}" />
+            <Label Font="Bold,22" Text="{translator:Translate CreateAccountLabel}" />
+            <CustomEditor:LightEditor x:Name="emailInput" Placeholder="{translator:Translate EmailLabel}" AccentColor="#141414" Keyboard="Email" WidthRequest="300"/>
+            <CustomEditor:LightEditor x:Name="pwdInput" Placeholder="{translator:Translate PasswordLabel}" AccentColor="#141414" IsPassword="True" WidthRequest="300"/>
+            <Button x:Name="SignUp" Style="{StaticResource defaultBtnStyle}" Text="{translator:Translate SignUpButton}" Clicked="SignUp_Clicked">
             </Button>
         </StackLayout>
     </ContentPage.Content>
