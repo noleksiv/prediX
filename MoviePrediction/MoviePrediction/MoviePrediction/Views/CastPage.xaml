@@ -11,8 +11,7 @@
                             ItemsSource="{Binding Cast}" 
                             HasUnevenRows="True" 
                             Style="{StaticResource customListView}"                   
-                            ItemTapped="CustItemSelected"
-                          >
+                            ItemTapped="CustItemSelected" >
                 <ListView.Behaviors>
                     <Extended:InfiniteScrollBehavior  IsLoadingMore="{Binding IsBusy}" />
                 </ListView.Behaviors>
@@ -20,15 +19,15 @@
                     <DataTemplate>
                         <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">
                             <ViewCell.View>
-                                <StackLayout Orientation="Horizontal" 
-                                                 VerticalOptions="FillAndExpand" Margin="10, 0, 10, 5">
+                                <StackLayout    Orientation="Horizontal" 
+                                                VerticalOptions="FillAndExpand" 
+                                                Margin="10, 0, 10, 5">
                                     <CircleImg:CircleImage Source="{Binding ProfileUrl}"  WidthRequest="115" HeightRequest="115" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />
                                     
                                     <StackLayout Orientation="Vertical" 
                                                      HorizontalOptions="StartAndExpand" VerticalOptions="Center">
 
-                                        <Label Text="{Binding Name}"
-                                                   TextColor="{StaticResource whiteColor}"  />
+                                        <Label Text="{Binding Name}" TextColor="{StaticResource whiteColor}"  />
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell.View>

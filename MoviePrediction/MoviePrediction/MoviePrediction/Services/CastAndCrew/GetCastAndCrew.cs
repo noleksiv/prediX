@@ -24,7 +24,6 @@ namespace MoviePrediction.Services.CastAndCrew
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var castAndCrew = JsonConvert.DeserializeObject<MovieCredits>(jsonStr);
-            // return results
             return castAndCrew;
         }
     }

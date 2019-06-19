@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using MoviePrediction.Resources;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,10 @@ namespace MoviePrediction.CustomViews
 	{
         public string Caption { get; set; }
 
-        public PopupLoading (string caption = "Loading...")
+        public PopupLoading (string caption = null)
 		{
 			InitializeComponent ();
-            Caption = caption;
+            Caption = caption ?? AppResources.LoadingTitle;
             //Animation = new Rg.Plugins.Popup.Animations.ScaleAnimation();
         }
 

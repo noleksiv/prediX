@@ -31,7 +31,7 @@ namespace MoviePrediction.Services.CastAndCrew
 
         public PersonResume GetHistory()
         {
-            var parameters = $"3/person/{_personId}/movie_credits?api_key={_movieDb.ApiKey}&language=en-US";
+            var parameters = $"3/person/{_personId}/movie_credits?api_key={_movieDb.ApiKey}";
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var history = JsonConvert.DeserializeObject<PersonResume>(jsonStr);

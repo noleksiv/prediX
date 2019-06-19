@@ -9,9 +9,7 @@ namespace MoviePrediction.Services.NowPlaying
     public class NowPlaying : ApiMovieResponse
     {
         [JsonProperty("dates")]
-        public Date Dates { get; set; }
-
-        
+        public Date Dates { get; set; }        
     }
 
     public class ApiMovieResponse : ApiResponse

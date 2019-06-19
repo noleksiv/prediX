@@ -1,5 +1,6 @@
 ﻿using MoviePrediction.CustomViews;
 using MoviePrediction.Models;
+using MoviePrediction.Resources;
 using MoviePrediction.Services.NowPlaying;
 using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Popular;
@@ -14,7 +15,7 @@ using Xamarin.Forms.Xaml;
 
 namespace MoviePrediction.Views
 {
-    public delegate IList<MovieShort> LoadMore(int pageNumber, string language = "en-US");
+    public delegate IList<MovieShort> LoadMore(int pageNumber);
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MoviesPage : ContentPage
@@ -28,13 +29,14 @@ namespace MoviePrediction.Views
         public string Title { get; set; }
         public string LatestStartDate { get; set; }
         public string LatestEndsDate { get; set; }
-        public string PlayingDate {
+        public string PlayingDate
+        {
             get
             {
                 if (LatestEndsDate != null)
-                    return $"From {LatestStartDate} to {LatestEndsDate}";
+                    return $"{AppResources.FromDateLabel} {LatestStartDate} {AppResources.ToDateLabel} {LatestEndsDate}";
                 else
-                    return "";
+                    return String.Empty;
             }
         }
 
@@ -64,19 +66,19 @@ namespace MoviePrediction.Views
             switch (_tap)
             {
                 case MovieTap.Latest:
-                    Title = "Now playing";
+                    Title = AppResources.NowPlayingLabel;
                     GetLatest();
                     break;
                 case MovieTap.Upcoming:
-                    Title = "Soon will be";
+                    Title = AppResources.SoonLabel;
                     GetUpcoming();
                     break;
                 case MovieTap.Popular:
-                    Title = "Popular";
+                    Title = AppResources.PopularMovieLabel;
                     GetPopularMovies();
                     break;
                 case MovieTap.Toprated:
-                    Title = "Top rated";
+                    Title = AppResources.TopRatedMovieLabel;
                     GetTopRatedMovies();
                     break;
                 default:
@@ -189,7 +191,7 @@ namespace MoviePrediction.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
             }
             finally
             {

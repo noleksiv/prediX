@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using MonkeyCache;
 using MonkeyCache.SQLite;
 using Plugin.Connectivity;
+using Plugin.Multilingual;
 
 namespace MoviePrediction.Services
 {
@@ -28,7 +30,8 @@ namespace MoviePrediction.Services
         public string GetRequestJson(string param)
         {
             var json = String.Empty;
-            var url = _credentials.SiteLink + param;
+            var currentCulture = CrossMultilingual.Current.CurrentCultureInfo;
+            var url = _credentials.SiteLink + param + $"&language={currentCulture}";
 
             if (!CrossConnectivity.Current.IsConnected)
             {
@@ -50,9 +53,11 @@ namespace MoviePrediction.Services
             {
                 json = reader.ReadToEnd();
             }
-            
-            // Add to cache 
-            Barrel.Current.Add(key: url, data: json, expireIn: TimeSpan.FromDays(1));
+
+            // Cache lifetime
+            var duration = 1;
+            // Add to cache
+            Barrel.Current.Add(key: url, data: json, expireIn: TimeSpan.FromDays(duration));
 
             return json;
         }
@@ -60,7 +65,8 @@ namespace MoviePrediction.Services
         public async Task<string> GetJsonAsync(string param)
         {
             var json = String.Empty;
-            var url = _credentials.SiteLink + param;
+            var currentCulture = CrossMultilingual.Current.CurrentCultureInfo;
+            var url = _credentials.SiteLink + param + $"&language={currentCulture}";
 
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;

@@ -7,7 +7,5 @@ namespace MoviePrediction.Services
     {
         int Page { get; set; }
         int TotalPages { get; set; }
-
-        //ICollection<IEntity> Results { get; set; }
     }
 }

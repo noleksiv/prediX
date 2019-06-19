@@ -1,4 +1,6 @@
-﻿using MoviePrediction.CustomViews;
+﻿using MoviePrediction.Convertors;
+using MoviePrediction.CustomViews;
+using MoviePrediction.Resources;
 using MoviePrediction.Services.Database;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -31,7 +33,7 @@ namespace MoviePrediction.Views
                 }
                 catch (Exception ex)
                 {
-                    await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                    await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
                 }
                 finally
                 {
@@ -68,7 +70,7 @@ namespace MoviePrediction.Views
                 }
                 catch (Exception ex)
                 {
-                    await DisplayAlert("Warning", ex.Message, "Confirm");
+                    await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText);
                 }
                 finally
                 {
@@ -87,7 +89,7 @@ namespace MoviePrediction.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Warning", ex.Message, "Confirm", "Cancel");
+                await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
             }
             finally
             {

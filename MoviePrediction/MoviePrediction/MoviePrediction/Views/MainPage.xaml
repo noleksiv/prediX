@@ -2,10 +2,12 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="MoviePrediction.Views.MainPage"
-            xmlns:local="clr-namespace:MoviePrediction.Views">
+            xmlns:local="clr-namespace:MoviePrediction.Views"
+            xmlns:translator="clr-namespace:MoviePrediction.Helpers" 
+            NavigationPage.HasBackButton="False">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage"/>
+            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage" />
         </StackLayout>
     </NavigationPage.TitleView>
     <TabbedPage.ToolbarItems>
@@ -13,11 +15,11 @@
         <ToolbarItem Order="Primary" Icon="user.png" Clicked="UsersIconClicked" />
     </TabbedPage.ToolbarItems>
     <TabbedPage.Children>
-        <local:HomePage Title="HOME"/>
-        <local:MoviesTabbedPage Title="MOVIES"/>
-        <local:TVPage Title="TV"/>
-        <local:CastPage Title="CAST"/>
-        <local:PredictionPage Title="PREDICTION"/>
+        <local:HomePage Title="{translator:Translate HomePageTitle}" />
+        <local:MoviesTabbedPage Title="{translator:Translate MoviesPageTitle}" />
+        <local:TVPage Title="{translator:Translate TVPageTitle}"/>
+        <local:CastPage Title="{translator:Translate CastPageTitle}" />
+        <local:PredictionPage Title="{translator:Translate PredictionPageTitle}" />
     </TabbedPage.Children>
     <TabbedPage.BarBackgroundColor>#000000</TabbedPage.BarBackgroundColor>
 </TabbedPage>

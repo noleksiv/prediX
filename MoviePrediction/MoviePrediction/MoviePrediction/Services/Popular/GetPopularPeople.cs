@@ -20,7 +20,7 @@ namespace MoviePrediction.Services.Popular
 
         public IEnumerable<People> GetPeople(int pageNumb = 1)
         {
-            var parameters = $"3/person/popular?api_key={_movieDb.ApiKey}&language=en-US&page={pageNumb}";
+            var parameters = $"3/person/popular?api_key={_movieDb.ApiKey}&page={pageNumb}";
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var people = JsonConvert.DeserializeObject<PopularPeople>(jsonStr);
@@ -30,7 +30,7 @@ namespace MoviePrediction.Services.Popular
 
         public async Task<IEnumerable<People>> GetPeopleAsync(int pageNumb = 1)
         {
-            var parameters = $"3/person/popular?api_key={_movieDb.ApiKey}&language=en-US&page={pageNumb}";
+            var parameters = $"3/person/popular?api_key={_movieDb.ApiKey}&page={pageNumb}";
             var jsonStr = await _dataReceiver.GetJsonAsync(parameters);
 
             return await Task.Run(() => 
