@@ -24,7 +24,6 @@ namespace MoviePrediction.Services.TopRated
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             var movies = JsonConvert.DeserializeObject<TopRated>(jsonStr);
-            // return results
             return movies.Movies;
         }
 
@@ -36,7 +35,6 @@ namespace MoviePrediction.Services.TopRated
             return await Task.Run(() => 
             {
                 var movies = JsonConvert.DeserializeObject<TopRated>(jsonStr);
-                // return results
                 return movies.Movies;
             });
            

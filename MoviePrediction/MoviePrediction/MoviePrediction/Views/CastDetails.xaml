@@ -50,7 +50,7 @@
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
-                        </StackLayout>                        
+                        </StackLayout>
                     </Grid>
                 </Grid>
                 <Label Text="{Binding Info.Biography}" Margin="0, 5"/>
@@ -87,9 +87,9 @@
                     <forms:ChartView x:Name="BarChartDiagram"  Chart="{Binding BarChart}"
                              HeightRequest="250"/>
                     <forms:ChartView x:Name="CircleDiagram"  Chart="{Binding CircleChart}"
-                             HeightRequest="250"/>                     
+                             HeightRequest="250"/>
                 </StackLayout>
-            </StackLayout>            
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

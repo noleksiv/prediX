@@ -37,7 +37,6 @@ namespace MoviePrediction.Services.Trending
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             _movies = JsonConvert.DeserializeObject<TrendyMovies>(jsonStr);
-            // return results
             return _movies.Results;             
         }
     }

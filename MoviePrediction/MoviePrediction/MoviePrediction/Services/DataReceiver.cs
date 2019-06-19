@@ -16,7 +16,6 @@ namespace MoviePrediction.Services
     public class DataReceiver
     {
         private IApiCredentials _credentials;
-        private static CultureInfo _currentCulture;
 
         static DataReceiver()
         {
@@ -54,9 +53,11 @@ namespace MoviePrediction.Services
             {
                 json = reader.ReadToEnd();
             }
-            
-            // Add to cache 
-            Barrel.Current.Add(key: url, data: json, expireIn: TimeSpan.FromDays(1));
+
+            // Cache lifetime
+            var duration = 1;
+            // Add to cache
+            Barrel.Current.Add(key: url, data: json, expireIn: TimeSpan.FromDays(duration));
 
             return json;
         }
