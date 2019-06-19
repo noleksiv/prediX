@@ -7,57 +7,70 @@
              xmlns:translator="clr-namespace:MoviePrediction.Helpers"
              BackgroundColor="{StaticResource darkColor}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Order="Primary" Icon="exit.png" Clicked="LogOutClicked"/>
+        <ToolbarItem Order="Primary"
+                     Icon="exit.png"
+                     Clicked="LogOutClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource darkColor}" Margin="5, 0">
+        <StackLayout BackgroundColor="{StaticResource darkColor}"
+                     Margin="5, 0">
             <StackLayout>
-                <CircleImg:CircleImage Source="anon.jpg"  WidthRequest="115" HeightRequest="115" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />                
+                <CircleImg:CircleImage Source="anon.jpg"
+                                       WidthRequest="115"
+                                       HeightRequest="115"
+                                       Aspect="AspectFill"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
             </StackLayout>
             <ListView       x:Name="historyListView"
-                            ItemsSource="{Binding History}" 
-                            HasUnevenRows="True" 
-                            Margin="0, 5"                            
-                            Style="{StaticResource customListView}" 
+                            ItemsSource="{Binding History}"
+                            HasUnevenRows="True"
+                            Margin="0, 5"
+                            Style="{StaticResource customListView}"
                             BackgroundColor="{StaticResource darkColor}">
                 <ListView.Header>
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="{StaticResource deepBlackColor}" HeightRequest="35">
-                        <Label Text="{translator:Translate HistoryLabel}" TextColor="{StaticResource whiteColor}" FontSize="20" VerticalOptions="Center"/>
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="{StaticResource deepBlackColor}"
+                                 HeightRequest="35">
+                        <Label Text="{translator:Translate HistoryLabel}"
+                               TextColor="{StaticResource whiteColor}"
+                               FontSize="20"
+                               VerticalOptions="Center" />
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="#272727">
                             <ViewCell.View>
-                                <StackLayout    Orientation="Horizontal" 
+                                <StackLayout    Orientation="Horizontal"
                                                 VerticalOptions="FillAndExpand"
                                                 Spacing="3">
 
-                                    <Image     HorizontalOptions="Start" 
+                                    <Image     HorizontalOptions="Start"
                                                WidthRequest="48">
 
                                         <Image.Source>
-                                            <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                            <UriImageSource Uri="{Binding PosterUrl}" />
                                         </Image.Source>
                                     </Image>
 
-                                    <StackLayout Orientation="Vertical" 
-                                                     HorizontalOptions="StartAndExpand">
+                                    <StackLayout Orientation="Vertical"
+                                                 HorizontalOptions="StartAndExpand">
 
                                         <Label  Text="{Binding Title}"
                                                 HorizontalOptions="Start"
-                                                TextColor="{StaticResource whiteColor}"
-                                                />
+                                                TextColor="{StaticResource whiteColor}" />
 
                                         <Label  Text="{Binding ReleaseDate}"
                                                 HorizontalOptions="Start"
                                                 LineBreakMode="TailTruncation"
-                                                Style="{StaticResource helperText}"/>
+                                                Style="{StaticResource helperText}" />
 
                                         <Label  Text="{Binding VoteAverage}"
                                                 HorizontalOptions="Start"
                                                 LineBreakMode="TailTruncation"
-                                                Style="{StaticResource helperText}"/>
+                                                Style="{StaticResource helperText}" />
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell.View>

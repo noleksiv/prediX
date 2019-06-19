@@ -4,38 +4,50 @@
              xmlns:CustomEditor="clr-namespace:MoviePrediction.CustomViews"
              xmlns:translator="clr-namespace:MoviePrediction.Helpers"
              x:Class="MoviePrediction.Views.LoginPage"
-             NavigationPage.HasBackButton="False"
-             >
+             NavigationPage.HasBackButton="False">
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent"/>
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="Start">
+            <ImageButton Source="predix.png"
+                         WidthRequest="100"
+                         BackgroundColor="Transparent" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{translator:Translate HelpLabel}" Clicked="ClickedOnTheLink"/>
+        <ToolbarItem Text="{translator:Translate HelpLabel}"
+                     Clicked="ClickedOnTheLink" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid Style="{StaticResource darkBackground}">
             <StackLayout Margin="30">
-                <CustomEditor:DarkEditor x:Name="emailInput" Placeholder="{translator:Translate EmailLabel}" AccentColor="White" Grid.Row="1" Grid.Column="0" Keyboard="Email" />
-                <CustomEditor:DarkEditor x:Name="pwdInput" Placeholder="{translator:Translate PasswordLabel}" IsPassword="True" AccentColor="White" Grid.Row="2" Grid.Column="0"/>
-                <Button x:Name="predixLoginBtn" 
-                        Style="{StaticResource defaultBtnStyle}" 
+                <CustomEditor:DarkEditor x:Name="emailInput"
+                                         Placeholder="{translator:Translate EmailLabel}"
+                                         AccentColor="White"
+                                         Grid.Row="1"
+                                         Grid.Column="0"
+                                         Keyboard="Email" />
+                <CustomEditor:DarkEditor x:Name="pwdInput"
+                                         Placeholder="{translator:Translate PasswordLabel}"
+                                         IsPassword="True"
+                                         AccentColor="White"
+                                         Grid.Row="2"
+                                         Grid.Column="0" />
+                <Button x:Name="predixLoginBtn"
+                        Style="{StaticResource defaultBtnStyle}"
                         Text="{translator:Translate SignInButton}"
                         Margin="25"
-                        Clicked="PredixLoginBtn_Clicked"
-                        >
+                        Clicked="PredixLoginBtn_Clicked">
                 </Button>
                 <Label  x:Name="HelpLabel"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
-                        <Label.FormattedText>
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{translator:Translate NeedHelpLabel}"
-                            TextColor="#A2A0A0">
+                                  TextColor="#A2A0A0">
                             </Span>
                         </FormattedString>
-                    </Label.FormattedText>      
+                    </Label.FormattedText>
                 </Label>
                 <Label  x:Name="SignUpLabel"
                         HorizontalOptions="Center"
@@ -43,11 +55,11 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{translator:Translate NewToPredixLabel}"
-                            TextColor="#A2A0A0">
+                                  TextColor="#A2A0A0">
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>              
+                </Label>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

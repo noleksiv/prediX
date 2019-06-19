@@ -5,14 +5,14 @@
              x:Class="MoviePrediction.Views.PredictionPage"
              BackgroundImage="stickBackground.png"
              xmlns:Extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
-             xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews">    
+             xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Start">
             <ListView   x:Name="shotrListView"
                         ItemsSource="{Binding Movie}"
                         ItemTapped="MovieItemSelected"
-                        HasUnevenRows="True" 
-                        Style="{StaticResource customListView}" >
+                        HasUnevenRows="True"
+                        Style="{StaticResource customListView}">
                 <ListView.Behaviors>
                     <Extended:InfiniteScrollBehavior  IsLoadingMore="{Binding IsBusy}" />
                 </ListView.Behaviors>
@@ -22,25 +22,25 @@
                             <ViewCell.View>
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Image Aspect="AspectFill" 
-                                               HorizontalOptions="FillAndExpand" 
-                                               WidthRequest="36" MinimumWidthRequest="36">
+                                    <Image Aspect="AspectFill"
+                                           HorizontalOptions="FillAndExpand"
+                                           WidthRequest="36"
+                                           MinimumWidthRequest="36">
 
                                         <Image.Source>
-                                            <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                            <UriImageSource Uri="{Binding PosterUrl}" />
                                         </Image.Source>
                                     </Image>
 
-                                    <StackLayout Orientation="Vertical" 
-                                                     HorizontalOptions="StartAndExpand">
+                                    <StackLayout Orientation="Vertical"
+                                                 HorizontalOptions="StartAndExpand">
 
                                         <Label Text="{Binding Title}"
-                                                   TextColor="{StaticResource whiteColor}"
-                                                    />
+                                               TextColor="{StaticResource whiteColor}" />
 
-                                        <Label Text="{Binding Overview}" 
-                                                   LineBreakMode="TailTruncation"
-                                                   Style="{StaticResource helperText}"/>
+                                        <Label Text="{Binding Overview}"
+                                               LineBreakMode="TailTruncation"
+                                               Style="{StaticResource helperText}" />
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell.View>
@@ -48,46 +48,24 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.Footer>
-                    <Grid Padding="6" IsVisible="{Binding IsBusy}">
+                    <Grid Padding="6"
+                          IsVisible="{Binding IsBusy}">
                         <Grid.Triggers>
-                            <Trigger TargetType="Grid" Property="IsVisible" Value="True">
-                                <Setter Property="HeightRequest" Value="15" />
+                            <Trigger TargetType="Grid"
+                                     Property="IsVisible"
+                                     Value="True">
+                                <Setter Property="HeightRequest"
+                                        Value="15" />
                             </Trigger>
                         </Grid.Triggers>
-                        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="True" 
-                                       Color="#2196F3" VerticalOptions="Center" 
-                                       HorizontalOptions="Center"/>
+                        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                           IsVisible="True"
+                                           Color="#2196F3"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center" />
                     </Grid>
                 </ListView.Footer>
             </ListView>
-        </StackLayout>
-
-        <!--<StackLayout>
-            <Grid >
-                <StackLayout VerticalOptions="StartAndExpand" 
-                             HorizontalOptions="Center" 
-                             WidthRequest="350">
-                    
-                    <Label FontSize="48"
-                           TextColor="#F8FAFB"
-                           FontAttributes="Bold" 
-                           FormattedText="Center"
-                           Margin="0, 35" >                        
-                        WRITE A MOVIE TO PREDICTION
-                    </Label>
-                    
-                    <CustomEditor:DarkEditor 
-                        Placeholder="Enter a title" 
-                        AccentColor="#F8FAFB" 
-                        Keyboard="Text" />
-
-                    <Button x:Name="predictBtn" 
-                        Style="{StaticResource defaultBtnStyle}" 
-                        Text="TRY TO PREDICT"
-                        Margin="0, 35" />
-
-                </StackLayout>
-            </Grid>
-        </StackLayout>-->
+        </StackLayout>       
     </ContentPage.Content>
 </ContentPage>

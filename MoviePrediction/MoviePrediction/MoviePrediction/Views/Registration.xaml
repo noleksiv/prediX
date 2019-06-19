@@ -6,23 +6,48 @@
              x:Class="MoviePrediction.Views.Registration"
              NavigationPage.HasBackButton="False">
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent"/>
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="Start">
+            <ImageButton Source="predix.png"
+                         WidthRequest="100"
+                         BackgroundColor="Transparent" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Order="Primary" Text="{translator:Translate SignInButton}" Clicked="SignInClicked"/>
-        <ToolbarItem Order="Primary" Text="{translator:Translate HelpLabel}" Clicked="HelpClicked" />
+        <ToolbarItem Order="Primary"
+                     Text="{translator:Translate SignInButton}"
+                     Clicked="SignInClicked" />
+        <ToolbarItem Order="Primary"
+                     Text="{translator:Translate HelpLabel}"
+                     Clicked="HelpClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" WidthRequest="350" Margin="0, 50">
-            <Label Font="Bold,22" Text="{translator:Translate StartExperienceLabel}" />
-            <Label FontSize="20" Text="{translator:Translate OneStepLabel}" />
-            <Label FontSize="20" Text="{translator:Translate HatePaperworkLabel}" />
-            <Label Font="Bold,22" Text="{translator:Translate CreateAccountLabel}" />
-            <CustomEditor:LightEditor x:Name="emailInput" Placeholder="{translator:Translate EmailLabel}" AccentColor="#141414" Keyboard="Email" WidthRequest="300"/>
-            <CustomEditor:LightEditor x:Name="pwdInput" Placeholder="{translator:Translate PasswordLabel}" AccentColor="#141414" IsPassword="True" WidthRequest="300"/>
-            <Button x:Name="SignUp" Style="{StaticResource defaultBtnStyle}" Text="{translator:Translate SignUpButton}" Clicked="SignUp_Clicked">
+        <StackLayout VerticalOptions="StartAndExpand"
+                     HorizontalOptions="Center"
+                     WidthRequest="350"
+                     Margin="0, 50">
+            <Label Font="Bold,22"
+                   Text="{translator:Translate StartExperienceLabel}" />
+            <Label FontSize="20"
+                   Text="{translator:Translate OneStepLabel}" />
+            <Label FontSize="20"
+                   Text="{translator:Translate HatePaperworkLabel}" />
+            <Label Font="Bold,22"
+                   Text="{translator:Translate CreateAccountLabel}" />
+            <CustomEditor:LightEditor x:Name="emailInput"
+                                      Placeholder="{translator:Translate EmailLabel}"
+                                      AccentColor="#141414"
+                                      Keyboard="Email"
+                                      WidthRequest="300" />
+            <CustomEditor:LightEditor x:Name="pwdInput"
+                                      Placeholder="{translator:Translate PasswordLabel}"
+                                      AccentColor="#141414"
+                                      IsPassword="True"
+                                      WidthRequest="300" />
+            <Button x:Name="SignUp"
+                    Style="{StaticResource defaultBtnStyle}"
+                    Text="{translator:Translate SignUpButton}"
+                    Clicked="SignUp_Clicked">
             </Button>
         </StackLayout>
     </ContentPage.Content>

@@ -7,75 +7,44 @@
              xmlns:translator="clr-namespace:MoviePrediction.Helpers">
     <ContentPage.Content>
         <ScrollView>
-             
             <StackLayout BackgroundColor="{StaticResource darkColor}">
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="{translator:Translate PopularTVLabel}" Margin="16, 5" VerticalOptions="Center"/>
+                <Label TextColor="{StaticResource whiteColor}"
+                       FontSize="16"
+                       Text="{translator:Translate PopularTVLabel}"
+                       Margin="16, 5"
+                       VerticalOptions="Center" />
                 <renderedViews:HorizontalListView CollectionPadding="16"
-                                   ItemSpacing="8"
-                                   EnableDragAndDrop="True"
-                                   ItemWidth="110"
-                                   ItemHeight="120"
-                                   ItemsSource="{Binding PopularTV}"                                  
-                                   ListLayout="Grid"
-                                   >                     
-                    <renderedViews:HorizontalListView.ItemTemplate>                         
-                        <DataTemplate>                             
-                            <renderedViews:DraggableViewCell x:Name="DraggableViewCell">                                 
-                                <ContentView>                                     
-                                    <renderedViews:MaterialFrame Margin="4"
-                                                  Padding="4"
-                                                  Elevation="4">                                        
-                                         <Grid ColumnSpacing="0" RowSpacing="0" clickedColor:Commands.Tap="TapGestureRecognizer_Tapped">                                             
-                                            <StackLayout Orientation="Vertical" VerticalOptions="Center" clickedColor:TouchEffect.Color="Red">                                                 
-                                                <Image>                                                     
-                                                    <Image.Source>                                                         
-                                                        <UriImageSource Uri = "{Binding PosterUrl}"/>                                                         
-                                                    </Image.Source>                                                     
-                                                </Image>
-                                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                    <Label Text="{Binding Title}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
-                                                </StackLayout>
-                                            </StackLayout>                                             
-                                            <!--<Grid.GestureRecognizers>
-                                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                             </Grid.GestureRecognizers>-->                                             
-                                        </Grid>                                         
-                                    </renderedViews:MaterialFrame>                                     
-                                </ContentView>                                 
-                            </renderedViews:DraggableViewCell>                             
-                        </DataTemplate>                         
-                    </renderedViews:HorizontalListView.ItemTemplate>                     
-                </renderedViews:HorizontalListView>
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="{translator:Translate TopRatedTV}" Margin="16, 5" VerticalOptions="Center"/>
-                <renderedViews:HorizontalListView CollectionPadding="16"
-                                   ItemSpacing="8"
-                                   EnableDragAndDrop="True"
-                                   ItemWidth="110"
-                                   ItemHeight="120"
-                                   ItemsSource="{Binding  TopRatedTV}"                                  
-                                   ListLayout="Grid"
-                                   >
+                                                  ItemSpacing="8"
+                                                  EnableDragAndDrop="True"
+                                                  ItemWidth="110"
+                                                  ItemHeight="120"
+                                                  ItemsSource="{Binding PopularTV}"
+                                                  ListLayout="Grid">
                     <renderedViews:HorizontalListView.ItemTemplate>
                         <DataTemplate>
                             <renderedViews:DraggableViewCell x:Name="DraggableViewCell">
                                 <ContentView>
                                     <renderedViews:MaterialFrame Margin="4"
-                                                  Padding="4"
-                                                  Elevation="4">
-                                        <Grid ColumnSpacing="0" RowSpacing="0" clickedColor:Commands.Tap="TapGestureRecognizer_Tapped">
-                                            <StackLayout Orientation="Vertical" VerticalOptions="Center" clickedColor:TouchEffect.Color="Red">
+                                                                 Padding="4"
+                                                                 Elevation="4">
+                                        <Grid ColumnSpacing="0"
+                                              RowSpacing="0"
+                                              clickedColor:Commands.Tap="TapGestureRecognizer_Tapped">
+                                            <StackLayout Orientation="Vertical"
+                                                         VerticalOptions="Center"
+                                                         clickedColor:TouchEffect.Color="Red">
                                                 <Image>
                                                     <Image.Source>
-                                                        <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                                        <UriImageSource Uri="{Binding PosterUrl}" />
                                                     </Image.Source>
                                                 </Image>
-                                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                    <Label Text="{Binding Title}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
+                                                <StackLayout Orientation="Vertical"
+                                                             HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Title}"
+                                                           HorizontalTextAlignment="Center"
+                                                           TextColor="{StaticResource whiteColor}" />
                                                 </StackLayout>
                                             </StackLayout>
-                                            <!--<Grid.GestureRecognizers>
-                                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                             </Grid.GestureRecognizers>-->
                                         </Grid>
                                     </renderedViews:MaterialFrame>
                                 </ContentView>
@@ -83,7 +52,51 @@
                         </DataTemplate>
                     </renderedViews:HorizontalListView.ItemTemplate>
                 </renderedViews:HorizontalListView>
-            </StackLayout>             
+                <Label TextColor="{StaticResource whiteColor}"
+                       FontSize="16"
+                       Text="{translator:Translate TopRatedTV}"
+                       Margin="16, 5"
+                       VerticalOptions="Center" />
+                <renderedViews:HorizontalListView CollectionPadding="16"
+                                                  ItemSpacing="8"
+                                                  EnableDragAndDrop="True"
+                                                  ItemWidth="110"
+                                                  ItemHeight="120"
+                                                  ItemsSource="{Binding  TopRatedTV}"
+                                                  ListLayout="Grid">
+                    <renderedViews:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                            <renderedViews:DraggableViewCell x:Name="DraggableViewCell">
+                                <ContentView>
+                                    <renderedViews:MaterialFrame Margin="4"
+                                                                 Padding="4"
+                                                                 Elevation="4">
+                                        <Grid ColumnSpacing="0"
+                                              RowSpacing="0"
+                                              clickedColor:Commands.Tap="TapGestureRecognizer_Tapped">
+                                            <StackLayout Orientation="Vertical"
+                                                         VerticalOptions="Center"
+                                                         clickedColor:TouchEffect.Color="Red">
+                                                <Image>
+                                                    <Image.Source>
+                                                        <UriImageSource Uri="{Binding PosterUrl}" />
+                                                    </Image.Source>
+                                                </Image>
+                                                <StackLayout Orientation="Vertical"
+                                                             HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Title}"
+                                                           HorizontalTextAlignment="Center"
+                                                           TextColor="{StaticResource whiteColor}" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                    </renderedViews:MaterialFrame>
+                                </ContentView>
+                            </renderedViews:DraggableViewCell>
+                        </DataTemplate>
+                    </renderedViews:HorizontalListView.ItemTemplate>
+                </renderedViews:HorizontalListView>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -25,10 +25,8 @@ namespace MoviePrediction.Droid
         private Drawable _unselectedBackground;
         private bool _selected;
 
-        protected override Android.Views.View GetCellCore(Cell item,
-                                                          Android.Views.View convertView,
-                                                          ViewGroup parent,
-                                                          Context context)
+        protected override Android.Views.View GetCellCore
+            (Cell item, Android.Views.View convertView, ViewGroup parent, Context context)
         {
             _cellCore = base.GetCellCore(item, convertView, parent, context);
 
