@@ -1,5 +1,6 @@
 ﻿using MoviePrediction.Convertors;
 using MoviePrediction.Models;
+using MoviePrediction.ViewModels;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -17,35 +18,9 @@ namespace MoviePrediction.Views
     {
         public MainPage ()
         {
-            InitializeComponent();
-            StackNavigation.Clear(Navigation);
-        }
+            InitializeComponent();           
 
-        private async void UsersIconClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new UsersPage());
-        }
-
-        private async void GoToMainPage(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }
-
-        private async void SearchIconClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
-                await Navigation.PushAsync(new HelpView("https://www.imdb.com/"));
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                await PopupNavigation.Instance.PopAsync();
-            }
-        }
+            BindingContext = new MainPageViewModel { Navigation = this.Navigation };            
+        }        
     }
 }

@@ -2,20 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviePrediction.Views.PredictionResult"
-             BackgroundImage="stickBackground.png"
-             xmlns:Extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
-             xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews">
+             BackgroundImage="stickBackground.png" >
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal"
                      VerticalOptions="Start">
             <ImageButton Source="predix.png"
                          WidthRequest="100"
                          BackgroundColor="Transparent"
-                         Clicked="GoToMainPage" />
+                         Command="{Binding GoHomePageCommand}" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="Center">
             <Grid>
                 <StackLayout VerticalOptions="CenterAndExpand"
                              HorizontalOptions="Center"

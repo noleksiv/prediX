@@ -15,18 +15,18 @@
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{translator:Translate HelpLabel}"
-                     Clicked="ClickedOnTheLink" />
+                     Command="{Binding LinkCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid Style="{StaticResource darkBackground}">
             <StackLayout Margin="30">
-                <CustomEditor:DarkEditor x:Name="emailInput"
+                <CustomEditor:DarkEditor Text="{Binding Email}"
                                          Placeholder="{translator:Translate EmailLabel}"
                                          AccentColor="White"
                                          Grid.Row="1"
                                          Grid.Column="0"
                                          Keyboard="Email" />
-                <CustomEditor:DarkEditor x:Name="pwdInput"
+                <CustomEditor:DarkEditor Text="{Binding Password}"
                                          Placeholder="{translator:Translate PasswordLabel}"
                                          IsPassword="True"
                                          AccentColor="White"
@@ -36,7 +36,7 @@
                         Style="{StaticResource defaultBtnStyle}"
                         Text="{translator:Translate SignInButton}"
                         Margin="25"
-                        Clicked="PredixLoginBtn_Clicked">
+                        Command="{Binding LoginCommand}">
                 </Button>
                 <Label  x:Name="HelpLabel"
                         HorizontalOptions="Center"
@@ -48,10 +48,12 @@
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LinkCommand}" />
+                    </Label.GestureRecognizers>
                 </Label>
-                <Label  x:Name="SignUpLabel"
-                        HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand">
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{translator:Translate NewToPredixLabel}"
@@ -59,6 +61,9 @@
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                    </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
         </Grid>

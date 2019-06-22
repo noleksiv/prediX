@@ -11,6 +11,6 @@ namespace MoviePrediction.Models
         int Id { get; set; }
         string Name { get; set; }
         string ProfilePath { get; set; }
-        Uri ProfileUrl { get; set; }
+        Uri ProfileUrl { get; }
     }
 }

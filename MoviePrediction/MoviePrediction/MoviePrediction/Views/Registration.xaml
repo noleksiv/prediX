@@ -16,10 +16,10 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary"
                      Text="{translator:Translate SignInButton}"
-                     Clicked="SignInClicked" />
+                     Command="{Binding SignInCommand}" />
         <ToolbarItem Order="Primary"
                      Text="{translator:Translate HelpLabel}"
-                     Clicked="HelpClicked" />
+                     Command="{Binding HelpLinkCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand"
@@ -34,20 +34,19 @@
                    Text="{translator:Translate HatePaperworkLabel}" />
             <Label Font="Bold,22"
                    Text="{translator:Translate CreateAccountLabel}" />
-            <CustomEditor:LightEditor x:Name="emailInput"
+            <CustomEditor:LightEditor Text="{Binding Email}"
                                       Placeholder="{translator:Translate EmailLabel}"
                                       AccentColor="#141414"
                                       Keyboard="Email"
                                       WidthRequest="300" />
-            <CustomEditor:LightEditor x:Name="pwdInput"
+            <CustomEditor:LightEditor Text="{Binding Password}"
                                       Placeholder="{translator:Translate PasswordLabel}"
                                       AccentColor="#141414"
                                       IsPassword="True"
                                       WidthRequest="300" />
-            <Button x:Name="SignUp"
-                    Style="{StaticResource defaultBtnStyle}"
+            <Button Style="{StaticResource defaultBtnStyle}"
                     Text="{translator:Translate SignUpButton}"
-                    Clicked="SignUp_Clicked">
+                    Command="{Binding SignUpCommand}">
             </Button>
         </StackLayout>
     </ContentPage.Content>

@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using MoviePrediction.Services.Photo;
+using SQLite;
 using System;
 
 namespace MoviePrediction.Models
@@ -24,6 +25,16 @@ namespace MoviePrediction.Models
         public double VoteAverage { get; set; }
 
         [Ignore]
-        public Uri PosterUrl { get; set; }
+        public Uri PosterUrl
+        {
+            get
+            {
+                var imageUrl = new ImageUrl();
+                var fullPath = imageUrl.CreatePosterLink(PosterPath, ImageUrl.PosterSize.w185);
+                var link = new Uri(fullPath);
+
+                return link;
+            }
+        }
     }
 }

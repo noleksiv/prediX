@@ -11,7 +11,7 @@
             <ImageButton Source="predix.png"
                          WidthRequest="100"
                          BackgroundColor="Transparent"
-                         Clicked="GoToMainPage" />
+                         Command="{Binding GoToMainPage}" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -88,7 +88,6 @@
                 <StackLayout Grid.Row="2"
                              Orientation="Vertical"
                              HorizontalOptions="FillAndExpand">
-
                     <StackLayout>
                         <Label Text="{translator:Translate OverviewLabel}"
                                FontSize="18"
@@ -105,8 +104,8 @@
                                                           ItemSpacing="8"
                                                           ItemHeight="180"
                                                           ItemWidth="144"
-                                                          ItemsSource="{Binding Cast}"
-                                                          SnapStyle="Center">
+                                                          SnapStyle="Center"
+                                                          ItemsSource="{Binding Cast}">
                             <renderedViews:HorizontalListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>

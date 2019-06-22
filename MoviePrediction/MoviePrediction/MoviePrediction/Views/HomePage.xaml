@@ -39,11 +39,12 @@
             </Cards:CarouselView>
 
             <ListView   x:Name="trendingListView"
-                        ItemsSource="{Binding Movies}"
-                        HasUnevenRows="True"
+                        Margin="5, 0"
+                        HasUnevenRows="True"                        
                         Style="{StaticResource customListView}"
-                        ItemTapped="TrendingListView_ItemSelected"
-                        Margin="5, 0">
+                        ItemsSource="{Binding Movies}"
+                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                        ItemSelected="OnMovieSelected" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">
@@ -101,5 +102,3 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-<!--https://github.com/AndreiMisiukevich/CardView-->

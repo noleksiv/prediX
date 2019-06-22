@@ -1,88 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MoviePrediction.Models;
-using MoviePrediction.Services.Trending;
-using System.Collections.ObjectModel;
-using MoviePrediction.Services.Photo;
-using MoviePrediction.Services.Database;
-using Rg.Plugins.Popup.Services;
-using MoviePrediction.CustomViews;
+using MoviePrediction.ViewModels;
 
 namespace MoviePrediction.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        private ImageUrl imageUrl = new ImageUrl();
-
-        public ObservableCollection<IMovieIntro> Movies { get; set; }
-
-        public HomePage ()
-		{
-			InitializeComponent ();
-            FillInPage();            
-            this.BindingContext = this;
+        public HomePageViewModel ViewModel
+        {
+            get => BindingContext as HomePageViewModel;
+            set => BindingContext = value;
         }
 
-        public  void FillInPage()
+        public HomePage()
         {
-             FillInPageAsync();
-        }
-        public  void FillInPageAsync()
-        {
-            var trendyMovies = GetTrendingMovies();
-
-            Movies = new ObservableCollection<IMovieIntro>(trendyMovies);
-
-            foreach (var movie in Movies)
-            {
-                movie.PosterUrl = new Uri(imageUrl.CreatePosterLink(movie));
-            }
+            // TODO: clearing a navigation stack
+            InitializeComponent();
+            ViewModel = new HomePageViewModel(new PageService());
         }
 
-        public IEnumerable<IMovieIntro> GetTrendingMovies()
+        private void OnMovieSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var trendyMovies = new TrendyMovies();
-            var getMovies = new GetTrendyMovies(trendyMovies);
-            var movies = getMovies.GetMovies();
-
-            return movies;               
-        }
-
-        private async void TrendingListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null) return;
-
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new PopupLoading());
-
-                var selectedItem = ((ListView)sender).SelectedItem;
-                var movie = selectedItem as MovieShort;
-
-                // connection to Firebase
-                //var db = new DbFirebase();
-                //await db.AddToHistory(movie);
-
-                await Navigation.PushAsync(new MovieInfo(movie));
-
-                trendingListView.SelectedItem = null;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                trendingListView.SelectedItem = null;
-                await PopupNavigation.Instance.PopAsync();
-            }            
+            ViewModel.ItemSelectedCommand.Execute(e.SelectedItem);
         }
     }
 }

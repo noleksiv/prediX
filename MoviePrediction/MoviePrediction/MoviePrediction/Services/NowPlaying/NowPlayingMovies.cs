@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MoviePrediction.Services.NowPlaying
 {
-    public class NowPlaying : ApiMovieResponse
+    public class NowPlayingMovies : ApiMovieResponse
     {
         [JsonProperty("dates")]
         public Date Dates { get; set; }        

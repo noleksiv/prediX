@@ -11,16 +11,16 @@
             <ImageButton Source="predix.png"
                          WidthRequest="100"
                          BackgroundColor="Transparent"
-                         Clicked="GoToMainPage" />
+                         Command="{Binding HomePageCommand}" />
         </StackLayout>
     </NavigationPage.TitleView>
     <TabbedPage.ToolbarItems>
         <ToolbarItem Order="Primary"
                      Icon="search.png"
-                     Clicked="SearchIconClicked" />
+                     Command="{Binding SearchIconCommand}" />
         <ToolbarItem Order="Primary"
                      Icon="user.png"
-                     Clicked="UsersIconClicked" />
+                     Command="{Binding UsersIconCommand}" />
     </TabbedPage.ToolbarItems>
     <TabbedPage.Children>
         <local:HomePage Title="{translator:Translate HomePageTitle}" />

@@ -11,7 +11,7 @@
             <ImageButton Source="predix.png"
                          WidthRequest="100"
                          BackgroundColor="Transparent"
-                         Clicked="GoToMainPage" />
+                         Command="{Binding GoHomePageCommand}" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -60,7 +60,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{translator:Translate IMDbProfileLabel}">
                                     <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="GoToImdbProfile" />
+                                        <TapGestureRecognizer Command="{Binding GoToProfileCommand}" />
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
@@ -73,8 +73,8 @@
                                                   ItemSpacing="8"
                                                   ItemHeight="335"
                                                   ItemWidth="155"
-                                                  ItemsSource="{Binding Movies.Cast}"
-                                                  SnapStyle="Center">
+                                                  SnapStyle="Center"
+                                                  ItemsSource="{Binding Movies.Cast}">
                     <renderedViews:HorizontalListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -107,11 +107,9 @@
                     </renderedViews:HorizontalListView.ItemTemplate>
                 </renderedViews:HorizontalListView>
                 <StackLayout>
-                    <forms:ChartView x:Name="BarChartDiagram"
-                                     Chart="{Binding BarChart}"
+                    <forms:ChartView Chart="{Binding BarChart}"
                                      HeightRequest="250" />
-                    <forms:ChartView x:Name="CircleDiagram"
-                                     Chart="{Binding CircleChart}"
+                    <forms:ChartView Chart="{Binding CircleChart}"
                                      HeightRequest="250" />
                 </StackLayout>
             </StackLayout>

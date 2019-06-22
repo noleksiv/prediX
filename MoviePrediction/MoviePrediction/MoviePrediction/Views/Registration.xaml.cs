@@ -1,14 +1,6 @@
-﻿using MoviePrediction.CustomViews;
-using MoviePrediction.Resources;
-using MoviePrediction.Services.Database;
-using Rg.Plugins.Popup.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MoviePrediction.ViewModels;
 
 namespace MoviePrediction.Views
 {
@@ -17,73 +9,8 @@ namespace MoviePrediction.Views
 	{
 		public Registration ()
 		{
-            InitializeComponent ();
-        }
-
-        private async void SignUp_Clicked(object sender, EventArgs e)
-        {
-            var email = emailInput.Text;
-            var pwd = pwdInput.Text;
-
-            if (email!=null && pwd != null)
-            {
-                var registerCommand = new DbFirebase();
-                try
-                {
-                    await PopupNavigation.Instance.PushAsync(new PopupLoading());
-
-                    var token = await registerCommand.SignUp(email, pwd);
-
-                    if (token != null)
-                    {
-                        await Navigation.PushAsync(new LoginPage());
-                    }
-                }
-                catch (Exception ex)
-                {
-                    await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
-                }
-                finally
-                {
-                    await PopupNavigation.Instance.PopAsync();
-                }
-            }
-        }
-
-        private async void SignInClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
-
-                await Navigation.PushAsync(new LoginPage());
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
-            }
-            finally
-            {
-                await PopupNavigation.Instance.PopAsync();
-            }            
-        }
-
-        private async void HelpClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
-
-                await Navigation.PushAsync(new HelpView());
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert(AppResources.WarningTitle, ex.Message, AppResources.ConfirmText, AppResources.CancelText);
-            }
-            finally
-            {
-                await PopupNavigation.Instance.PopAsync();
-            }
-        }
-    }
+			InitializeComponent();
+			BindingContext = new RegistrationPageViewModel(new PageService());
+		}     
+	}
 }

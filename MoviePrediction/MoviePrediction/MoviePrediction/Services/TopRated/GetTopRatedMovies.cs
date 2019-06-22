@@ -1,12 +1,11 @@
 ﻿using MoviePrediction.Models;
+using MoviePrediction.Services.Popular;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MoviePrediction.Services.TopRated
 {
-    public class GetTopRatedMovies
+    public class GetTopRatedMovies: IMovieEnumeration
     {
         private TheMovieDb _movieDb;
         private DataReceiver _dataReceiver;
@@ -17,14 +16,13 @@ namespace MoviePrediction.Services.TopRated
             _dataReceiver = new DataReceiver(_movieDb);
         }
 
-        public IList<MovieShort> GetTopMovies(int pageNumb = 1)
+        public IList<MovieShort> GetMovieEnumeration(int pageNumb = 1)
         {
             var parameters = $"3/movie/top_rated?api_key={_movieDb.ApiKey}&page={pageNumb}";
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
-            var movies = JsonConvert.DeserializeObject<TopRated>(jsonStr);
-            // return results
-            return movies.Movies;
+            var movies = JsonConvert.DeserializeObject<PopularMovies>(jsonStr);
+            return movies.Results;
         }
     }
 }

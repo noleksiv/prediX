@@ -1,12 +1,8 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using MoviePrediction.Views;
 using MoviePrediction.Services.Database;
 using MoviePrediction.Models;
 using MoviePrediction.CustomViews;
-using MonkeyCache.SQLite;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MoviePrediction

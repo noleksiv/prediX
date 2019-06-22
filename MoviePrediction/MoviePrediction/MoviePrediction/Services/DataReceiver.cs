@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
-using MonkeyCache;
 using MonkeyCache.SQLite;
 using Plugin.Connectivity;
 using Plugin.Multilingual;
@@ -27,6 +23,7 @@ namespace MoviePrediction.Services
             _credentials = credentials;
         }
 
+        // TODO: merged into one
         public string GetRequestJson(string param)
         {
             var json = String.Empty;

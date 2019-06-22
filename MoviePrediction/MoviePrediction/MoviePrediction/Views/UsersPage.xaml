@@ -9,7 +9,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary"
                      Icon="exit.png"
-                     Clicked="LogOutClicked" />
+                     Command="{Binding LogOutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="{StaticResource darkColor}"

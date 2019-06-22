@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MoviePrediction.Services.Photo;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,7 +45,7 @@ namespace MoviePrediction.Models
 
         public int Metacritic
         {
-            get => (int)(IMDb * 10-10);
+            get => (int)(IMDb * 10 - 10);
         }
 
         [JsonProperty("title")]
@@ -97,7 +98,40 @@ namespace MoviePrediction.Models
         [JsonProperty("origin_country")]
         public ICollection<string> OriginCountry { get; set; }
 
-        public Uri PosterUrl { get; set; }
-        public Uri BackdropUrl { get; set; }
-    }       
+        public Uri PosterUrl
+        {
+            get
+            {
+                if (PosterPath != null)
+                {
+                    var imageUrl = new ImageUrl();
+                    var link = new Uri(imageUrl.CreatePosterLink(PosterPath));
+
+                    return link;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public Uri BackdropUrl
+        {
+            get
+            {
+                if (BackdropPath != null)
+                {
+                    var imageUrl = new ImageUrl();
+                    var link = new Uri(imageUrl.CreatePosterLink(BackdropPath));
+
+                    return link;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+    }
 }

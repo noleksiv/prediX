@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MoviePrediction.Services.Photo;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,7 @@ namespace MoviePrediction.Models
     public class PersonProfile
     {
         private string _deathday;
+        private string _profilePath;
 
         [JsonProperty("birthday")]
         public string Birthday { get; set; }
@@ -38,7 +40,7 @@ namespace MoviePrediction.Models
         public string Name { get; set; }
 
         [JsonProperty("also_known_as")]
-        public IEnumerable<string> AlsoKnownAs { get; set; }        
+        public IEnumerable<string> AlsoKnownAs { get; set; }
 
         [JsonProperty("biography")]
         public string Biography { get; set; }
@@ -50,7 +52,21 @@ namespace MoviePrediction.Models
         public string PlaceOfBirth { get; set; }
 
         [JsonProperty("profile_path")]
-        public string ProfilePath { get; set; }
+        public string ProfilePath
+        {
+            get
+            {
+                var imageUrl = new ImageUrl();
+                var fullPath = imageUrl.CreatePosterLink(_profilePath);
+
+                return fullPath;
+            }
+            set
+            {
+                if (_profilePath != value)
+                    _profilePath = value;
+            }
+        }
 
         [JsonProperty("imdb_id")]
         public string ImdbId { get; set; }
@@ -87,7 +103,7 @@ namespace MoviePrediction.Models
 
         public string GetStarRating()
         {
-            if (Popularity>10)
+            if (Popularity > 10)
             {
                 return "stars5.jpg";
             }

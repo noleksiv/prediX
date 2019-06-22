@@ -8,7 +8,7 @@
             <ImageButton Source="predix.png"
                          WidthRequest="100"
                          BackgroundColor="Transparent"
-                         Clicked="GoToMainPage" />
+                         Command="{Binding BrowseCommand}" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>

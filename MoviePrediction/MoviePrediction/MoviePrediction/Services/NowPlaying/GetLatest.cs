@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MoviePrediction.Services.NowPlaying
 {
-    public class GetLatest
+    public class GetLatest: IMovieHeap
     {
         private TheMovieDb _movieDb;
         private DataReceiver _dataReceiver;
@@ -18,52 +18,18 @@ namespace MoviePrediction.Services.NowPlaying
             _dataReceiver = new DataReceiver(_movieDb);
         }
 
-        public NowPlaying GetLatestMovies()
-        {
-            var parameters = $"3/movie/now_playing?api_key={_movieDb.ApiKey}&page=1";
-
-            var jsonStr = _dataReceiver.GetRequestJson(parameters);
-
-            var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);
-
-            return latestMovies;
-        }
-
-        public IList<MovieShort> GetLatestMovies(int page = 1)
+        public NowPlayingMovies GetMovieHeap(int page = 1)
         {
             var parameters = $"3/movie/now_playing?api_key={_movieDb.ApiKey}&page={page}";
-
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
-
-            var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);
-
-            return latestMovies.Movies;
-        }
-
-        public NowPlaying GetUpcomingMovies()
-        {
-            var region = System.Globalization.RegionInfo.CurrentRegion.Name;
-
-            var parameters = $"3/movie/upcoming?api_key={_movieDb.ApiKey}&page=1&region={region}";
-
-            var jsonStr = _dataReceiver.GetRequestJson(parameters);
-
-            var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);
-
+            var latestMovies = JsonConvert.DeserializeObject<NowPlayingMovies>(jsonStr);
             return latestMovies;
         }
 
-        public IList<MovieShort> GetUpcomingMovies(int page = 1)
+        public IList<MovieShort> GetMovieEnumeration(int page = 1)
         {
-            var region = System.Globalization.RegionInfo.CurrentRegion.Name;
-
-            var parameters = $"3/movie/upcoming?api_key={_movieDb.ApiKey}&page={page}&region={region}";
-
-            var jsonStr = _dataReceiver.GetRequestJson(parameters);
-
-            var latestMovies = JsonConvert.DeserializeObject<NowPlaying>(jsonStr);
-
-            return latestMovies.Movies;
+            var getHeap = GetMovieHeap(page);
+            return getHeap.Movies;
         }
     }
 }

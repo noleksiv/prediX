@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoviePrediction.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,25 +13,16 @@ namespace MoviePrediction.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HelpView : ContentPage
 	{
-        public string RedirectUrl { get; set; }
 
-        public HelpView ()
+		public HelpView ()
 		{
 			InitializeComponent ();
-            RedirectUrl = "https://help.netflix.com/en/";
-            this.BindingContext = this;
-        }
+		}
 
-        public HelpView(string url)
-        {
-            InitializeComponent();
-            RedirectUrl = url;
-            this.BindingContext = this;
-        }
-
-        private async void GoToMainPage(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }
-    }
+		public HelpView(string url = "https://help.netflix.com/en/") : this()
+		{
+			InitializeComponent();
+			BindingContext = new HelpPageViewModel(url, new PageService());
+		}
+	}
 }
