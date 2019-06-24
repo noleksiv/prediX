@@ -35,7 +35,7 @@ namespace MoviePrediction.ViewModels
 
         private async Task<double> Prediction(MovieShort movie)
         {
-            var credits = new GetCastAndCrew(movie.Id);
+            var credits = new CastAndCrew(movie.Id);
             var castList = credits.GetCredits();
             var countToTake = castList.Cast.Count > _maxCounter ? _maxCounter : castList.Cast.Count;
             var rateAvg = 0D;
@@ -44,7 +44,7 @@ namespace MoviePrediction.ViewModels
             {
                 foreach (var cast in castList.Cast.Take(countToTake))
                 {
-                    var person = new GetProfileInfo(cast.Id);
+                    var person = new ProfileInfo(cast.Id);
                     var resume = person.GetHistory();
                     rateAvg += resume.Cast.Select(i => i.VoteAverage).Average();
                 }

@@ -1,6 +1,5 @@
 ﻿using MoviePrediction.CustomViews;
 using MoviePrediction.Models;
-using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Trending;
 using MoviePrediction.Views;
 using System.Collections.Generic;
@@ -21,7 +20,7 @@ namespace MoviePrediction.ViewModels
             get { return _selectedItem; }
             set
             {
-                SetValue(ref _selectedItem, value);
+                SetValue(ref _selectedItem, value, ItemSelectedCommand);
             }
         }
         public ObservableCollection<IMovieIntro> Movies { get; set; }
@@ -47,8 +46,7 @@ namespace MoviePrediction.ViewModels
 
         public IEnumerable<IMovieIntro> GetTrendingMovies()
         {
-            var trendyMovies = new TrendyMovies();
-            var getMovies = new GetTrendyMovies(trendyMovies);
+            var getMovies = new TrendyMoviesService();
             var movies = getMovies.GetMovies();
 
             return movies;
@@ -60,7 +58,6 @@ namespace MoviePrediction.ViewModels
             {
                 await _pageService.PushAsync(new PopupLoading());
                 await _pageService.PushAsync(new MovieInfo(movie as MovieShort));
-                SelectedItem = null;
             }
             catch
             {
@@ -68,6 +65,7 @@ namespace MoviePrediction.ViewModels
             }
             finally
             {
+                SelectedItem = null;
                 await _pageService.PopAsync();                
             }
         }

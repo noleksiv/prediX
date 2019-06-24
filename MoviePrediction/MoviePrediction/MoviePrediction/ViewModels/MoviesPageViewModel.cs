@@ -3,16 +3,13 @@ using MoviePrediction.Models;
 using MoviePrediction.Resources;
 using MoviePrediction.Services;
 using MoviePrediction.Services.NowPlaying;
-using MoviePrediction.Services.Photo;
 using MoviePrediction.Services.Popular;
 using MoviePrediction.Services.TopRated;
 using MoviePrediction.Views;
 using Rg.Plugins.Popup.Pages;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -21,15 +18,16 @@ namespace MoviePrediction.ViewModels
 {
     public class MoviesPageViewModel: ViewModelBase
     {
-        private MovieTap _tap;
-        private LoadMore _loadMore;
-        private IPageService _pageService;
-        private IMovieIntro _selectedItem;
+        private readonly MovieTap _tap;
+        private readonly IPageService _pageService;
         private const int _numbOfMovies = 5;
+        private LoadMore _loadMore;        
+        private IMovieIntro _selectedItem;
 
         public string Title { get; set; }
         public string LatestStartDate { get; set; }
         public string LatestEndsDate { get; set; }
+
         public string PlayingDate
         {
             get
@@ -76,7 +74,7 @@ namespace MoviePrediction.ViewModels
             {
                 case MovieTap.Latest:
                     Title = AppResources.NowPlayingLabel;
-                    var getLatest = new GetLatest();
+                    var getLatest = new Latest();
                     GetContentHeap(getLatest);
                     break;
 
@@ -88,13 +86,13 @@ namespace MoviePrediction.ViewModels
 
                 case MovieTap.Popular:
                     Title = AppResources.PopularMovieLabel;
-                    var getPopular = new GetPopularMovies();
+                    var getPopular = new PopularMoviesService();
                     GetContentList(getPopular);
                     break;
 
                 case MovieTap.Toprated:
                     Title = AppResources.TopRatedMovieLabel;
-                    var getTopRated = new GetTopRatedMovies();
+                    var getTopRated = new TopRatedMovies();
                     GetContentList(getTopRated);
                     break;
 

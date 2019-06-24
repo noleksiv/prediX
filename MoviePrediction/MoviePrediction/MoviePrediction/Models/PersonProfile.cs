@@ -56,10 +56,10 @@ namespace MoviePrediction.Models
         {
             get
             {
-                var imageUrl = new ImageUrl();
-                var fullPath = imageUrl.CreatePosterLink(_profilePath);
+                var imageUrl = new PosterImage();
+                var link = imageUrl.CreatePosterLink(_profilePath);
 
-                return fullPath;
+                return link.ToString();
             }
             set
             {

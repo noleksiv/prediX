@@ -49,7 +49,7 @@ namespace MoviePrediction.ViewModels
 
         public void GetMovieCredits(int movieId)
         {
-            var castAndCrew = new GetCastAndCrew(movieId);
+            var castAndCrew = new CastAndCrew(movieId);
             var castInfo = castAndCrew.GetCredits();
 
             // IEnumerable to ObservableCollection

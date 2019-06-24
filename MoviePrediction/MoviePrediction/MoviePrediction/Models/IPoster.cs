@@ -2,17 +2,18 @@
 
 namespace MoviePrediction.Models
 {
-    public interface IPosterString
+    public interface IBackdropCompilation
     {
-        string PosterPath { get; set; }
+        Uri BackdropUrl { get; }
         string BackdropPath { get; set; }
     }
 
-    public interface IPosterUrl
+    public interface IPosterCompilation
     {
         Uri PosterUrl { get; }
-        Uri BackdropUrl { get; }
+        string PosterPath { get; set; }       
+        
     }
 
-    public interface IPoster : IPosterString, IPosterUrl { }
+    public interface IPoster : IPosterCompilation, IBackdropCompilation { }
 }

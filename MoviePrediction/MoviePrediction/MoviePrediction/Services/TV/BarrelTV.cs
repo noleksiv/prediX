@@ -7,20 +7,11 @@ using System.Threading.Tasks;
 
 namespace MoviePrediction.Services
 {
-    public abstract class BarrelTV
+    public abstract class BarrelTV: DataDeserializer
     {
-        private TheMovieDb _movieDb;
-        private DataReceiver _dataReceiver;
-
-        public BarrelTV()
-        {
-            _movieDb = new TheMovieDb();
-            _dataReceiver = new DataReceiver(_movieDb);
-        }
-
         public string GetTVJson(string tap, int pageNumb = 1)
         {
-            var parameters = $"3/tv/{tap}?api_key={_movieDb.ApiKey}&page={pageNumb}";
+            var parameters = $"3/tv/{tap}?page={pageNumb}&";
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
 
             return jsonStr;
@@ -28,7 +19,7 @@ namespace MoviePrediction.Services
 
         public async Task<string> GetTVJsonAsync(string tap, int pageNumb = 1)
         {
-            var parameters = $"3/tv/{tap}?api_key={_movieDb.ApiKey}&page={pageNumb}";
+            var parameters = $"3/tv/{tap}?page={pageNumb}&";
             var jsonStr = await _dataReceiver.GetJsonAsync(parameters);
 
             return jsonStr;

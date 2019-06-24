@@ -66,7 +66,7 @@ namespace MoviePrediction.ViewModels
 
         private void FillInPage(People human)
         {
-            var bioInfo = new GetProfileInfo(human.Id);
+            var bioInfo = new ProfileInfo(human.Id);
             Info = bioInfo.GetInfo();
             ImageLink = new Uri(Info.ProfilePath);
 

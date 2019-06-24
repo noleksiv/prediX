@@ -3,6 +3,7 @@ using Xamarin.Forms.Xaml;
 using MoviePrediction.Services.Database;
 using MoviePrediction.Models;
 using MoviePrediction.CustomViews;
+using MoviePrediction.Helpers;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MoviePrediction

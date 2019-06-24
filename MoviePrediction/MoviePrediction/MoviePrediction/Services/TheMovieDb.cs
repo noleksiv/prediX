@@ -2,9 +2,9 @@
 
 namespace MoviePrediction.Services
 {
-    public class TheMovieDb : IApiCredentials
+    public class TheMovieDb
     {
-        public string SiteLink { get; set; } = LinksContainer.TheMovieDb;
-        public string ApiKey { get; private set; } = LinksContainer.ApiKey;
+        public const string SiteLink = LinksContainer.TheMovieDb;
+        public const string ApiKey = LinksContainer.ApiKey;
     }
 }

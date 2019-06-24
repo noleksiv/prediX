@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace MoviePrediction.Services.NowPlaying
 {
-    public class UpcomingMovies: DataDeserializer, IMovieHeap
+    public class Latest: DataDeserializer, IMovieHeap
     {
         public NowPlayingMovies GetMovieHeap(int page = 1)
         {
-            var region = System.Globalization.RegionInfo.CurrentRegion.Name;
-            var parameters = $"3/movie/upcoming?page={page}&region={region}&";
-            var upcomingMovies = ReceiveDeserializedData<NowPlayingMovies>(parameters);
-            return upcomingMovies;
+            var parameters = $"3/movie/now_playing?page={page}&";
+            var latestMovies = ReceiveDeserializedData<NowPlayingMovies>(parameters);
+            return latestMovies;
         }
 
         public IList<MovieShort> GetMovieEnumeration(int page = 1)

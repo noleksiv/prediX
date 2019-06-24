@@ -1,5 +1,4 @@
-﻿
-namespace MoviePrediction.Models
+﻿namespace MoviePrediction.Models
 {
     public interface ICrew : IMember
     {

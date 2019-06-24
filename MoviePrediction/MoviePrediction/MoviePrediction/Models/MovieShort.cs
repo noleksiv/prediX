@@ -102,8 +102,8 @@ namespace MoviePrediction.Models
             {
                 if (PosterPath != null)
                 {
-                    var imageUrl = new ImageUrl();
-                    var link = new Uri(imageUrl.CreatePosterLink(PosterPath));
+                    var imageUrl = new PosterImage();
+                    var link = imageUrl.CreatePosterLink(PosterPath);
 
                     return link;
                 }
@@ -120,8 +120,8 @@ namespace MoviePrediction.Models
             {
                 if (BackdropPath != null)
                 {
-                    var imageUrl = new ImageUrl();
-                    var link = new Uri(imageUrl.CreateBackdropLink(BackdropPath));
+                    var imageUrl = new BackdropImage();
+                    var link = imageUrl.CreateBackdropLink(BackdropPath);
 
                     return link;
                 }

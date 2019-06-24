@@ -9,6 +9,9 @@ namespace MoviePrediction.Helpers
         public const string TmdbAbsolute = "http://image.tmdb.org/t/p/";
 
         // It is desirable to change on your own.
+        public const string PredixFirebase = "https://pred1x.firebaseio.com/";
+
+        // TODO: take from
         public const string ApiKey = "15854b836e7d12b1d8e122960da34dec";
     }
 }

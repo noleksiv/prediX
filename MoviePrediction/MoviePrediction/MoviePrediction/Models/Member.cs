@@ -21,11 +21,12 @@ namespace MoviePrediction.Models
         [JsonProperty("profile_path")]
         public string ProfilePath { get; set; }
 
-        public Uri ProfileUrl {
+        public Uri ProfileUrl
+        {
             get
             {
-                var imageUrl = new ImageUrl();
-                var link = new Uri(imageUrl.CreatePosterLink(ProfilePath));
+                var imageUrl = new PosterImage();
+                var link = imageUrl.CreatePosterLink(ProfilePath);
 
                 return link;
             }

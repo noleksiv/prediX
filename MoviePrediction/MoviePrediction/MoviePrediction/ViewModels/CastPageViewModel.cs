@@ -62,7 +62,7 @@ namespace MoviePrediction.ViewModels
 
         public void FillInPage()
         {
-            var cast = new GetPopularPeople();
+            var cast = new PopularPeopleService();
             var people = cast.GetPeople();
 
             Cast.AddRange(people);
@@ -70,7 +70,7 @@ namespace MoviePrediction.ViewModels
 
         private async Task<IEnumerable<People>> LoadMorePeople()
         {
-            var cast = new GetPopularPeople();
+            var cast = new PopularPeopleService();
             var page = Cast.Count / _castsOnPage;
             var people = await cast.GetPeopleAsync(page + 1);
 

@@ -37,12 +37,11 @@
                                                 UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" />
             </Cards:CarouselView>
 
-            <ListView   x:Name="trendingListView"
-                        Margin="5, 0"
-                        HasUnevenRows="True"
-                        Style="{StaticResource customListView}"
-                        ItemsSource="{Binding Movies}"
-                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+            <ListView Margin="5, 0"
+                      HasUnevenRows="True"
+                      Style="{StaticResource customListView}"
+                      ItemsSource="{Binding Movies}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">

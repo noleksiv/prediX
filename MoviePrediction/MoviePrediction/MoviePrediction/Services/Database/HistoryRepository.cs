@@ -11,7 +11,7 @@ namespace MoviePrediction.Services.Database
 {
     public class HistoryRepository
     {
-        private int _maxElements = 20;
+        private const int _maxElements = 20;
         private SQLiteConnection _connection;
 
         public HistoryRepository(string filename)
