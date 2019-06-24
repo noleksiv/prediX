@@ -7,8 +7,8 @@ namespace MoviePrediction.Convertors
     {
         public string GenerateColor(Random random)
         {
-            var numbers = "0123456789";
-            var chars = "abcdef";
+            var numbers = HexHTML.Numbers;
+            var chars = HexHTML.Chars;
 
             var color = new StringBuilder("#");
 
@@ -22,9 +22,16 @@ namespace MoviePrediction.Convertors
                     continue;
                 }
 
-                color.Append(chars[random.Next(0, chars.Length)]);
+                var getChar = chars[random.Next(0, chars.Length)];
+                color.Append(getChar);
             }
             return color.ToString();
         }
+    }
+
+    public static class HexHTML
+    {
+        public const string Numbers = "0123456789";
+        public const string Chars = "abcdef";
     }
 }

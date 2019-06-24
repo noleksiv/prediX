@@ -1,6 +1,6 @@
-﻿using MoviePrediction.Services.Photo;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Services.Photo;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -76,7 +76,7 @@ namespace MoviePrediction.Models
 
         public string ProfileUrl
         {
-            get => $"https://www.imdb.com/name/{ImdbId}/";
+            get => $"{LinksContainer.Imdb}{ImdbId}/";
         }
 
         public string Pseudonyms

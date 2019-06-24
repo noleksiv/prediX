@@ -1,19 +1,14 @@
-﻿using Sharpnado.Presentation.Forms.CustomViews;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using Xamarin.Forms;
+using Sharpnado.Presentation.Forms.CustomViews;
 
 namespace MoviePrediction.CustomViews
 {
     public interface ILazyView
     {
         View Content { get; set; }
-
         Color AccentColor { get; }
-
         bool IsLoaded { get; }
-
         void LoadView();
     }
 
@@ -104,8 +99,7 @@ namespace MoviePrediction.CustomViews
         }
     }
 
-    public class LazyView<TView> : ALazyView
-        where TView : View, new()
+    public class LazyView<TView> : ALazyView where TView : View, new()
     {
         public override void LoadView()
         {

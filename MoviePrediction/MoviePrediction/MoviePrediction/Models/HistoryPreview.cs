@@ -30,7 +30,7 @@ namespace MoviePrediction.Models
             get
             {
                 var imageUrl = new ImageUrl();
-                var fullPath = imageUrl.CreatePosterLink(PosterPath, ImageUrl.PosterSize.w185);
+                var fullPath = imageUrl.CreatePosterLink(PosterPath, PosterSize.w185);
                 var link = new Uri(fullPath);
 
                 return link;

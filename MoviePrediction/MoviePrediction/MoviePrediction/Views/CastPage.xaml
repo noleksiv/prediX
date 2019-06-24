@@ -7,11 +7,10 @@
              x:Class="MoviePrediction.Views.CastPage">
     <ContentPage.Content>
         <StackLayout>
-            <ListView   x:Name="populatCastListView"
-                        ItemsSource="{Binding Cast}"
-                        HasUnevenRows="True"
-                        Style="{StaticResource customListView}"
-                        SelectedItem="{Binding SelectedActor, Mode=TwoWay}" >
+            <ListView  Style="{StaticResource customListView}"
+                       HasUnevenRows="True"
+                       ItemsSource="{Binding Cast}"
+                       SelectedItem="{Binding SelectedActor, Mode=TwoWay}">
                 <ListView.Behaviors>
                     <Extended:InfiniteScrollBehavior  IsLoadingMore="{Binding IsBusy}" />
                 </ListView.Behaviors>
@@ -38,7 +37,7 @@
                             </ViewCell.View>
                         </CustomViewCell:DarkThemeViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>               
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

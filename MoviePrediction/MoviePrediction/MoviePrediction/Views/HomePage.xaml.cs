@@ -17,13 +17,8 @@ namespace MoviePrediction.Views
         public HomePage()
         {
             // TODO: clearing a navigation stack
-            InitializeComponent();
+            InitializeComponent();            
             ViewModel = new HomePageViewModel(new PageService());
-        }
-
-        private void OnMovieSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            ViewModel.ItemSelectedCommand.Execute(e.SelectedItem);
         }
     }
 }

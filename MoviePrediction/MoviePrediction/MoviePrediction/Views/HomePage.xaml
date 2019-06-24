@@ -9,11 +9,10 @@
         <StackLayout BackgroundColor="{StaticResource darkColor}"
                      VerticalOptions="FillAndExpand">
 
-            <Cards:CarouselView     x:Name="trendingCarousel"
-                                    ItemsSource="{Binding Movies}"
-                                    SlideShowDuration="3000"
-                                    HeightRequest="750"
-                                    BackgroundColor="{StaticResource darkColor}">
+            <Cards:CarouselView ItemsSource="{Binding Movies}"
+                                SlideShowDuration="3000"
+                                HeightRequest="750"
+                                BackgroundColor="{StaticResource darkColor}">
                 <Cards:CarouselView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
@@ -40,11 +39,10 @@
 
             <ListView   x:Name="trendingListView"
                         Margin="5, 0"
-                        HasUnevenRows="True"                        
+                        HasUnevenRows="True"
                         Style="{StaticResource customListView}"
                         ItemsSource="{Binding Movies}"
-                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                        ItemSelected="OnMovieSelected" >
+                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">
@@ -74,11 +72,8 @@
                                                    HeightRequest="15"
                                                    HorizontalOptions="Start" />
 
-                                            <Label Text="{Binding IMDb}"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}"
-                                                   LineBreakMode="NoWrap"
-                                                   VerticalOptions="Center" />
+                                            <Label Style="{StaticResource assessmentLabel}"
+                                                   Text="{Binding IMDb}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
 
@@ -86,11 +81,8 @@
                                                    HeightRequest="15"
                                                    HorizontalOptions="Start" />
 
-                                            <Label Text="{Binding Metacritic}"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}"
-                                                   LineBreakMode="NoWrap"
-                                                   VerticalOptions="Center" />
+                                            <Label Style="{StaticResource assessmentLabel}"
+                                                   Text="{Binding Metacritic}" />
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

@@ -36,12 +36,12 @@
                    Text="{translator:Translate CreateAccountLabel}" />
             <CustomEditor:LightEditor Text="{Binding Email}"
                                       Placeholder="{translator:Translate EmailLabel}"
-                                      AccentColor="#141414"
+                                      AccentColor="{StaticResource darkColor}"
                                       Keyboard="Email"
                                       WidthRequest="300" />
             <CustomEditor:LightEditor Text="{Binding Password}"
                                       Placeholder="{translator:Translate PasswordLabel}"
-                                      AccentColor="#141414"
+                                      AccentColor="{StaticResource darkColor}"
                                       IsPassword="True"
                                       WidthRequest="300" />
             <Button Style="{StaticResource defaultBtnStyle}"

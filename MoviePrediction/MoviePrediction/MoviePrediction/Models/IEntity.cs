@@ -1,4 +1,5 @@
-﻿namespace MoviePrediction.Models
+﻿
+namespace MoviePrediction.Models
 {
     public interface IEntity
     {

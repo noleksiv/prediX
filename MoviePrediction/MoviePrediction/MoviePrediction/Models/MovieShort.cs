@@ -1,8 +1,7 @@
-﻿using MoviePrediction.Services.Photo;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using MoviePrediction.Services.Photo;
+using Newtonsoft.Json;
 
 namespace MoviePrediction.Models
 {
@@ -10,7 +9,6 @@ namespace MoviePrediction.Models
     {
         private string _title;
         private string _name;
-        private string _originalName;
 
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -123,7 +121,7 @@ namespace MoviePrediction.Models
                 if (BackdropPath != null)
                 {
                     var imageUrl = new ImageUrl();
-                    var link = new Uri(imageUrl.CreatePosterLink(BackdropPath));
+                    var link = new Uri(imageUrl.CreateBackdropLink(BackdropPath));
 
                     return link;
                 }

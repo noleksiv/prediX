@@ -3,8 +3,6 @@ using MoviePrediction.Resources;
 using MoviePrediction.Services.Database;
 using MoviePrediction.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -13,8 +11,8 @@ namespace MoviePrediction.ViewModels
 {
     public class LoginPageViewModel: ViewModelBase
     {
-        private string _email = "looporez@gmail.com";
-        private string _password = "123456";
+        private string _email;
+        private string _password;
         private IPageService _pageService;
 
         public string Email

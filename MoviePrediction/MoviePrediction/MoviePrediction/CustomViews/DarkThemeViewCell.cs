@@ -5,7 +5,7 @@ namespace MoviePrediction.CustomViews
     public class DarkThemeViewCell : ViewCell
     {
         public static readonly BindableProperty SelectedItemBackgroundColorProperty =
-        BindableProperty.Create("SelectedItemBackgroundColor",
+        BindableProperty.Create(nameof(SelectedItemBackgroundColor),
                                 typeof(Color),
                                 typeof(DarkThemeViewCell),
                                 Color.Default);

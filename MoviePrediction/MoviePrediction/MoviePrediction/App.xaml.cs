@@ -11,9 +11,6 @@ namespace MoviePrediction
     {
         private static HistoryRepository historyDb;
         private static CacheRepository cacheDb;
-
-        public const string HISTORY_DATABASE_NAME = "history.db";
-        public const string CaCHE_DATABASE_NAME = "predix_cache.db";
         
         public static HistoryRepository Database
         {
@@ -21,7 +18,7 @@ namespace MoviePrediction
             {
                 if (historyDb == null)
                 {
-                    historyDb = new HistoryRepository(HISTORY_DATABASE_NAME);
+                    historyDb = new HistoryRepository(DatabaseNames.HistoryDatabase);
                 }
                 return historyDb;
             }
@@ -33,7 +30,7 @@ namespace MoviePrediction
             {
                 if (cacheDb == null)
                 {
-                    cacheDb = new CacheRepository(CaCHE_DATABASE_NAME);
+                    cacheDb = new CacheRepository(DatabaseNames.CacheDatabase);
                 }
                 return cacheDb;
             }

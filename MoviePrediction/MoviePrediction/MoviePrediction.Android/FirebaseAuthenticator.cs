@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Firebase.Auth;
-using MoviePrediction.Models;
+using MoviePrediction.Helpers;
 using MoviePrediction.Services.Database;
 using Xamarin.Forms;
 
@@ -22,8 +21,8 @@ namespace MoviePrediction.Droid
             var token = await user.User.GetIdTokenAsync(false);
             var uid = user.User.Uid;
 
-            Application.Current.Properties["SessionId"] = token.Token;
-            Application.Current.Properties["Uid"] = uid;
+            Application.Current.Properties[ApplicationProperties.SessionId] = token.Token;
+            Application.Current.Properties[ApplicationProperties.UserId] = uid;
             
             await Application.Current.SavePropertiesAsync();
 
@@ -35,7 +34,7 @@ namespace MoviePrediction.Droid
             var authResult = await Firebase.Auth.FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
 
             using (var user = authResult.User)
-            using (var actionCode = ActionCodeSettings.NewBuilder().SetAndroidPackageName("com.companyname", true, "0").Build())
+            using (var actionCode = ActionCodeSettings.NewBuilder().SetAndroidPackageName(ApplicationProperties.ApplicationId, true, "0").Build())
             {
                 await user.SendEmailVerificationAsync(actionCode);
             }

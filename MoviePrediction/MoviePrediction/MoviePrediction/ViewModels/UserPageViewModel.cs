@@ -1,10 +1,7 @@
-﻿using MoviePrediction.Convertors;
+﻿using MoviePrediction.Helpers;
 using MoviePrediction.Models;
 using MoviePrediction.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -35,8 +32,8 @@ namespace MoviePrediction.ViewModels
 
         private async Task LogOutClicked()
         {
-            Application.Current.Properties.Remove("SessionId");
-            Application.Current.Properties.Remove("Uid");
+            Application.Current.Properties.Remove(ApplicationProperties.SessionId);
+            Application.Current.Properties.Remove(ApplicationProperties.UserId);
 
             await Application.Current.SavePropertiesAsync();
 

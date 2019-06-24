@@ -44,7 +44,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{translator:Translate NeedHelpLabel}"
-                                  TextColor="#A2A0A0">
+                                  TextColor="{StaticResource slightWhiteColor}">
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
@@ -57,7 +57,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{translator:Translate NewToPredixLabel}"
-                                  TextColor="#A2A0A0">
+                                  TextColor="{StaticResource slightWhiteColor}">
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
