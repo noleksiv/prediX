@@ -6,8 +6,6 @@
         <ResourceDictionary>
 
             <!--#region Colors definition -->
-
-            <!--Black color -->
             <Color x:Key="deepBlackColor">#000000</Color>
             <!--Dark theme color -->
             <Color x:Key="darkColor">#141414</Color>
@@ -25,7 +23,6 @@
             <Color x:Key="darkHighlightSelected">#606060</Color>
 
             <Color x:Key="helperWhiteColor">#FFFFFF</Color>
-
             <!--#endregion-->          
             
             <!--#region Grids -->
@@ -52,6 +49,12 @@
                 <Setter Property="TextColor" Value="{StaticResource whiteColor}" />
                 <Setter Property="LineBreakMode" Value="NoWrap" />
                 <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="editorLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="Margin" Value="25,15,25,10" />
+                <Setter Property="IsVisible" Value="False" />
             </Style>
 
             <!--#endregion-->
@@ -96,8 +99,15 @@
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="OutlineColor" Value="{StaticResource cherryColor}" />
             </Style>
-            <!--#endregion-->           
-            
+            <!--#endregion-->
+
+            <!--#region Etc. -->
+            <Style x:Key="boxViewStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="Gray" />
+                <Setter Property="HeightRequest" Value="2" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            <!--#endregion-->
             
         </ResourceDictionary>
     </Application.Resources>

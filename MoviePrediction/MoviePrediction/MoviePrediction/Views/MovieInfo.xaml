@@ -5,6 +5,37 @@
              xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms"
              xmlns:CircleImg="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:translator="clr-namespace:MoviePrediction.Helpers">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="renderedViewStyle"
+                   TargetType="renderedViews:HorizontalListView">
+                <Setter Property="Margin"
+                        Value="-16,8" />
+                <Setter Property="CollectionPadding"
+                        Value="8,8" />
+                <Setter Property="ItemSpacing"
+                        Value="8" />
+                <Setter Property="ItemHeight"
+                        Value="180" />
+                <Setter Property="ItemWidth"
+                        Value="144" />
+            </Style>
+            
+            <Style x:Key="circleImgStyle"
+                   TargetType="CircleImg:CircleImage">
+                <Setter Property="WidthRequest"
+                        Value="100" />
+                <Setter Property="HeightRequest"
+                        Value="100" />
+                <Setter Property="Aspect"
+                        Value="AspectFill" />
+                <Setter Property="VerticalOptions"
+                        Value="Start" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal"
                      VerticalOptions="Start">
@@ -99,24 +130,15 @@
                         <Label Text="{translator:Translate CastLabel}"
                                FontSize="18"
                                TextColor="{StaticResource whiteColor}" />
-                        <renderedViews:HorizontalListView Margin="-16,8"
-                                                          CollectionPadding="8,8"
-                                                          ItemSpacing="8"
-                                                          ItemHeight="180"
-                                                          ItemWidth="144"
-                                                          SnapStyle="Center"
-                                                          ItemsSource="{Binding Cast}">
+                        <renderedViews:HorizontalListView Style="{StaticResource renderedViewStyle}"
+                                                          ItemsSource="{Binding Cast}" >
                             <renderedViews:HorizontalListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <StackLayout Orientation="Vertical"
                                                      VerticalOptions="Center">
-                                            <CircleImg:CircleImage Source="{Binding ProfileUrl}"
-                                                                   WidthRequest="100"
-                                                                   HeightRequest="100"
-                                                                   Aspect="AspectFill"
-                                                                   VerticalOptions="Start"
-                                                                   HorizontalOptions="CenterAndExpand" />
+                                            <CircleImg:CircleImage Style="{StaticResource circleImgStyle}" 
+                                                                   Source="{Binding ProfileUrl}" />
                                             <StackLayout Orientation="Vertical"
                                                          HorizontalOptions="CenterAndExpand">
                                                 <Label Text="{Binding Name}"
@@ -136,24 +158,15 @@
                         <Label Text="{translator:Translate CrewLabel}"
                                FontSize="18"
                                TextColor="{StaticResource whiteColor}" />
-                        <renderedViews:HorizontalListView Margin="-16,8"
-                                                          CollectionPadding="8,8"
-                                                          ItemSpacing="8"
-                                                          ItemHeight="180"
-                                                          ItemWidth="144"
-                                                          ItemsSource="{Binding Crew}"
-                                                          SnapStyle="Center">
+                        <renderedViews:HorizontalListView Style="{StaticResource renderedViewStyle}"
+                                                          ItemsSource="{Binding Crew}" >
                             <renderedViews:HorizontalListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <StackLayout Orientation="Vertical"
                                                      VerticalOptions="Center">
-                                            <CircleImg:CircleImage Source="{Binding ProfileUrl}"
-                                                                   WidthRequest="100"
-                                                                   HeightRequest="100"
-                                                                   Aspect="AspectFill"
-                                                                   VerticalOptions="Start"
-                                                                   HorizontalOptions="CenterAndExpand" />
+                                            <CircleImg:CircleImage  Style="{StaticResource circleImgStyle}" 
+                                                                    Source="{Binding ProfileUrl}"/>
                                             <StackLayout Orientation="Vertical"
                                                          HorizontalOptions="CenterAndExpand">
                                                 <Label Text="{Binding Name}"

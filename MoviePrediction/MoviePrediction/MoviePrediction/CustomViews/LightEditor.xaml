@@ -3,19 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:MoviePrediction.CustomViews"
              x:Class="MoviePrediction.CustomViews.LightEditor">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <Style x:Key="boxViewStyle"
-                   TargetType="BoxView">
-                <Setter Property="BackgroundColor"
-                        Value="Gray" />
-                <Setter Property="HeightRequest"
-                        Value="2" />
-                <Setter Property="Margin"
-                        Value="0" />
-            </Style>
-        </ResourceDictionary>
-    </ContentView.Resources>
     <ContentView.Content>
         <Grid ColumnSpacing="16"
               Margin="0,8">
@@ -24,16 +11,14 @@
                 <RowDefinition Height="1" />
             </Grid.RowDefinitions>
             <Label x:Name="HiddenLabel"
-                   FontSize="10"
-                   IsVisible="False"
-                   Margin="25,15,25,10" />
+                   Style="{StaticResource editorLabelStyle}" />
             <Controls:BordlessEntry x:Name="EntryField"
                                     Text="{Binding Text, Mode=TwoWay}"
                                     Margin="0,12,0,0" />
             <BoxView x:Name="BottomBorder"
-                     Grid.Row="1"                     
-                     HorizontalOptions="FillAndExpand" 
-                     Style="{StaticResource boxViewStyle}"/>
+                     Grid.Row="1"
+                     HorizontalOptions="FillAndExpand"
+                     Style="{StaticResource boxViewStyle}" />
             <BoxView x:Name="HiddenBottomBorder"
                      Grid.Row="1"
                      HorizontalOptions="Center"
