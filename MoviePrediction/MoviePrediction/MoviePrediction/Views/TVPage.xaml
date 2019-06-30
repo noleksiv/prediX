@@ -5,77 +5,77 @@
              xmlns:clickedColor="clr-namespace:XamEffects;assembly=XamEffects"
              xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms"
              xmlns:translator="clr-namespace:MoviePrediction.Helpers">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="renderedHorizontalList"
+                   TargetType="renderedViews:HorizontalListView">
+                <Setter Property="CollectionPadding"
+                        Value="16" />
+                <Setter Property="ItemSpacing"
+                        Value="8" />
+                <Setter Property="ItemWidth"
+                        Value="110" />
+                <Setter Property="ItemHeight"
+                        Value="120" />
+                <Setter Property="ListLayout"
+                        Value="Grid" />
+            </Style>
+
+            <Style x:Key="renderedMaterialFrame"
+                   TargetType="renderedViews:MaterialFrame">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="Padding"
+                        Value="4" />
+                <Setter Property="Elevation"
+                        Value="4" />
+
+            </Style>
+
+            <Style x:Key="tvDescriptionText"
+                   TargetType="Label">
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource whiteColor}" />
+            </Style>
+
+            <Style x:Key="alignmentLayout"
+                   TargetType="StackLayout">
+                <Setter Property="Orientation"
+                        Value="Vertical" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-             
             <StackLayout BackgroundColor="{StaticResource darkColor}">
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="{translator:Translate PopularTVLabel}" Margin="16, 5" VerticalOptions="Center"/>
-                <renderedViews:HorizontalListView CollectionPadding="16"
-                                   ItemSpacing="8"
-                                   EnableDragAndDrop="True"
-                                   ItemWidth="110"
-                                   ItemHeight="120"
-                                   ItemsSource="{Binding PopularTV}"                                  
-                                   ListLayout="Grid"
-                                   >                     
-                    <renderedViews:HorizontalListView.ItemTemplate>                         
-                        <DataTemplate>                             
-                            <renderedViews:DraggableViewCell x:Name="DraggableViewCell">                                 
-                                <ContentView>                                     
-                                    <renderedViews:MaterialFrame Margin="4"
-                                                  Padding="4"
-                                                  Elevation="4">                                        
-                                         <Grid ColumnSpacing="0" RowSpacing="0" clickedColor:Commands.Tap="TapGestureRecognizer_Tapped">                                             
-                                            <StackLayout Orientation="Vertical" VerticalOptions="Center" clickedColor:TouchEffect.Color="Red">                                                 
-                                                <Image>                                                     
-                                                    <Image.Source>                                                         
-                                                        <UriImageSource Uri = "{Binding PosterUrl}"/>                                                         
-                                                    </Image.Source>                                                     
-                                                </Image>
-                                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                    <Label Text="{Binding Title}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
-                                                </StackLayout>
-                                            </StackLayout>                                             
-                                            <!--<Grid.GestureRecognizers>
-                                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                             </Grid.GestureRecognizers>-->                                             
-                                        </Grid>                                         
-                                    </renderedViews:MaterialFrame>                                     
-                                </ContentView>                                 
-                            </renderedViews:DraggableViewCell>                             
-                        </DataTemplate>                         
-                    </renderedViews:HorizontalListView.ItemTemplate>                     
-                </renderedViews:HorizontalListView>
-                <Label TextColor="{StaticResource whiteColor}" FontSize="16" Text="{translator:Translate TopRatedTV}" Margin="16, 5" VerticalOptions="Center"/>
-                <renderedViews:HorizontalListView CollectionPadding="16"
-                                   ItemSpacing="8"
-                                   EnableDragAndDrop="True"
-                                   ItemWidth="110"
-                                   ItemHeight="120"
-                                   ItemsSource="{Binding  TopRatedTV}"                                  
-                                   ListLayout="Grid"
-                                   >
+                <Label Style="{StaticResource tvTitleLabel}"
+                       Text="{translator:Translate PopularTVLabel}" />
+                <renderedViews:HorizontalListView Style="{StaticResource renderedHorizontalList}"
+                                                  EnableDragAndDrop="True"
+                                                  ItemsSource="{Binding PopularTV}">
                     <renderedViews:HorizontalListView.ItemTemplate>
                         <DataTemplate>
-                            <renderedViews:DraggableViewCell x:Name="DraggableViewCell">
+                            <renderedViews:DraggableViewCell>
                                 <ContentView>
-                                    <renderedViews:MaterialFrame Margin="4"
-                                                  Padding="4"
-                                                  Elevation="4">
-                                        <Grid ColumnSpacing="0" RowSpacing="0" clickedColor:Commands.Tap="TapGestureRecognizer_Tapped">
-                                            <StackLayout Orientation="Vertical" VerticalOptions="Center" clickedColor:TouchEffect.Color="Red">
+                                    <renderedViews:MaterialFrame Style="{StaticResource renderedMaterialFrame}">
+                                        <Grid ColumnSpacing="0"
+                                              RowSpacing="0">
+                                            <StackLayout Style="{StaticResource alignmentLayout}"
+                                                         clickedColor:TouchEffect.Color="Red">
                                                 <Image>
                                                     <Image.Source>
-                                                        <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                                        <UriImageSource Uri="{Binding PosterUrl}" />
                                                     </Image.Source>
                                                 </Image>
-                                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                    <Label Text="{Binding Title}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
+                                                <StackLayout Style="{StaticResource alignmentLayout}">
+                                                    <Label Style="{StaticResource tvDescriptionText}"
+                                                           Text="{Binding Title}" />
                                                 </StackLayout>
                                             </StackLayout>
-                                            <!--<Grid.GestureRecognizers>
-                                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                             </Grid.GestureRecognizers>-->
                                         </Grid>
                                     </renderedViews:MaterialFrame>
                                 </ContentView>
@@ -83,7 +83,39 @@
                         </DataTemplate>
                     </renderedViews:HorizontalListView.ItemTemplate>
                 </renderedViews:HorizontalListView>
-            </StackLayout>             
+                <Label Style="{StaticResource tvTitleLabel}"
+                       Text="{translator:Translate TopRatedTV}" />
+                <renderedViews:HorizontalListView Style="{StaticResource renderedHorizontalList}"
+                                                  EnableDragAndDrop="True"
+                                                  ItemsSource="{Binding  TopRatedTV}">
+                    <renderedViews:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                            <renderedViews:DraggableViewCell>
+                                <ContentView>
+                                    <renderedViews:MaterialFrame Style="{StaticResource renderedMaterialFrame}">
+                                        <Grid ColumnSpacing="0"
+                                              RowSpacing="0"
+                                              clickedColor:Commands.Tap="TapGestureRecognizer_Tapped">
+                                            <StackLayout Style="{StaticResource alignmentLayout}"
+                                                         clickedColor:TouchEffect.Color="Red">
+                                                <Image>
+                                                    <Image.Source>
+                                                        <UriImageSource Uri="{Binding PosterUrl}" />
+                                                    </Image.Source>
+                                                </Image>
+                                                <StackLayout Style="{StaticResource alignmentLayout}">
+                                                    <Label Style="{StaticResource tvDescriptionText}"
+                                                           Text="{Binding Title}" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                    </renderedViews:MaterialFrame>
+                                </ContentView>
+                            </renderedViews:DraggableViewCell>
+                        </DataTemplate>
+                    </renderedViews:HorizontalListView.ItemTemplate>
+                </renderedViews:HorizontalListView>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

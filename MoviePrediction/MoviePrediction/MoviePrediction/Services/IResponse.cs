@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using MoviePrediction.Models;
-
-namespace MoviePrediction.Services
+﻿namespace MoviePrediction.Services
 {
     public interface IResponse
     {

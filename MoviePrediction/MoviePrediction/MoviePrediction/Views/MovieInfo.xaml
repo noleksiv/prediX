@@ -5,81 +5,148 @@
              xmlns:renderedViews="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms"
              xmlns:CircleImg="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:translator="clr-namespace:MoviePrediction.Helpers">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="renderedViewStyle"
+                   TargetType="renderedViews:HorizontalListView">
+                <Setter Property="Margin"
+                        Value="-16,8" />
+                <Setter Property="CollectionPadding"
+                        Value="8,8" />
+                <Setter Property="ItemSpacing"
+                        Value="8" />
+                <Setter Property="ItemHeight"
+                        Value="180" />
+                <Setter Property="ItemWidth"
+                        Value="144" />
+            </Style>
+            
+            <Style x:Key="circleImgStyle"
+                   TargetType="CircleImg:CircleImage">
+                <Setter Property="WidthRequest"
+                        Value="100" />
+                <Setter Property="HeightRequest"
+                        Value="100" />
+                <Setter Property="Aspect"
+                        Value="AspectFill" />
+                <Setter Property="VerticalOptions"
+                        Value="Start" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <ImageButton Source="predix.png" WidthRequest="100" BackgroundColor="Transparent" Clicked="GoToMainPage"/>
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="Start">
+            <ImageButton Source="predix.png"
+                         WidthRequest="100"
+                         BackgroundColor="Transparent"
+                         Command="{Binding GoToMainPage}" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView BackgroundColor="{StaticResource darkColor}">
-            <StackLayout BackgroundColor="{StaticResource darkColor}" Margin="5, 0">
+            <StackLayout BackgroundColor="{StaticResource darkColor}"
+                         Margin="5, 0">
                 <StackLayout>
-                    <Image  Aspect="AspectFill" HeightRequest="300">
+                    <Image  Aspect="AspectFill"
+                            HeightRequest="300">
                         <Image.Source>
-                            <UriImageSource Uri = "{Binding FilmInfo.BackdropUrl}"/>
+                            <UriImageSource Uri="{Binding FilmInfo.BackdropUrl}" />
                         </Image.Source>
                     </Image>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="0, 15">
-                    <Image HeightRequest="196" WidthRequest="154" HorizontalOptions="Start">
+                <StackLayout Orientation="Horizontal"
+                             Margin="0, 15">
+                    <Image HeightRequest="196"
+                           WidthRequest="154"
+                           HorizontalOptions="Start">
                         <Image.Source>
-                            <UriImageSource Uri = "{Binding FilmInfo.PosterUrl}"/>
+                            <UriImageSource Uri="{Binding FilmInfo.PosterUrl}" />
                         </Image.Source>
                     </Image>
-                    <StackLayout HorizontalOptions="FillAndExpand" Margin="5, 0, 0, 0">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 Margin="5, 0, 0, 0">
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{translator:Translate TitleLabel}" TextColor="{StaticResource whiteColor}" LineBreakMode="NoWrap"/>
-                                <Label Text="{Binding FilmInfo.Title}" TextColor="{StaticResource whiteColor}" LineBreakMode="TailTruncation"/>
+                                <Label Text="{translator:Translate TitleLabel}"
+                                       TextColor="{StaticResource whiteColor}"
+                                       LineBreakMode="NoWrap" />
+                                <Label Text="{Binding FilmInfo.Title}"
+                                       TextColor="{StaticResource whiteColor}"
+                                       LineBreakMode="TailTruncation" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{translator:Translate ReleaseDateLabel}" TextColor="{StaticResource whiteColor}"/>
-                                <Label Text="{Binding FilmInfo.ReleaseDate}" TextColor="{StaticResource whiteColor}"/>
+                                <Label Text="{translator:Translate ReleaseDateLabel}"
+                                       TextColor="{StaticResource whiteColor}" />
+                                <Label Text="{Binding FilmInfo.ReleaseDate}"
+                                       TextColor="{StaticResource whiteColor}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{translator:Translate LanguageLabel}" TextColor="{StaticResource whiteColor}"/>
-                                <Label Text="{Binding FilmInfo.OriginalLanguage}" TextColor="{StaticResource whiteColor}"/>
+                                <Label Text="{translator:Translate LanguageLabel}"
+                                       TextColor="{StaticResource whiteColor}" />
+                                <Label Text="{Binding FilmInfo.OriginalLanguage}"
+                                       TextColor="{StaticResource whiteColor}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Genres}" TextColor="{StaticResource whiteColor}"/>
+                                <Label Text="{Binding Genres}"
+                                       TextColor="{StaticResource whiteColor}" />
                             </StackLayout>
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <Image Source="IMDb.png" HeightRequest="15" HorizontalOptions="Start" />
-                                    <Label Text="{Binding  FilmInfo.IMDb}" HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}" VerticalOptions="Center"/>
+                                    <Image Source="IMDb.png"
+                                           HeightRequest="15"
+                                           HorizontalOptions="Start" />
+                                    <Label Text="{Binding  FilmInfo.IMDb}"
+                                           HorizontalOptions="FillAndExpand"
+                                           TextColor="{StaticResource whiteColor}"
+                                           VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <Image Source="metacritic.png" HeightRequest="15" HorizontalOptions="Start" />
-                                    <Label Text="{Binding  FilmInfo.Metacritic}" HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}" VerticalOptions="Center"/>
+                                    <Image Source="metacritic.png"
+                                           HeightRequest="15"
+                                           HorizontalOptions="Start" />
+                                    <Label Text="{Binding  FilmInfo.Metacritic}"
+                                           HorizontalOptions="FillAndExpand"
+                                           TextColor="{StaticResource whiteColor}"
+                                           VerticalOptions="Center" />
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout Grid.Row="2" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-
+                <StackLayout Grid.Row="2"
+                             Orientation="Vertical"
+                             HorizontalOptions="FillAndExpand">
                     <StackLayout>
-                        <Label Text="{translator:Translate OverviewLabel}" FontSize="18" TextColor="{StaticResource whiteColor}"/>
-                        <Label Text="{Binding FilmInfo.Overview}" MaxLines="15" LineBreakMode="CharacterWrap" TextColor="{StaticResource helperWhiteColor}"/>
-                        <Label Text="{translator:Translate CastLabel}" FontSize="18" TextColor="{StaticResource whiteColor}"/>
-                        <renderedViews:HorizontalListView
-                                    Margin="-16,8"
-                                    CollectionPadding="8,8"
-                                    ItemSpacing="8"
-                                    ItemHeight="180"
-                                    ItemWidth="144"
-                                    ItemsSource="{Binding Cast}"
-                                    SnapStyle="Center" >
+                        <Label Text="{translator:Translate OverviewLabel}"
+                               FontSize="18"
+                               TextColor="{StaticResource whiteColor}" />
+                        <Label Text="{Binding FilmInfo.Overview}"
+                               MaxLines="15"
+                               LineBreakMode="CharacterWrap"
+                               TextColor="{StaticResource helperWhiteColor}" />
+                        <Label Text="{translator:Translate CastLabel}"
+                               FontSize="18"
+                               TextColor="{StaticResource whiteColor}" />
+                        <renderedViews:HorizontalListView Style="{StaticResource renderedViewStyle}"
+                                                          ItemsSource="{Binding Cast}" >
                             <renderedViews:HorizontalListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Orientation="Vertical" VerticalOptions="Center">
-                                            <CircleImg:CircleImage Source="{Binding ProfileUrl}"  WidthRequest="100" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
-                                                <Label Text="{Binding Character}" LineBreakMode="TailTruncation" TextColor="{StaticResource helperWhiteColor}"/>
+                                        <StackLayout Orientation="Vertical"
+                                                     VerticalOptions="Center">
+                                            <CircleImg:CircleImage Style="{StaticResource circleImgStyle}" 
+                                                                   Source="{Binding ProfileUrl}" />
+                                            <StackLayout Orientation="Vertical"
+                                                         HorizontalOptions="CenterAndExpand">
+                                                <Label Text="{Binding Name}"
+                                                       HorizontalTextAlignment="Center"
+                                                       TextColor="{StaticResource whiteColor}" />
+                                                <Label Text="{Binding Character}"
+                                                       LineBreakMode="TailTruncation"
+                                                       TextColor="{StaticResource helperWhiteColor}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
@@ -88,23 +155,26 @@
                         </renderedViews:HorizontalListView>
                     </StackLayout>
                     <StackLayout>
-                        <Label Text="{translator:Translate CrewLabel}" FontSize="18" TextColor="{StaticResource whiteColor}"/>
-                        <renderedViews:HorizontalListView
-                                    Margin="-16,8"
-                                    CollectionPadding="8,8"
-                                    ItemSpacing="8"
-                                    ItemHeight="180"
-                                    ItemWidth="144"
-                                    ItemsSource="{Binding Crew}"
-                                    SnapStyle="Center">
+                        <Label Text="{translator:Translate CrewLabel}"
+                               FontSize="18"
+                               TextColor="{StaticResource whiteColor}" />
+                        <renderedViews:HorizontalListView Style="{StaticResource renderedViewStyle}"
+                                                          ItemsSource="{Binding Crew}" >
                             <renderedViews:HorizontalListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Orientation="Vertical" VerticalOptions="Center">
-                                            <CircleImg:CircleImage Source="{Binding ProfileUrl}"  WidthRequest="100" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="{StaticResource whiteColor}"/>
-                                                <Label Text="{Binding Character}" LineBreakMode="TailTruncation" TextColor="{StaticResource helperWhiteColor}"/>
+                                        <StackLayout Orientation="Vertical"
+                                                     VerticalOptions="Center">
+                                            <CircleImg:CircleImage  Style="{StaticResource circleImgStyle}" 
+                                                                    Source="{Binding ProfileUrl}"/>
+                                            <StackLayout Orientation="Vertical"
+                                                         HorizontalOptions="CenterAndExpand">
+                                                <Label Text="{Binding Name}"
+                                                       HorizontalTextAlignment="Center"
+                                                       TextColor="{StaticResource whiteColor}" />
+                                                <Label Text="{Binding Character}"
+                                                       LineBreakMode="TailTruncation"
+                                                       TextColor="{StaticResource helperWhiteColor}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>

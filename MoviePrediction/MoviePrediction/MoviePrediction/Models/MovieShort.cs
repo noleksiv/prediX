@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using MoviePrediction.Services.Photo;
+using Newtonsoft.Json;
 
 namespace MoviePrediction.Models
 {
@@ -9,7 +9,6 @@ namespace MoviePrediction.Models
     {
         private string _title;
         private string _name;
-        private string _originalName;
 
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -19,7 +18,7 @@ namespace MoviePrediction.Models
         {
             get
             {
-                return _name != null ? _name : OriginalName;
+                return _name ?? OriginalName;
             }
             set
             {
@@ -44,7 +43,7 @@ namespace MoviePrediction.Models
 
         public int Metacritic
         {
-            get => (int)(IMDb * 10-10);
+            get => (int)(IMDb * 10 - 10);
         }
 
         [JsonProperty("title")]
@@ -52,7 +51,7 @@ namespace MoviePrediction.Models
         {
             get
             {
-                return _title != null ? _title : Name;
+                return _title ?? Name;
             }
             set
             {
@@ -97,7 +96,40 @@ namespace MoviePrediction.Models
         [JsonProperty("origin_country")]
         public ICollection<string> OriginCountry { get; set; }
 
-        public Uri PosterUrl { get; set; }
-        public Uri BackdropUrl { get; set; }
-    }       
+        public Uri PosterUrl
+        {
+            get
+            {
+                if (PosterPath != null)
+                {
+                    var imageUrl = new PosterImage();
+                    var link = imageUrl.CreatePosterLink(PosterPath);
+
+                    return link;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public Uri BackdropUrl
+        {
+            get
+            {
+                if (BackdropPath != null)
+                {
+                    var imageUrl = new BackdropImage();
+                    var link = imageUrl.CreateBackdropLink(BackdropPath);
+
+                    return link;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+    }
 }

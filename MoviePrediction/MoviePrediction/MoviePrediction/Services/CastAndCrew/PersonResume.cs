@@ -10,8 +10,5 @@ namespace MoviePrediction.Services.CastAndCrew
     {
         [JsonProperty("cast")]
         public IList<MovieShort> Cast { get; set; }
-
-        //[JsonProperty("crew")]
-        //IList<MovieShort> Crew { get; set; }
     }
 }

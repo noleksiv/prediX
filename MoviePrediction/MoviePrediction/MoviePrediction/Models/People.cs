@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
+using MoviePrediction.Services.Photo;
 
 namespace MoviePrediction.Models
 {
@@ -22,6 +22,15 @@ namespace MoviePrediction.Models
         [JsonProperty("known_for")]
         public ICollection<MovieShort> Movies { get; set; }
 
-        public Uri ProfileUrl { get; set; }
+        public Uri ProfileUrl
+        {
+            get
+            {
+                var imageUrl = new PosterImage();
+                var link = imageUrl.CreatePosterLink(ProfilePath);
+
+                return link;
+            }
+        }
     }
 }

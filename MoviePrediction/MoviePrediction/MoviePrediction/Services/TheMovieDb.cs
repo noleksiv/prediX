@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MoviePrediction.Helpers;
 
 namespace MoviePrediction.Services
 {
-    public class TheMovieDb : IApiCredentials
+    public class TheMovieDb
     {
-        public string SiteLink { get; set; } = @"https://api.themoviedb.org/";
-        public string ApiKey { get; private set; } = "15854b836e7d12b1d8e122960da34dec";
+        public const string SiteLink = LinksContainer.TheMovieDb;
+        public const string ApiKey = ApplicationProperties.ApiKey;
     }
 }

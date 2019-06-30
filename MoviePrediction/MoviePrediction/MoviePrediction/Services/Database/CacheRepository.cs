@@ -1,9 +1,6 @@
 ﻿using MonkeyCache.SQLite;
+using MoviePrediction.Helpers;
 using MoviePrediction.Models;
-using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace MoviePrediction.Services.Database
@@ -18,7 +15,7 @@ namespace MoviePrediction.Services.Database
 
         public void Initialization()
         {
-            Barrel.ApplicationId = "com.companyname";
+            Barrel.ApplicationId = ApplicationProperties.ApplicationId;
         }
     }
 }

@@ -1,17 +1,15 @@
-﻿using MonkeyCache.SQLite;
-using MoviePrediction.Models;
-using SQLite;
+﻿using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xamarin.Forms;
+using MoviePrediction.Models;
 
 namespace MoviePrediction.Services.Database
 {
-    public class HistoryRepository
+    public class HistoryRepository: IHistoryRepository<HistoryPreview>
     {
-        private int _maxElements = 20;
+        private const int _maxElements = 20;
         private SQLiteConnection _connection;
 
         public HistoryRepository(string filename)
@@ -48,6 +46,9 @@ namespace MoviePrediction.Services.Database
             }
         }
 
+        /// <summary>
+        /// The method is used to restrict history to _maxElements items.
+        /// </summary>
         private void DeleteNedless()
         {
             var historyLength = _connection.Table<HistoryPreview>().Count();
@@ -56,8 +57,7 @@ namespace MoviePrediction.Services.Database
             {
                 var idForRemoving = _connection.Table<HistoryPreview>().First().Id;
                 DeleteItem(idForRemoving);
-            }
-                
+            }                
         }
     }
 }

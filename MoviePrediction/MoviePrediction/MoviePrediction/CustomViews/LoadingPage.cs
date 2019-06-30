@@ -1,7 +1,5 @@
-﻿using MoviePrediction.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Views;
 using Xamarin.Forms;
 
 namespace MoviePrediction.CustomViews
@@ -17,7 +15,7 @@ namespace MoviePrediction.CustomViews
             var sub = new AbsoluteLayout();
             splashImage = new Image
             {
-                Source = "predix.png",
+                Source = ImageNames.Predix,
                 WidthRequest = 300,
                 HeightRequest = 90
             };
@@ -28,7 +26,7 @@ namespace MoviePrediction.CustomViews
 
             sub.Children.Add(splashImage);
 
-            this.BackgroundColor = Color.FromHex("#000000");
+            this.BackgroundColor = Color.Black;
             this.Content = sub;
         }
 
@@ -37,11 +35,11 @@ namespace MoviePrediction.CustomViews
         {
             base.OnAppearing();
 
-            await splashImage.ScaleTo(1, 5000); //Time-consuming processes such as initializatio
+            await splashImage.ScaleTo(1, 5000); 
 
             try
             {
-                if (Application.Current.Properties.ContainsKey("SessionId"))
+                if (Application.Current.Properties.ContainsKey(ApplicationProperties.SessionId))
                 {
                     Application.Current.MainPage = new NavigationPage(new MainPage());
                 }

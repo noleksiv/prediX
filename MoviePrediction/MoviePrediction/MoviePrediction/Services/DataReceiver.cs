@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-
-using MonkeyCache;
 using MonkeyCache.SQLite;
+using MoviePrediction.Helpers;
 using Plugin.Connectivity;
 using Plugin.Multilingual;
 
@@ -15,34 +12,40 @@ namespace MoviePrediction.Services
 {
     public class DataReceiver
     {
-        private IApiCredentials _credentials;
+        private readonly MonkeyCache _cache;
+        private readonly CultureInfo _cuppentCulture;
+
+        public string RequestEnding
+        {
+            get
+            {
+                var pathEnding = $"{TheMovieDbParameters.Api}={TheMovieDb.ApiKey}&{TheMovieDbParameters.Language}={_cuppentCulture}";
+                return pathEnding;
+            }
+        }
 
         static DataReceiver()
         {
             App.CacheDatabase.Initialization();
         }
 
-        public DataReceiver(IApiCredentials credentials)
+        public DataReceiver()
         {
-            _credentials = credentials;
+            _cache = new MonkeyCache();
+            _cuppentCulture = CrossMultilingual.Current.CurrentCultureInfo;
         }
 
         public string GetRequestJson(string param)
         {
             var json = String.Empty;
-            var currentCulture = CrossMultilingual.Current.CurrentCultureInfo;
-            var url = _credentials.SiteLink + param + $"&language={currentCulture}";
+            var url = TheMovieDb.SiteLink + param + RequestEnding;
 
             if (!CrossConnectivity.Current.IsConnected)
-            {
-                return Barrel.Current.Get<string>(key: url);
-            }
+                _cache.GetCachedData(url);
 
             // Checking if cache is expired
             if (!Barrel.Current.IsExpired(key: url))
-            {
-                return Barrel.Current.Get<string>(key: url);
-            }
+                _cache.GetCachedData(url);
 
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
@@ -54,10 +57,7 @@ namespace MoviePrediction.Services
                 json = reader.ReadToEnd();
             }
 
-            // Cache lifetime
-            var duration = 1;
-            // Add to cache
-            Barrel.Current.Add(key: url, data: json, expireIn: TimeSpan.FromDays(duration));
+            _cache.SaveData(url, json);
 
             return json;
         }
@@ -65,8 +65,14 @@ namespace MoviePrediction.Services
         public async Task<string> GetJsonAsync(string param)
         {
             var json = String.Empty;
-            var currentCulture = CrossMultilingual.Current.CurrentCultureInfo;
-            var url = _credentials.SiteLink + param + $"&language={currentCulture}";
+            var url = TheMovieDb.SiteLink + param + RequestEnding;
+
+            if (!CrossConnectivity.Current.IsConnected)
+                _cache.GetCachedData(url);
+
+            // Checking if cache is expired
+            if (!Barrel.Current.IsExpired(key: url))
+                _cache.GetCachedData(url);
 
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
@@ -79,6 +85,8 @@ namespace MoviePrediction.Services
                 {
                     json = await reader.ReadToEndAsync();
                 }
+
+                _cache.SaveData(url, json);
 
                 return json;
             });           

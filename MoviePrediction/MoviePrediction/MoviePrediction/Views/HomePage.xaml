@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviePrediction.Views.HomePage"
              xmlns:CustomViewCell="clr-namespace:MoviePrediction.CustomViews"
              xmlns:Cards="clr-namespace:PanCardView;assembly=PanCardView"
              xmlns:Controls="clr-namespace:PanCardView.Controls;assembly=PanCardView">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource darkColor}" VerticalOptions="FillAndExpand">
+        <StackLayout BackgroundColor="{StaticResource darkColor}"
+                     VerticalOptions="FillAndExpand">
 
-            <Cards:CarouselView     x:Name="trendingCarousel"
-                                    ItemsSource="{Binding Movies}"
-                                    SlideShowDuration="3000"
-                                    HeightRequest="750"
-                                    BackgroundColor="{StaticResource darkColor}">
+            <Cards:CarouselView ItemsSource="{Binding Movies}"
+                                SlideShowDuration="3000"
+                                HeightRequest="750"
+                                BackgroundColor="{StaticResource darkColor}">
                 <Cards:CarouselView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
@@ -21,11 +21,11 @@
                                     HorizontalOptions="Center"
                                     Margin="0, 0, 0, 35"
                                     HasShadow="false"
-                                    IsClippedToBounds="true"                                    
+                                    IsClippedToBounds="true"
                                     BackgroundColor="{StaticResource darkColor}">
                                 <Image>
                                     <Image.Source>
-                                        <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                        <UriImageSource Uri="{Binding PosterUrl}" />
                                     </Image.Source>
                                 </Image>
                             </Frame>
@@ -37,59 +37,52 @@
                                                 UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" />
             </Cards:CarouselView>
 
-            <ListView   x:Name="trendingListView"
-                        ItemsSource="{Binding Movies}" 
-                        HasUnevenRows="True" 
-                        Style="{StaticResource customListView}"
-                        ItemTapped="TrendingListView_ItemSelected"  
-                        Margin="5, 0">
+            <ListView Margin="5, 0"
+                      HasUnevenRows="True"
+                      Style="{StaticResource customListView}"
+                      ItemsSource="{Binding Movies}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <CustomViewCell:DarkThemeViewCell SelectedItemBackgroundColor="{StaticResource darkHighlightSelected}">
                             <ViewCell.View>
-                                <StackLayout    Orientation="Horizontal" 
+                                <StackLayout    Orientation="Horizontal"
                                                 VerticalOptions="FillAndExpand">
-                                    <Image  Aspect="AspectFill" 
+                                    <Image  Aspect="AspectFill"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
                                             WidthRequest="75">
                                         <Image.Source>
-                                            <UriImageSource Uri = "{Binding PosterUrl}"/>
+                                            <UriImageSource Uri="{Binding PosterUrl}" />
                                         </Image.Source>
                                     </Image>
 
-                                    <StackLayout    Orientation="Vertical" 
+                                    <StackLayout    Orientation="Vertical"
                                                     HorizontalOptions="StartAndExpand">
                                         <Label  Text="{Binding Title}"
-                                                TextColor="{StaticResource whiteColor}"/>
-                                        <Label  Text="{Binding Overview}" 
+                                                TextColor="{StaticResource whiteColor}" />
+                                        <Label  Text="{Binding Overview}"
                                                 LineBreakMode="TailTruncation"
-                                                Style="{StaticResource helperText}"/>
-                                        
+                                                Style="{StaticResource helperText}" />
+
                                         <StackLayout Orientation="Horizontal">
-                                            
-                                            <Image Source="IMDb.png" 
-                                                   HeightRequest="15" 
+
+                                            <Image Source="IMDb.png"
+                                                   HeightRequest="15"
                                                    HorizontalOptions="Start" />
-                                            
-                                            <Label Text="{Binding IMDb}" 
-                                                   HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}" 
-                                                   LineBreakMode="NoWrap" 
-                                                   VerticalOptions="Center"/>
+
+                                            <Label Style="{StaticResource assessmentLabel}"
+                                                   Text="{Binding IMDb}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            
-                                            <Image Source="metacritic.png" 
-                                                   HeightRequest="15" 
+
+                                            <Image Source="metacritic.png"
+                                                   HeightRequest="15"
                                                    HorizontalOptions="Start" />
-                                            
-                                            <Label Text="{Binding Metacritic}" 
-                                                   HorizontalOptions="FillAndExpand"
-                                                   TextColor="{StaticResource whiteColor}" 
-                                                   LineBreakMode="NoWrap" 
-                                                   VerticalOptions="Center"/>
-                                        </StackLayout>                                        
+
+                                            <Label Style="{StaticResource assessmentLabel}"
+                                                   Text="{Binding Metacritic}" />
+                                        </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell.View>
@@ -100,5 +93,3 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-<!--https://github.com/AndreiMisiukevich/CardView-->

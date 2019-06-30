@@ -16,11 +16,5 @@ namespace MoviePrediction.Services.CastAndCrew
 
         [JsonProperty("crew")]
         public ICollection<Crew> Crew { get; set; }
-
-        public MovieCredits()
-        {
-            Cast = new List<Cast>();
-            Crew = new List<Crew>();
-        }
     }
 }

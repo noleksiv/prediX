@@ -6,14 +6,14 @@
         <ResourceDictionary>
 
             <!--#region Colors definition -->
-
-            <!--Black color -->
             <Color x:Key="deepBlackColor">#000000</Color>
             <!--Dark theme color -->
             <Color x:Key="darkColor">#141414</Color>
             <!--Light theme color -->
             <Color x:Key="whiteColor">#F8FAFB</Color>
-            <!--Grey color -->
+
+            <Color x:Key="slightWhiteColor">#A2A0A0</Color>
+
             <Color x:Key="greyColor">#F8FAFB</Color>
 
             <Color x:Key="redColor">#B50D0D</Color>
@@ -23,27 +23,41 @@
             <Color x:Key="darkHighlightSelected">#606060</Color>
 
             <Color x:Key="helperWhiteColor">#FFFFFF</Color>
-
-            <!--#endregion-->
+            <!--#endregion-->          
             
-            
-
             <!--#region Grids -->
             <Style x:Key="darkBackground" TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="{StaticResource darkColor}"/>
             </Style>
-            <!--#endregion-->
-
-            
+            <!--#endregion-->            
             
             <!--#region Labels -->
             <Style x:Key="helperText" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource helperWhiteColor}"/>
                 <Setter Property="Opacity" Value="0.6"/>
-            </Style>            
+            </Style>
+            
+            <Style x:Key="tvTitleLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="16, 5" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource whiteColor}" />
+            </Style>
+
+            <Style x:Key="assessmentLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource whiteColor}" />
+                <Setter Property="LineBreakMode" Value="NoWrap" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="editorLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="Margin" Value="25,15,25,10" />
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
             <!--#endregion-->
-            
-            
 
             <!--#region Buttons -->
             <Style x:Key="defaultBtnStyle" TargetType="Button">
@@ -56,8 +70,6 @@
                 <Setter Property="BackgroundColor" Value="#B50D0D"/>
             </Style>
             <!--#endregion-->
-            
-            
 
             <!--#region Navigation bar -->            
             <Style x:Name="navBar" TargetType="NavigationPage">
@@ -66,24 +78,18 @@
             </Style>
             <!--#endregion-->
             
-            
-            
             <!--#region Tabbed bar -->
             <Style x:Key="tabbedBarColor" TargetType="TabbedPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource deepBlackColor}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource greyColor}"/>
             </Style>
             <!--#endregion-->
-            
-            
 
             <!--#region Lists -->
             <Style x:Key="customListView" TargetType="ListView">
                 <Setter Property="BackgroundColor" Value="{StaticResource darkColor}"/>
             </Style>
             <!--#endregion-->
-
-
             
             <!--#region Carousel view -->
             <Style x:Key="ActiveIndicator" TargetType="Frame">
@@ -93,8 +99,15 @@
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="OutlineColor" Value="{StaticResource cherryColor}" />
             </Style>
-            <!--#endregion-->           
-            
+            <!--#endregion-->
+
+            <!--#region Etc. -->
+            <Style x:Key="boxViewStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="Gray" />
+                <Setter Property="HeightRequest" Value="2" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            <!--#endregion-->
             
         </ResourceDictionary>
     </Application.Resources>

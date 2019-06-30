@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Services.Photo;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,7 @@ namespace MoviePrediction.Models
     public class PersonProfile
     {
         private string _deathday;
+        private string _profilePath;
 
         [JsonProperty("birthday")]
         public string Birthday { get; set; }
@@ -38,7 +40,7 @@ namespace MoviePrediction.Models
         public string Name { get; set; }
 
         [JsonProperty("also_known_as")]
-        public IEnumerable<string> AlsoKnownAs { get; set; }        
+        public IEnumerable<string> AlsoKnownAs { get; set; }
 
         [JsonProperty("biography")]
         public string Biography { get; set; }
@@ -50,7 +52,21 @@ namespace MoviePrediction.Models
         public string PlaceOfBirth { get; set; }
 
         [JsonProperty("profile_path")]
-        public string ProfilePath { get; set; }
+        public string ProfilePath
+        {
+            get
+            {
+                var imageUrl = new PosterImage();
+                var link = imageUrl.CreatePosterLink(_profilePath);
+
+                return link.ToString();
+            }
+            set
+            {
+                if (_profilePath != value)
+                    _profilePath = value;
+            }
+        }
 
         [JsonProperty("imdb_id")]
         public string ImdbId { get; set; }
@@ -60,12 +76,12 @@ namespace MoviePrediction.Models
 
         public string ProfileUrl
         {
-            get => $"https://www.imdb.com/name/{ImdbId}/";
+            get => $"{LinksContainer.Imdb}name/{ImdbId}/";
         }
 
         public string Pseudonyms
         {
-            get => GetPenName();
+            get => GetPenNames();
         }
 
         public string Rate
@@ -73,7 +89,10 @@ namespace MoviePrediction.Models
             get => GetStarRating();
         }
 
-        public string GetPenName()
+        /// <summary>
+        /// Connecting all persons pen names in a string.
+        /// </summary>
+        public string GetPenNames()
         {
             var penName = new StringBuilder();
 
@@ -85,28 +104,25 @@ namespace MoviePrediction.Models
             return penName.ToString();
         }
 
+        /// <summary>
+        /// Converting a double value into a 5 stars rating.
+        /// </summary>
+        /// <returns>Return popularity through stars</returns>
         public string GetStarRating()
-        {
-            if (Popularity>10)
-            {
-                return "stars5.jpg";
-            }
+        {            
+            if (Popularity > 10)
+                return ImageNames.FiveStars;
+
             if (Popularity > 8)
-            {
-                return "stars4.jpg";
-            }
+                return ImageNames.FourStars;
+
             if (Popularity > 6)
-            {
-                return "stars3.jpg";
-            }
+                return ImageNames.ThreeStars;
+
             if (Popularity > 2.5)
-            {
-                return "stars2.jpg";
-            }
-            else
-            {
-                return "stars1.jpg";
-            }
+                return ImageNames.TwoStars;
+
+            return ImageNames.OneStar;
         }
     }
 }

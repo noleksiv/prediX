@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MoviePrediction.Services
+﻿namespace MoviePrediction.Services
 {
     public interface IApiCredentials
     {

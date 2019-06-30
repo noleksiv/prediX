@@ -1,14 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MoviePrediction.Models
 {
-    public interface IPoster
+    public interface IBackdropCompilation
     {
-        string PosterPath { get; set; }
+        Uri BackdropUrl { get; }
         string BackdropPath { get; set; }
-        Uri PosterUrl { get; set; }
-        Uri BackdropUrl { get; set; }
     }
+
+    public interface IPosterCompilation
+    {
+        Uri PosterUrl { get; }
+        string PosterPath { get; set; }       
+        
+    }
+
+    public interface IPoster : IPosterCompilation, IBackdropCompilation { }
 }
