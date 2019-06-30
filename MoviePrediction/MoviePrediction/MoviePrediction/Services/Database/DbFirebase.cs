@@ -32,7 +32,7 @@ namespace MoviePrediction.Services.Database
             var firebase = new FirebaseClient(LinksContainer.PredixFirebase);
             var uniqueUserToken = Application.Current.Properties[ApplicationProperties.UserId].ToString();
 
-            // add an id to the watchlist
+            // Add id to the watchlist
             await firebase.Child(uniqueUserToken).Child(_tabName)
                                                  .Child(movie.Id.ToString())
                                                  .PutAsync(JsonConvert.SerializeObject(movie));

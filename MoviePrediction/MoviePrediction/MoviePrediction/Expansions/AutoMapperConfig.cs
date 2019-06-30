@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using MoviePrediction.Models;
 
-namespace MoviePrediction.Models
+namespace MoviePrediction.Expansions
 {
     public class AutoMapperConfig
     {

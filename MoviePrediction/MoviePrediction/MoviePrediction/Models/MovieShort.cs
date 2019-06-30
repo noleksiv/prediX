@@ -18,7 +18,7 @@ namespace MoviePrediction.Models
         {
             get
             {
-                return _name != null ? _name : OriginalName;
+                return _name ?? OriginalName;
             }
             set
             {
@@ -51,7 +51,7 @@ namespace MoviePrediction.Models
         {
             get
             {
-                return _title != null ? _title : Name;
+                return _title ?? Name;
             }
             set
             {

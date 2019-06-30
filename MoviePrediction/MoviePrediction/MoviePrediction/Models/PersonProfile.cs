@@ -76,12 +76,12 @@ namespace MoviePrediction.Models
 
         public string ProfileUrl
         {
-            get => $"{LinksContainer.Imdb}{ImdbId}/";
+            get => $"{LinksContainer.Imdb}name/{ImdbId}/";
         }
 
         public string Pseudonyms
         {
-            get => GetPenName();
+            get => GetPenNames();
         }
 
         public string Rate
@@ -89,7 +89,10 @@ namespace MoviePrediction.Models
             get => GetStarRating();
         }
 
-        public string GetPenName()
+        /// <summary>
+        /// Connecting all persons pen names in a string.
+        /// </summary>
+        public string GetPenNames()
         {
             var penName = new StringBuilder();
 
@@ -101,28 +104,25 @@ namespace MoviePrediction.Models
             return penName.ToString();
         }
 
+        /// <summary>
+        /// Converting a double value into a 5 stars rating.
+        /// </summary>
+        /// <returns>Return popularity through stars</returns>
         public string GetStarRating()
-        {
+        {            
             if (Popularity > 10)
-            {
-                return "stars5.jpg";
-            }
+                return ImageNames.FiveStars;
+
             if (Popularity > 8)
-            {
-                return "stars4.jpg";
-            }
+                return ImageNames.FourStars;
+
             if (Popularity > 6)
-            {
-                return "stars3.jpg";
-            }
+                return ImageNames.ThreeStars;
+
             if (Popularity > 2.5)
-            {
-                return "stars2.jpg";
-            }
-            else
-            {
-                return "stars1.jpg";
-            }
+                return ImageNames.TwoStars;
+
+            return ImageNames.OneStar;
         }
     }
 }

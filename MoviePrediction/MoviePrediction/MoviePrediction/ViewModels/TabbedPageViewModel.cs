@@ -1,4 +1,5 @@
-﻿using MoviePrediction.Views;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,23 +23,23 @@ namespace MoviePrediction.ViewModels
 
             page.Add(new MoviesPage(MovieTap.Latest, pageService)
             {
-                Icon = "LATEST.png",
+                Icon = ImageNames.Latest,
 
             });
 
             page.Add(new MoviesPage(MovieTap.Upcoming, pageService)
             {
-                Icon = "upcoming.png"
+                Icon = ImageNames.Upcoming
             });
 
             page.Add(new MoviesPage(MovieTap.Popular, pageService)
             {
-                Icon = "popular.png"
+                Icon = ImageNames.Popular
             });
 
             page.Add(new MoviesPage(MovieTap.Toprated, pageService)
             {
-                Icon = "topRated.png"
+                Icon = ImageNames.TopRated
             });
         }
     }

@@ -1,4 +1,6 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Models;
+using MoviePrediction.Services.NowPlaying;
 using System.Collections.Generic;
 
 namespace MoviePrediction.Services.Trending
@@ -20,8 +22,8 @@ namespace MoviePrediction.Services.Trending
 
         public IEnumerable<MovieShort> GetMovies()
         {
-            var parameters = $"3/trending/{MediaType.Movie}/{TimeWindow.Week}?";
-            var _movies = ReceiveDeserializedData<TrendyMovies>(parameters);
+            var parameters = $"{TheMovieDbTabs.DatabaseApi}/{TheMovieDbTabs.TrendingTab}/{MediaType.Movie}/{TimeWindow.Week}?";
+            var _movies = ReceiveDeserializedData<ApiMovieResponse<MovieShort>>(parameters);
             return _movies.Results;             
         }
     }

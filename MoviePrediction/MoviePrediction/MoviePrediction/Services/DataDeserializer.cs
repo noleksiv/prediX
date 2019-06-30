@@ -15,15 +15,15 @@ namespace MoviePrediction.Services
         public T ReceiveDeserializedData<T>(string parameters)
         {
             var jsonStr = _dataReceiver.GetRequestJson(parameters);
-            var castAndCrew = JsonConvert.DeserializeObject<T>(jsonStr);
-            return castAndCrew;
+            var data = JsonConvert.DeserializeObject<T>(jsonStr);
+            return data;
         }
 
-        public async Task<T> ReceiveDeserializedDataASync<T>(string parameters)
+        public async Task<T> ReceiveDeserializedDataAsync<T>(string parameters)
         {
             var jsonStr = await _dataReceiver.GetJsonAsync(parameters);
-            var castAndCrew = JsonConvert.DeserializeObject<T>(jsonStr);
-            return castAndCrew;
+            var data = JsonConvert.DeserializeObject<T>(jsonStr);
+            return data;
         }
     }
 }

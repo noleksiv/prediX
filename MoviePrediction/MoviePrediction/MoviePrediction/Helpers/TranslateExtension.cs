@@ -10,9 +10,7 @@ namespace MoviePrediction.Helpers
 	[ContentProperty("Text")]
 	public class TranslateExtension : IMarkupExtension
 	{
-		const string ResourceId = "MoviePrediction.Resources.AppResources";
-
-		static readonly Lazy<ResourceManager> resourceManager = new Lazy<ResourceManager>(() => new ResourceManager(ResourceId, typeof(TranslateExtension).GetTypeInfo().Assembly));
+		static readonly Lazy<ResourceManager> resourceManager = new Lazy<ResourceManager>(() => new ResourceManager(ApplicationProperties.ResourceId, typeof(TranslateExtension).GetTypeInfo().Assembly));
 
 		public string Text { get; set; }
 
@@ -23,19 +21,8 @@ namespace MoviePrediction.Helpers
 
 			var ci = CrossMultilingual.Current.CurrentCultureInfo;
 
-			var translation = resourceManager.Value.GetString(Text, ci);
+			var translation = resourceManager.Value.GetString(Text, ci) ?? String.Empty;
 
-			if (translation == null)
-			{
-
-				#if DEBUG
-					throw new ArgumentException(
-						String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, ci.Name),
-						"Text");
-				#else
-					translation = Text; // returns the key, which GETS DISPLAYED TO THE USER
-				#endif
-			}
 			return translation;
 		}
 	}

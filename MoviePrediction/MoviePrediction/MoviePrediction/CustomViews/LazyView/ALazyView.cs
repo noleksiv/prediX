@@ -4,14 +4,6 @@ using Sharpnado.Presentation.Forms.CustomViews;
 
 namespace MoviePrediction.CustomViews
 {
-    public interface ILazyView
-    {
-        View Content { get; set; }
-        Color AccentColor { get; }
-        bool IsLoaded { get; }
-        void LoadView();
-    }
-
     public abstract class ALazyView : ContentView, ILazyView, IDisposable, IAnimatableReveal
     {
         public static readonly BindableProperty AccentColorProperty = BindableProperty.Create(
@@ -96,18 +88,6 @@ namespace MoviePrediction.CustomViews
                     IsRunning = true,
                 };
             }
-        }
-    }
-
-    public class LazyView<TView> : ALazyView where TView : View, new()
-    {
-        public override void LoadView()
-        {
-            IsLoaded = true;
-
-            View view = new TView { BindingContext = BindingContext };
-
-            Content = view;
         }
     }
 }

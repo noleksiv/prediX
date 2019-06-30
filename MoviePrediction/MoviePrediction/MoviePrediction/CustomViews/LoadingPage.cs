@@ -15,7 +15,7 @@ namespace MoviePrediction.CustomViews
             var sub = new AbsoluteLayout();
             splashImage = new Image
             {
-                Source = "predix.png",
+                Source = ImageNames.Predix,
                 WidthRequest = 300,
                 HeightRequest = 90
             };

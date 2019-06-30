@@ -1,4 +1,5 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Models;
 using MoviePrediction.Services.Popular;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,9 +18,10 @@ namespace MoviePrediction.ViewModels
 
         public void FillInPage()
         {
-            var popular = ContentTV("popular");
+            var popular = ContentTV(TheMovieDbTabs.PopularTab);
             PopularTV = new ObservableCollection<IMovieIntro>(popular);
-            var topRated = ContentTV("top_rated");
+
+            var topRated = ContentTV(TheMovieDbTabs.TopRatedTab);
             TopRatedTV = new ObservableCollection<IMovieIntro>(topRated);
         }
 

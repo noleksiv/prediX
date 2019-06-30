@@ -1,10 +1,8 @@
-﻿using Sharpnado.Infrastructure.Tasks;
-using Sharpnado.Presentation.Forms.CustomViews;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Sharpnado.Infrastructure.Tasks;
+using Sharpnado.Presentation.Forms.CustomViews;
 
 namespace MoviePrediction.CustomViews
 {

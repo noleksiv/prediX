@@ -1,9 +1,9 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MoviePrediction.Services.Database;
-using MoviePrediction.Models;
 using MoviePrediction.CustomViews;
 using MoviePrediction.Helpers;
+using MoviePrediction.Expansions;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MoviePrediction

@@ -1,7 +1,9 @@
 ﻿using MoviePrediction.CustomViews;
 using MoviePrediction.Models;
+using MoviePrediction.Resources;
 using MoviePrediction.Services.Trending;
 using MoviePrediction.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -59,9 +61,9 @@ namespace MoviePrediction.ViewModels
                 await _pageService.PushAsync(new PopupLoading());
                 await _pageService.PushAsync(new MovieInfo(movie as MovieShort));
             }
-            catch
+            catch(Exception ex)
             {
-                
+                await _pageService.DisplayAlert(AppResources.WarningTitle, ex.Message);
             }
             finally
             {

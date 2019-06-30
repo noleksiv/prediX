@@ -8,6 +8,7 @@ using MoviePrediction.Services.Popular;
 using MoviePrediction.Views;
 using System.Windows.Input;
 using Xamarin.Forms;
+using MoviePrediction.Resources;
 
 namespace MoviePrediction.ViewModels
 {
@@ -86,7 +87,8 @@ namespace MoviePrediction.ViewModels
 
             }
             catch (Exception ex)
-            {                
+            {
+                await _pageService.DisplayAlert(AppResources.WarningTitle, ex.Message);
             }
             finally
             {

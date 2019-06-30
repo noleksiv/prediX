@@ -1,10 +1,4 @@
-﻿using MoviePrediction.Convertors;
-using MoviePrediction.Models;
-using MoviePrediction.Services.Photo;
-using MoviePrediction.ViewModels;
-using System;
-using System.Collections.ObjectModel;
-
+﻿using MoviePrediction.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

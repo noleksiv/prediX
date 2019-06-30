@@ -1,13 +1,4 @@
-﻿using MoviePrediction.Convertors;
-using MoviePrediction.Models;
-using MoviePrediction.ViewModels;
-using Rg.Plugins.Popup.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using MoviePrediction.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,7 +11,7 @@ namespace MoviePrediction.Views
         {
             InitializeComponent();           
 
-            BindingContext = new MainPageViewModel { Navigation = this.Navigation };            
+            BindingContext = new MainPageViewModel(new PageService());
         }        
     }
 }

@@ -1,4 +1,5 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Models;
 using System.Collections.Generic;
 
 namespace MoviePrediction.Services.NowPlaying
@@ -8,7 +9,7 @@ namespace MoviePrediction.Services.NowPlaying
         public NowPlayingMovies GetMovieHeap(int page = 1)
         {
             var region = System.Globalization.RegionInfo.CurrentRegion.Name;
-            var parameters = $"3/movie/upcoming?page={page}&region={region}&";
+            var parameters = $"{TheMovieDbTabs.DatabaseApi}/{TheMovieDbTabs.MovieTab}/{TheMovieDbTabs.UpcomingTab}?{TheMovieDbParameters.Page}={page}&{TheMovieDbParameters.Region}={region}&";
             var upcomingMovies = ReceiveDeserializedData<NowPlayingMovies>(parameters);
             return upcomingMovies;
         }
@@ -16,7 +17,7 @@ namespace MoviePrediction.Services.NowPlaying
         public IList<MovieShort> GetMovieEnumeration(int page = 1)
         {
             var getHeap = GetMovieHeap(page);
-            return getHeap.Movies;
+            return getHeap.Results;
         }
     }
 }

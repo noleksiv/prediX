@@ -6,15 +6,15 @@ using System.Text;
 
 namespace MoviePrediction.Services.NowPlaying
 {
-    public class NowPlayingMovies : ApiMovieResponse
+    public class NowPlayingMovies : ApiMovieResponse<MovieShort>
     {
         [JsonProperty("dates")]
         public Date Dates { get; set; }        
     }
 
-    public class ApiMovieResponse : ApiResponse
+    public class ApiMovieResponse<T> : ApiResponse
     {
         [JsonProperty("results")]
-        public IList<MovieShort> Movies { get; set; }
+        public IList<T> Results { get; set; }
     }
 }

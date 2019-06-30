@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MoviePrediction.Convertors
+namespace MoviePrediction.Expansions
 {
     public static class StackNavigation
     {

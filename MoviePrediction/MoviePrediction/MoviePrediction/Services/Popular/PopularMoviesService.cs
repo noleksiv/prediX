@@ -1,4 +1,6 @@
-﻿using MoviePrediction.Models;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Models;
+using MoviePrediction.Services.NowPlaying;
 using System.Collections.Generic;
 
 namespace MoviePrediction.Services.Popular
@@ -7,8 +9,8 @@ namespace MoviePrediction.Services.Popular
     {
         public IList<MovieShort> GetMovieEnumeration(int pageNumb = 1)
         {
-            var parameters = $"3/movie/popular?page={pageNumb}&";
-            var movies = ReceiveDeserializedData<PopularMovies>(parameters);
+            var parameters = $"{TheMovieDbTabs.DatabaseApi}/{TheMovieDbTabs.MovieTab}/{TheMovieDbTabs.PopularTab}?{TheMovieDbParameters.Page}={pageNumb}&";
+            var movies = ReceiveDeserializedData<ApiMovieResponse<MovieShort>>(parameters);
             return movies.Results;
         }
     }

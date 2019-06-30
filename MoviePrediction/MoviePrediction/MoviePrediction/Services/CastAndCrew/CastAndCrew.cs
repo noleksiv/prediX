@@ -1,4 +1,6 @@
-﻿namespace MoviePrediction.Services.CastAndCrew
+﻿using MoviePrediction.Helpers;
+
+namespace MoviePrediction.Services.CastAndCrew
 {
     public class CastAndCrew: DataDeserializer
     {
@@ -11,7 +13,7 @@
 
         public MovieCredits GetCredits()
         {
-            var parameters = $"3/movie/{_movieId}/credits?";
+            var parameters = $"{TheMovieDbTabs.DatabaseApi}/{TheMovieDbTabs.MovieTab}/{_movieId}/{TheMovieDbTabs.CreditsTab}?";
             var castAndCrew = ReceiveDeserializedData<MovieCredits>(parameters);
             return castAndCrew;
         }

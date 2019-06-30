@@ -1,7 +1,5 @@
-﻿using MoviePrediction.Resources;
-using MoviePrediction.ViewModels;
+﻿using MoviePrediction.ViewModels;
 using Rg.Plugins.Popup.Pages;
-using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
 
 namespace MoviePrediction.CustomViews
@@ -12,7 +10,7 @@ namespace MoviePrediction.CustomViews
 		public PopupLoading (string caption = null)
 		{
 			InitializeComponent ();
-            BindingContext = new PopupLoadingViewModel(caption);
+			BindingContext = new PopupLoadingViewModel(caption);
 		}		
 	}
 }

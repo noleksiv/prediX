@@ -1,17 +1,6 @@
-﻿using AutoMapper;
-using MoviePrediction.Models;
-using MoviePrediction.Services.CastAndCrew;
-using MoviePrediction.Services.Photo;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using MoviePrediction.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MoviePrediction.Convertors;
 using MoviePrediction.ViewModels;
 
 namespace MoviePrediction.Views

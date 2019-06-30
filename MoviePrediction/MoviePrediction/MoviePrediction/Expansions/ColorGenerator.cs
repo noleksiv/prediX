@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace MoviePrediction.Convertors
+namespace MoviePrediction.Expansions
 {
     public class ColorGenerator
     {

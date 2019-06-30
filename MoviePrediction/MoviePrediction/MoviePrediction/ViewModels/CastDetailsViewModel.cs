@@ -1,6 +1,7 @@
 ﻿using Microcharts;
-using MoviePrediction.Convertors;
+using MoviePrediction.Expansions;
 using MoviePrediction.Models;
+using MoviePrediction.Resources;
 using MoviePrediction.Services.CastAndCrew;
 using MoviePrediction.Views;
 using SkiaSharp;
@@ -135,9 +136,9 @@ namespace MoviePrediction.ViewModels
                 await _pageService.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
                 await _pageService.PushAsync(new HelpView(Info.ProfileUrl));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                await _pageService.DisplayAlert(AppResources.WarningTitle, ex.Message);
             }
             finally
             {

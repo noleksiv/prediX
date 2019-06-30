@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MoviePrediction.Convertors;
+using MoviePrediction.Expansions;
 using MoviePrediction.Models;
 using MoviePrediction.Services.CastAndCrew;
 using MoviePrediction.Views;

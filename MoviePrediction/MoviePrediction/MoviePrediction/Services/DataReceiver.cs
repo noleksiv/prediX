@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using MonkeyCache.SQLite;
+using MoviePrediction.Helpers;
 using Plugin.Connectivity;
 using Plugin.Multilingual;
 
@@ -18,7 +19,7 @@ namespace MoviePrediction.Services
         {
             get
             {
-                var pathEnding = $"api_key={TheMovieDb.ApiKey}&language={_cuppentCulture}";
+                var pathEnding = $"{TheMovieDbParameters.Api}={TheMovieDb.ApiKey}&{TheMovieDbParameters.Language}={_cuppentCulture}";
                 return pathEnding;
             }
         }

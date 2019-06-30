@@ -106,7 +106,7 @@ namespace MoviePrediction.ViewModels
             var contextMovies = context.GetMovieHeap();
             _loadMore = new LoadMore(context.GetMovieEnumeration);           
 
-            FullDescription = new ObservableCollection<MovieShort>(contextMovies.Movies);
+            FullDescription = new ObservableCollection<MovieShort>(contextMovies.Results);
 
             LatestStartDate = contextMovies.Dates.From;
             LatestEndsDate = contextMovies.Dates.UntilTo;
@@ -131,9 +131,9 @@ namespace MoviePrediction.ViewModels
                 await _pageService.PushAsync(new PopupPage());
                 await _pageService.PushAsync(new MovieScrollList(FullDescription, _loadMore, _pageService));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                await _pageService.DisplayAlert(AppResources.WarningTitle, ex.Message);
             }
             finally
             {
@@ -150,6 +150,7 @@ namespace MoviePrediction.ViewModels
             }
             catch (Exception ex)
             {
+                await _pageService.DisplayAlert(AppResources.WarningTitle, ex.Message);
             }
             finally
             {

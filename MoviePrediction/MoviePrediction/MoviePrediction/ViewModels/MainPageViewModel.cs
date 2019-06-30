@@ -1,9 +1,8 @@
-﻿using MoviePrediction.Convertors;
+﻿using MoviePrediction.Helpers;
+using MoviePrediction.Resources;
 using MoviePrediction.Views;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,14 +10,18 @@ namespace MoviePrediction.ViewModels
 {
     public class MainPageViewModel: ViewModelBase
     {
+        private readonly IPageService _pageService;
+
         public ICommand UsersIconCommand { protected set; get; }
         public ICommand SearchIconCommand { protected set; get; }
         public ICommand HomePageCommand { protected set; get; }
 
         public INavigation Navigation { get; set; }
 
-        public MainPageViewModel()
+        public MainPageViewModel(IPageService pageService)
         {
+            _pageService = pageService;
+
             UsersIconCommand = new Command(UsersIconClicked);
             SearchIconCommand = new Command(SearchIconClicked);
             HomePageCommand = new Command(GoToMainPage);
@@ -26,28 +29,28 @@ namespace MoviePrediction.ViewModels
 
         private async void UsersIconClicked()
         {
-            await Navigation.PushAsync(new UsersPage());
+            await _pageService.PushAsync(new UsersPage());
         }
 
         private async void GoToMainPage()
         {
-            await Navigation.PushAsync(new MainPage());
+            await _pageService.PushAsync(new MainPage());
         }
 
         private async void SearchIconClicked()
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
-                await Navigation.PushAsync(new HelpView("https://www.imdb.com/"));
+                await _pageService.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage());
+                await _pageService.PushAsync(new HelpView(LinksContainer.Imdb));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                await _pageService.DisplayAlert(AppResources.WarningTitle, ex.Message);
             }
             finally
             {
-                await PopupNavigation.Instance.PopAsync();
+                await _pageService.PopAsync();
             }
         }
     }

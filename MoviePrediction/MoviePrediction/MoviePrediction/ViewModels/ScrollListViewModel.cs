@@ -9,7 +9,8 @@ using MoviePrediction.CustomViews;
 using MoviePrediction.Models;
 using MoviePrediction.Views;
 using System.Linq;
-using MoviePrediction.Convertors;
+using MoviePrediction.Expansions;
+using MoviePrediction.Resources;
 
 namespace MoviePrediction.ViewModels
 {
@@ -90,6 +91,10 @@ namespace MoviePrediction.ViewModels
             {
                 await _pageService.PushAsync(new PopupLoading());
                 await _pageService.PushAsync(new MovieInfo(movie));                
+            }
+            catch(Exception ex)
+            {
+                await _pageService.DisplayAlert(AppResources.WarningTitle, ex.Message);
             }
             finally
             {
