@@ -8,14 +8,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to install the software
 
 ```
 1. Android SDK setup (API level 27);
 2. Google Android Emulator (API Level 27);
 3. .NET standart 2.0;
-4. C# 7.3;
-5. Xamarin
+4. Xamarin plugin.
 ```
 
 ## Built With
@@ -45,11 +44,11 @@ What things you need to install the software and how to install them
 * Beauty UI (includes cardview, popups, microcharts, etc).
 
 # Step-by-step instruction
-### 1. Sing Up
+### 1. Sign Up
 ![](/img/Screenshot_22.jpg)
 ### 2. Verify an email
 ![](https://firebasestorage.googleapis.com/v0/b/pred1x.appspot.com/o/email.jpg?alt=media&token=1dce8e69-3bf6-4308-a2d6-ee5dc5c92ec9)
-### 3. Sing In
+### 3. Sign In
 ![](/img/Screenshot_21.jpg)
 ### 4. Home Page
 ![](/img/Screenshot_2.jpg)
@@ -65,7 +64,7 @@ What things you need to install the software and how to install them
 ![](/img/Screenshot_19.jpg)
 ### 9. Actor's history
 ![](/img/Screenshot_15.jpg)
-### 10. prediction page
+### 10. Prediction page
 ![](/img/Screenshot_16.jpg)
 ![](/img/Screenshot_17.jpg)
 #### User ratings on Imdb
